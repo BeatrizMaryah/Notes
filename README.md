@@ -2,8 +2,8 @@
 
 Esse é um repositório que irei colocar e organizar todas as anotações que fiz do que aprendi até agora. Essas anotações são muito importantes para mim então por favor não use como seu em outros lugares! Se você achar qualquer erro de conceito ou até de digitação (desculpe, sou só uma estudante XD), entre em contato comigo para corrigir!
 
-### Sumário
-1 [Java Básico](#java-basico)
+### 🔎 Sumário 
+* [Java Básico](#java-basico)
 
 
 <div align="center" id='java-basico'/> 
@@ -11,7 +11,17 @@ Esse é um repositório que irei colocar e organizar todas as anotações que fi
 ## Java Básico
 </div>
 
-Java é uma linguagem de programação e plataforma computacional lançada pela primeira vez pela Sun Microsystems em 1995, sendo posteriormente adquirido pela Oracle. Sua característica que mais a deixou conhecida é sua “Independência de plataforma”, que possibilita escrever o código apenas uma vez e rodá-lo em diferentes dispositivos. Essa característica é possível devido ao processo de compilação do Java, que é um pouco diferente que as outras linguagens.
+#### 🔎 Mini sumário
+* [Processo de Compilação](#compilacao-java)
+* [Instalação](#instalacao-java)
+
+Java é uma linguagem de programação e plataforma computacional lançada pela primeira vez pela Sun Microsystems em 1995, sendo posteriormente adquirido pela Oracle. Suas características são herdadas do C e C++ e ganhou destaque pelo seu surgimento WEB. O Java ganhou respeito a partir da versão 1.3 e 1.4 e foi adquirida pela Oracle em 2009. Pode ser utilizado para desenvolvimento de aplicações Desktop, mobile e Web. É uma linguagem fortemente tipada e case-sensitive. Possui um garbage collection e é orientada a objetos.
+
+<div id='compilacao-java'/> 
+
+#### ⚙️ Processo de Compilação
+
+A característica que mais deixou o Java conhecido é sua “Independência de plataforma”, que possibilita escrever o código apenas uma vez e rodá-lo em diferentes dispositivos. Essa característica é possível devido ao processo de compilação do Java, que é um pouco diferente que as outras linguagens.
 
 <div align="center">
   
@@ -24,3 +34,23 @@ Porém, quando criamos uma classe java, ela é salva na extensão .java que a JV
 Para passar o arquivo de uma extensão .java para bytecode, ele precisa ser compilado, quem é responsável por isso é o compilador java chamado JavaC. Ele basicamente transfere a linguagem de programação salva no .java para binário. Porém o compilador java não gera um binário específico para cada plataforma, mas é gerado um binário que pode ser executado em qualquer plataforma, este binário "universal" é chamado de bytecode.
 
 Assim, qualquer computador com uma JVM irá rodar o programa sem problemas.
+</div>
+
+<div id='instalacao-java'/> 
+
+#### 💻 Instalação e Configuração
+
+Primeiramente, devemos instalar o Java Development Kit (JDK) que provê ferramentas para o desenvolvimento de programas Java. Ele contém um compilador, um depurador e o próprio JRE (que provê os requisitos mínimos para executar um programa java, inclusive a JVM) para você executar os seus programas. Para isso clique no link [aqui](https://www.oracle.com/java/technologies/downloads/) para ir para o site da Oracle.
+
+Para sistemas x64 é recomendado baixar a versão 11 do Java que é uma das mais estáveis. Caso seu sistema seja x32, instale a versão 8 que irá rodar sem problemas. Para saber qual a versão do seu
+
+</div>
+
+
+<div align="center" id='java-basico'/> 
+
+## Referências
+</div>
+
+* Java e sua Compilação https://www.devmedia.com.br/processo-de-interpretacao-e-compilacao-entendendo-o-java-de-uma-forma-diferente/24257, https://tecnoblog.net/responde/o-que-e-java-guia-para-iniciantes/, https://www.devmedia.com.br/java-historia-e-principais-conceitos/25178, https://www.java.com/pt-BR/download/help/whatis_java.html
+* JRE e JDK https://www.java.com/pt-BR/download/help/techinfo_pt-br.html, https://dicasdejava.com.br/qual-a-diferenca-entre-jdk-jre-e-jvm/,
