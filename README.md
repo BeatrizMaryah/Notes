@@ -4,7 +4,7 @@ Esse é um repositório que irei colocar e organizar todas as anotações que fi
 
 ### 🔎 Sumário 
 * [Java Básico](#java-basico)
-
+* [Referências](#referencias)
 
 <div align="center" id='java-basico'/> 
 
@@ -42,15 +42,19 @@ Assim, qualquer computador com uma JVM irá rodar o programa sem problemas.
 
 Primeiramente, devemos instalar o Java Development Kit (JDK) que provê ferramentas para o desenvolvimento de programas Java. Ele contém um compilador, um depurador e o próprio JRE (que provê os requisitos mínimos para executar um programa java, inclusive a JVM) para você executar os seus programas. Para isso clique no link [aqui](https://www.oracle.com/java/technologies/downloads/) para ir para o site da Oracle.
 
-Para sistemas x64 é recomendado baixar a versão 11 do Java que é uma das mais estáveis. Caso seu sistema seja x32, instale a versão 8 que irá rodar sem problemas. Para saber qual a versão do seu
+Para sistemas x64 é recomendado baixar a versão 11 do Java que é uma das mais estáveis. Caso seu sistema seja x32, instale a versão 8 que irá rodar sem problemas. Para saber qual a versão do seu computador, digite "meu computador" no inicar, clique com o botão direito e vá em propriedades.
 
+Baixe o executável (.exe) e execute, pode dar next e confirmar. Após o download estar pronto, iremos configurar as variáveis de ambiente. Primeiro você vai no explorador de arquivos na pasta do seu disco local (C:), vá para arquivos de programas, vá para a pasta do Java e clique na versão que você baixou. Depois de estar dentro da pasta, copie o caminho até ela.
+
+No menu inicial você irá digitar Sistema, clicar em configurações Avançadas do sistema, vá em Avançado e em Variáveis do ambiente. Na primeira opção, em Variáveis de usuário, clique em Novo e escreva em Nome da variável "JAVA_HOME" e copie o caminho que você colou em Valor da variável e clique em OK.
 </div>
 
 
-<div align="center" id='java-basico'/> 
+<div align="center" id='referencias'/> 
 
 ## Referências
 </div>
 
 * Java e sua Compilação https://www.devmedia.com.br/processo-de-interpretacao-e-compilacao-entendendo-o-java-de-uma-forma-diferente/24257, https://tecnoblog.net/responde/o-que-e-java-guia-para-iniciantes/, https://www.devmedia.com.br/java-historia-e-principais-conceitos/25178, https://www.java.com/pt-BR/download/help/whatis_java.html
-* JRE e JDK https://www.java.com/pt-BR/download/help/techinfo_pt-br.html, https://dicasdejava.com.br/qual-a-diferenca-entre-jdk-jre-e-jvm/,
+* JRE e JDK https://www.java.com/pt-BR/download/help/techinfo_pt-br.html, https://dicasdejava.com.br/qual-a-diferenca-entre-jdk-jre-e-jvm/
+* Instalação https://www.youtube.com/watch?v=Cq7gdAVPlF4
