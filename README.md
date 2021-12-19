@@ -21,6 +21,7 @@ Esse é um repositório que irei colocar e organizar todas as anotações que fi
 * [Operadores Aritméticos, de Igualdade, Relacionais e Lógicos](#operadores)
 * [Estruturas de Controle](#estruturas-controle)
 * [Estruturas de Repetição](#estruturas-repeticao)
+* [Vetores](#vetores)
 
 
 Java é uma linguagem de programação e plataforma computacional lançada pela primeira vez pela Sun Microsystems em 1995, sendo posteriormente adquirido pela Oracle. Suas características são herdadas do C e C++ e ganhou destaque pelo seu surgimento WEB. O Java ganhou respeito a partir da versão 1.3 e 1.4 e foi adquirida pela Oracle em 2009. Pode ser utilizado para desenvolvimento de aplicações Desktop, mobile e Web. É uma linguagem fortemente tipada e case-sensitive. Possui um garbage collection e é orientada a objetos.
@@ -257,7 +258,7 @@ A diferenças entre a estrutura while e do while é sutil e depende do programad
 
 ##### For
 
-O for é uma estrutura de repetição contadora. Utilizamos ele quando sabemos previamente quantas vezes o bloco de código terá que ser executado. A contagem do for é feita através de uma variável própria que comumente chamamos de **i**.
+O for é uma estrutura de repetição contadora. Utilizamos ele quando sabemos previamente quantas vezes o bloco de código terá que ser executado. A contagem do for é feita através de uma variável própria que comumente chamamos de `i`.
 
 ```
 for ([expressão 1]; [condição]; [expressão 2]){
@@ -272,7 +273,47 @@ for (int i = 0; i < 5; i++){
     System.out.println(i);
 }
 ```
-Nesse exemplo, o for irá executar 5 vezes. Isso acontece pois definimos o valor da nossa variável como 0 e que ela terá que ser menor que 5, ou seja, irá até 4. Depois disso, sinalizamos que ela irá incrementar um por um com o comando i++. Executando esse código, irá imprimir na tela os números 0, 1, 2, 3 e 4. 
+Nesse exemplo, o for irá executar **5** vezes. Isso acontece pois definimos o valor da nossa variável como 0 e que ela terá que ser menor que 5, ou seja, irá até 4. Depois disso, sinalizamos que ela irá incrementar um por um com o comando `i++`. Executando esse código, irá imprimir na tela os números `0, 1, 2, 3 e 4`. 
+</div>
+
+
+<div id='vetores'/>
+
+#### 💻 Vetores
+
+Vetores são estruturas de dados que armazenam uma quantidade fixa de dados de um certo tipo. Internamente, um vetor armazena **diversos valores**, cada um associado a um número que se refere à posição de armazenamento, e é conhecido como `índice`.
+
+O número de posições de um vetor corresponde ao tamanho que ele tem, ou seja, um vetor de tamanho 10 pode armazenar 10 elementos. No Java o vetor é **zero-based**, isto é, as posições do vetor iniciam a numeração a partir do valor 0. Portanto, um vetor de tamanho 10 teria índices iniciados em 0 prosseguindo até o 9.
+
+```
+int vetor[] = new int[tamanho];
+```
+
+Para declararmos um vetor, é semelhante a uma variável normal, com seu tipo e seu nome, porém com um `[]`. Porém, apenas declarando um vetor ele não está pronto para ser usado. Utilizando o new `int[10]` criamos uma instância desse vetor na memória e assim podemos guardar os elementos. Utilizasse o `new` pois no Java, um vetor é uma **classe**. O tamanho do vetor será conhecido através do campo `length`, normalmente usados nas condições do for.
+
+Para atribuirmos valores aos vetores após serem instânciados, utilizamos o `[]` com o índice do espaço que queremos guardar e o `=` com um valor.
+
+```
+vetor[3] = 10;
+```
+No exemplo, um vetor na posição 3, irá guardar o valor 10.
+
+```
+String nome[] = {"Maria", "José", "Ronaldo"};
+```
+Podemos ter vetores de vários tipos, e também podemos inicializar o vetor e atribuir valores a eles ao mesmo tempo com as chaves `{}`. No exemplo acima, temos um vetor de String que guardam os valores Maria, José e Ronaldo. Dessa forma não é necessário indicar o tamanho do vetor e também fazer a alocação de espaço através do operador new.
+
+Existem alguns métodos na classe `Math` do java que podem ser utilizados com os vetores. Por exemplo o `random()` que retorna um valor aleatório dos valores que estão no vetor.
+
+##### For each
+
+O For Each é um for criado para percorrer os elementos de um vetor sem utilizar um contador estruturado. Ele é mais legível e simples de entender. Ele aloca um membro do vetor no parâmetro por vez e executa a instrução, até o último elemento.
+```
+for (parâmetro: nomeDoVetor) {
+   instrução;
+}
+```
+
 </div>
 
 <div align="center" id='conceitos'/> 
@@ -303,3 +344,4 @@ Nesse exemplo, o for irá executar 5 vezes. Isso acontece pois definimos o valor
 * Operadores Lógicos e Aritméticos: [1](https://www.devmedia.com.br/operadores-logicos-e-matematicos-da-linguagem-java/25248)
 * Estruturas de Controle: [1](https://pt.slideshare.net/professor.samuka/java-bsico-mdulo-04-estruturas-de-controle), [2](https://www.devmedia.com.br/java-if-else-e-o-operador-ternario/38185)
 * Estruturas de Repetição: [1](https://www.ic.unicamp.br/~wainer/cursos/2s2011/Cap06-RepeticaoControle-texto.pdf), [2](https://podprogramar.com.br/logica-de-programacao-estruturas-de-repeticao/), [3](https://www.devmedia.com.br/forum/como-usar-o-for-em-java/565177)
+* Vetores: [1](https://www.devmedia.com.br/vetores-em-java/21449)
