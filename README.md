@@ -13,6 +13,8 @@ Esse é um repositório que irei colocar e organizar todas as anotações que fi
 
 </div>
 
+Java é uma linguagem de programação e plataforma computacional lançada pela primeira vez pela Sun Microsystems em 1995, sendo posteriormente adquirido pela Oracle. Suas características são herdadas do C e C++ e ganhou destaque pelo seu surgimento WEB. O Java ganhou respeito a partir da versão 1.3 e 1.4 e foi adquirida pela Oracle em 2009. Pode ser utilizado para desenvolvimento de aplicações Desktop, mobile e Web. É uma linguagem fortemente tipada e case-sensitive. Possui um garbage collection e é orientada a objetos.
+
 #### 🔎 Mini sumário
 * [Processo de Compilação](#compilacao-java)
 * [Instalação do Java](#instalacao-java)
@@ -26,9 +28,7 @@ Esse é um repositório que irei colocar e organizar todas as anotações que fi
 * [Vetores](#vetores)
 * [Matrizes](#matrizes)
 * [Sub-rotinas](#sub-rotinas)
-
-
-Java é uma linguagem de programação e plataforma computacional lançada pela primeira vez pela Sun Microsystems em 1995, sendo posteriormente adquirido pela Oracle. Suas características são herdadas do C e C++ e ganhou destaque pelo seu surgimento WEB. O Java ganhou respeito a partir da versão 1.3 e 1.4 e foi adquirida pela Oracle em 2009. Pode ser utilizado para desenvolvimento de aplicações Desktop, mobile e Web. É uma linguagem fortemente tipada e case-sensitive. Possui um garbage collection e é orientada a objetos.
+* [Debugar](#debug)
 
 <div id='compilacao-java'/> 
 
@@ -113,8 +113,46 @@ Como dito anteriormente, as variáveis **finais** são declaradas quando precisa
 
 <div id='scanner'/> 
 
-#### 💻 Scanner 🚧
+#### 💻 Scanner
 
+No Java, não existe uma função padrão para ler uma entrada de dados diretamente pelo teclado. A partir do Java 1.5, foi disponibilizada a classe **Scanner** que tem exatamente esse papel. É importante destacar que a saída de dados do Scanner é totalmente em console, em linhas de texto. Para utilizarmos a classe Scanner, precisamos primeiramente importá-la com o seguinte comando:
+
+```
+import java.util.Scanner;
+```
+
+É importante destacar que esse import ficará acima da declaração da classe que você está fazendo! Após isso, precisamos criar e instânciar nosso Scanner para ser utilizado, como uma variável.
+
+```
+Scanner leitor = new Scanner (System.in);
+```
+
+Nesse caso, o nome que dei ao Scanner é **leitor** e é o que utilizarei nos exemplos seguintes. Porém, você pode chamar como preferir, seja ler, scr, read, etc. Também é comum instânciar o Scanner logo abaixo do método main.
+
+Usamos o scanner para chamar um método para ler o teclado e atribuir esse valor a uma variável. Normamente utilizamos o scanner abaixo de um `System.out.print()` que pede ao usuario alguma informação, por exemplo um `"Informe seu Nome:"` ou `"Qual é seu nome?"`.
+
+```
+System.out.print("Qual é o seu nome?");
+String nome = sc.nextLine();
+```
+
+No exemplo acima, o programa perguntará qual o nome da pessoa, a pessoa irá digitar no teclado e dar enter. Esse valor digitado irá ser atribuido na variável nome.
+
+##### Métodos
+
+Os métodos do Scanner variam de acordo com o **tipo** de dado que eu quero ler e atribuir a uma variável.
+
+```
+float numFloat = sc.nextFloat();
+int numInt = sc.nextInt();
+byte numByte = sc.nextByte();
+long numLong = sc.nextLong();
+boolean isValid = sc.nextBoolean();
+double numDouble = sc.nextDouble();
+String texto = sc.nextLine();
+```
+
+O Scanner também tem outros métodos importantes, como o método `close()` que fecha o escaneamento de leitura, como se ele apagasse o Scanner quando ele não é mais necessário.
 </div>
 
 <div id='JOptionPane'/> 
@@ -125,7 +163,7 @@ Como dito anteriormente, as variáveis **finais** são declaradas quando precisa
 
 <div id='operadores'/> 
 
-#### ➕ Operadores Aritméticos e de Igualdade
+#### 💻 Operadores Aritméticos e de Igualdade
 
 Para comparar se um valor é igual ao outro, utilizamos o operador de igual `==`. Agora quando queremos comparar se um valor é diferente de outro, utilizamos o operador diferente `!=`. Para realizarmos contas no Java, usamos alguns operadores aritméticos que funcionam como na vida real.
 
@@ -430,6 +468,12 @@ Nesse caso, eu passei o número **3** e o número **4** para serem somados. Cons
 
 </div>
 
+<div id='debug'/> 
+
+#### 🐛 Debugar 🚧
+
+</div>
+
 <div align="center" id='conceitos'/> 
 
 ## Conceitos Gerais
@@ -455,6 +499,7 @@ Nesse caso, eu passei o número **3** e o número **4** para serem somados. Cons
 * JRE e JDK: [1](https://www.java.com/pt-BR/download/help/techinfo_pt-br.html), [2](https://dicasdejava.com.br/qual-a-diferenca-entre-jdk-jre-e-jvm/)
 * Instalação: [1](https://www.youtube.com/watch?v=Cq7gdAVPlF4)
 * Variáveis: [1](https://www.devmedia.com.br/java-variaveis-e-constantes/38311)
+* Scanner: [1](https://www.devmedia.com.br/como-funciona-a-classe-scanner-do-java/28448), [2](https://www.devmedia.com.br/entrada-de-dados-classe-scanner/21366)
 * Operadores Lógicos e Aritméticos: [1](https://www.devmedia.com.br/operadores-logicos-e-matematicos-da-linguagem-java/25248)
 * Estruturas de Controle: [1](https://pt.slideshare.net/professor.samuka/java-bsico-mdulo-04-estruturas-de-controle), [2](https://www.devmedia.com.br/java-if-else-e-o-operador-ternario/38185)
 * Estruturas de Repetição: [1](https://www.ic.unicamp.br/~wainer/cursos/2s2011/Cap06-RepeticaoControle-texto.pdf), [2](https://podprogramar.com.br/logica-de-programacao-estruturas-de-repeticao/), [3](https://www.devmedia.com.br/forum/como-usar-o-for-em-java/565177)
