@@ -22,6 +22,7 @@ Esse é um repositório que irei colocar e organizar todas as anotações que fi
 * [Estruturas de Controle](#estruturas-controle)
 * [Estruturas de Repetição](#estruturas-repeticao)
 * [Vetores](#vetores)
+* [Matrizes](#matrizes)
 
 
 Java é uma linguagem de programação e plataforma computacional lançada pela primeira vez pela Sun Microsystems em 1995, sendo posteriormente adquirido pela Oracle. Suas características são herdadas do C e C++ e ganhou destaque pelo seu surgimento WEB. O Java ganhou respeito a partir da versão 1.3 e 1.4 e foi adquirida pela Oracle em 2009. Pode ser utilizado para desenvolvimento de aplicações Desktop, mobile e Web. É uma linguagem fortemente tipada e case-sensitive. Possui um garbage collection e é orientada a objetos.
@@ -312,6 +313,67 @@ O For Each é um for criado para percorrer os elementos de um vetor sem utilizar
 for (parâmetro: nomeDoVetor) {
    instrução;
 }
+```
+</div>
+
+<div id='matrizes'/>
+
+#### 💻 Matrizes
+
+No java, temos como criar um vetor de vetores. Chamamos isso de vetores multidimensionais ou **matrizes**. Segue a mesma linha de raciocínio que as matrizes na matemática, onde temos linhas e colunas. Levam a mesma regra dos vetores de começar em 0 e sua diferença é o uso de dois `[][]`.
+
+```
+int matriz[][] = new int[2][4];
+```
+
+No exemplo acima, criamos um vetor com **2 linhas** e **4 colunas**. Sendo assim, sabe-se que o primeiro colchete representa o número de linhas e o segundo representa o número de colunas.
+
+<div align="center">
+  
+![Matriz](https://user-images.githubusercontent.com/87392633/146675952-07010c29-f45a-4d26-ba93-235dab6cabd5.png)
+</div>
+
+Podemos ver como funcionam as posições na matriz. Por exemplo, na posição `m[0][2]` temos um elemento na primeira linha e na terceira coluna. Além disso, também podemos inicializar e atribuir valores ao mesmo tempo, como nos vetores.
+
+```
+int matriz[][] = { {1, 2, 3}, {4, 5, 6}, {7, 8, 9} };
+```
+Nessa sintaxe, as `{}` separam as linhas, ou seja, com três `{}` teremos três linhas. Os valores separados pela `,` são os valores que estarão alocados nessa linha e na coluna que ele está na ordem. Sendo assim nossa matriz ficará mais ou menos assim:
+
+<div align="center">
+  
+![Martiz01](https://user-images.githubusercontent.com/87392633/146676344-751006fe-858e-4ee4-b746-808337e01873.png)
+</div>
+
+Trazendo isso para as nossas posições nos `[]`, temos esse cenário:
+
+```
+// 1ª linha:
+ m[0][0] = 1;
+ m[0][1] = 2;
+ m[0][2] = 3;
+
+ // 2ª linha:
+ m[1][0] = 4;
+ m[1][1] = 5;
+ m[1][2] = 6;
+
+ // 3ª linha:
+ m[2][0] = 7;
+ m[2][1] = 8;
+ m[2][2] = 9;
+```
+
+Quando trabalhamos com matrizes, precisamos utilizar **dois for**. Isso acontece pois precisamos percorrer pelas linhas e pelas colunas, usando respectivamente o `i` e o `j`. Além disso, as condições do for ficam um pouco diferentes. O primeiro for usa apenas o `m.lenght`, que irá retornar o número de linhas da matriz. O segundo for usaremos o `m[i].lenght` que irá retornar o número de colunas da i-ésima linha. Por exemplo:
+
+```
+ for (i=0; i<m.length; i++) {
+    System.out.printf("linha: ", (i+1)); //Mostra em que linha está
+    for (j=0; j<m[i].length; j++) {
+       System.out.printf("valor", m[i][j]); //Imprime o valor alocado na linha i + coluna j.
+    }
+    System.out.printf("\n"); //Pula a linha
+ }
 ```
 
 </div>
