@@ -237,11 +237,42 @@ while(expressao){
 ```
 Normalmente usamos o while quando não sabemos quantas vezes o bloco de código terá que ser executado.
 
+##### Do While
+
+É semelhante ao while, porém a condição é verificada após executar o bloco de instruções correspondente. Isso faz com que o bloco de código seja executado no mínimo uma vez.
+
+```
+do {
+  instrução;
+  ...
+} while(expressao);
+```
+
+A diferenças entre a estrutura while e do while é sutil e depende do programador qual ele irá usar
+
 <div align="center">
   
 ![while](https://user-images.githubusercontent.com/87392633/146661160-5aa2f990-6180-433e-b33e-c294d4b65252.png)
 </div>
 
+##### For
+
+O for é uma estrutura de repetição contadora. Utilizamos ele quando sabemos previamente quantas vezes o bloco de código terá que ser executado. A contagem do for é feita através de uma variável própria que comumente chamamos de **i**.
+
+```
+for ([expressão 1]; [condição]; [expressão 2]){
+   instrução
+}
+```
+
+Primeiro temos que definir um valor pra essa variável, este é o papel da expressão 1. Depois, iremos definir uma condição que irá dizer até onde esse for irá contar. Então, temos que sinalizar como sera a incrementação, ou seja, se ele irá contar de um em um ou se irá contar em ordem regressiva por exemplo. Esse é o papel da expressão 2. Exemplo:
+
+```
+for (int i = 0; i < 5; i++){
+    System.out.println(i);
+}
+```
+Nesse exemplo, o for irá executar 5 vezes. Isso acontece pois definimos o valor da nossa variável como 0 e que ela terá que ser menor que 5, ou seja, irá até 4. Depois disso, sinalizamos que ela irá incrementar um por um com o comando i++. Executando esse código, irá imprimir na tela os números 0, 1, 2, 3 e 4. 
 </div>
 
 <div align="center" id='conceitos'/> 
@@ -271,4 +302,4 @@ Normalmente usamos o while quando não sabemos quantas vezes o bloco de código 
 * Variáveis: [1](https://www.devmedia.com.br/java-variaveis-e-constantes/38311)
 * Operadores Lógicos e Aritméticos: [1](https://www.devmedia.com.br/operadores-logicos-e-matematicos-da-linguagem-java/25248)
 * Estruturas de Controle: [1](https://pt.slideshare.net/professor.samuka/java-bsico-mdulo-04-estruturas-de-controle), [2](https://www.devmedia.com.br/java-if-else-e-o-operador-ternario/38185)
-* Estruturas de Repetição: [1](https://www.ic.unicamp.br/~wainer/cursos/2s2011/Cap06-RepeticaoControle-texto.pdf), [2](https://podprogramar.com.br/logica-de-programacao-estruturas-de-repeticao/)
+* Estruturas de Repetição: [1](https://www.ic.unicamp.br/~wainer/cursos/2s2011/Cap06-RepeticaoControle-texto.pdf), [2](https://podprogramar.com.br/logica-de-programacao-estruturas-de-repeticao/), [3](https://www.devmedia.com.br/forum/como-usar-o-for-em-java/565177)
