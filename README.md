@@ -89,12 +89,12 @@ O Java é uma linguagem **fortemente tipada**, ou seja, seus tipos precisam ser 
 
 Além dos tipos primitivos, existem os **tipos por referência**, que são classes que especificam os tipos de objeto Strings, Arrays Primitivos e Objetos. `String` armazena um texto, pode-se dizer que ele é uma "lista" de chars. Os demais veremos depois.
 
-Para declararmos uma variável em java, precisamos iformar o **tipo de dados** que ela poderá receber e seu **nome**. Por exemplo:
+Para declararmos uma variável em java, precisamos informar o **tipo de dados** que ela poderá receber e seu **nome**. Por exemplo:
 
 ```
 int numero;
 String nome = "Maria";
-flaot numeroReal = 9.2;
+float numeroReal = 9.2;
 boolean isValid = true;
 ```
 
