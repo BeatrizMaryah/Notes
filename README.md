@@ -23,6 +23,7 @@ Esse é um repositório que irei colocar e organizar todas as anotações que fi
 * [Estruturas de Repetição](#estruturas-repeticao)
 * [Vetores](#vetores)
 * [Matrizes](#matrizes)
+* [Sub-rotinas](#sub-rotinas)
 
 
 Java é uma linguagem de programação e plataforma computacional lançada pela primeira vez pela Sun Microsystems em 1995, sendo posteriormente adquirido pela Oracle. Suas características são herdadas do C e C++ e ganhou destaque pelo seu surgimento WEB. O Java ganhou respeito a partir da versão 1.3 e 1.4 e foi adquirida pela Oracle em 2009. Pode ser utilizado para desenvolvimento de aplicações Desktop, mobile e Web. É uma linguagem fortemente tipada e case-sensitive. Possui um garbage collection e é orientada a objetos.
@@ -375,6 +376,43 @@ Quando trabalhamos com matrizes, precisamos utilizar **dois for**. Isso acontece
     System.out.printf("\n"); //Pula a linha
  }
 ```
+</div>
+
+<div id='sub-rotinas'/>
+
+#### 💻 Sub-rotinas
+
+Sub-rotinas são trechos de códigos que podem ser **reutilizados**. Elas são muito úteis quando um trecho de código, exatamente igual, se repete diversas vezes ao longo do programa. Ela é isolada do código principal e é chamada por um comando específico para ser usada novamente. Dessa forma, você só escreve o trecho que se repete uma vez, e quando precisar dele, é só chamá-lo.
+
+Essas sub-rotinas ficam separadas do método main e são divididas em dois tipos: **Funções e Procedimentos**.
+
+* **Função:** O diferencial da função é ela te retorna um valor. Considerando isso, toda função tem que ter um `return` para retornar esse valor para quem chamar essa função.
+* **Procedimento:** Um procedimento não retorna nenhum valor, por isso ele não precisa de return. Seu tipo será obrigatoriamente `void` (vazio).
+
+Para declarar uma rotina, você precisa obrigatoriamente colocar a palavra resevada static, informar o tipo de retorno (no caso dos procedimentos será void), o nome da sub-rotina e por fim, seus parâmetros entre parenteses se necessários.
+
+```
+public static [tipo de retorno] [nome da subrotina]([parâmetros]){
+    instrução;
+    ...
+}
+```
+Os parâmetros de uma sub-rotina são variáveis com informações que ela precisa pra funcionar. Eles nem sempre são necessários e devem ser informados entre os `()` com seu tipo e nome. Esses parâmetros basicamente indicam que quando essa sub-rotina for chamada, teremos que passar alguma informação para ele e os parâmetros que irão guardar essas informações. Por exemplo:
+
+```
+public static int somaDoisNumeros(int numero1, int numero2) {
+    int soma = numero1 + numero2;
+    return soma;
+}
+```
+
+Nesse exemplo, temos uma **função** que irá receber dois números, somá-los e retornar esse resultado. Para chamar essa sub-rotina, usamos o nome dela e informamos os valores que irão ir para os parâmetros. Como o exemplo acima é uma função que retornará um valor, podemos usar essa sub-rotina como atribuição de valor de outra variável, como no exemplo a seguir:
+
+```
+int resultado = somaDoisNumeros(3, 4);
+```
+
+Nesse caso, eu passei o número **3** e o número **4** para serem somados. Considerando isso, o valor retornado será **7** e consequentemente, a variável resultado irá guardar esse valor retornado. É importante destacar que, quando eu estou chamando a sub-rotina, os valores que eu estou passando para os parâmetros são chamados de **argumentos**. Os argumentos e os parâmetros devem ser do mesmo **tipo** para funcionar.
 
 </div>
 
@@ -406,4 +444,5 @@ Quando trabalhamos com matrizes, precisamos utilizar **dois for**. Isso acontece
 * Operadores Lógicos e Aritméticos: [1](https://www.devmedia.com.br/operadores-logicos-e-matematicos-da-linguagem-java/25248)
 * Estruturas de Controle: [1](https://pt.slideshare.net/professor.samuka/java-bsico-mdulo-04-estruturas-de-controle), [2](https://www.devmedia.com.br/java-if-else-e-o-operador-ternario/38185)
 * Estruturas de Repetição: [1](https://www.ic.unicamp.br/~wainer/cursos/2s2011/Cap06-RepeticaoControle-texto.pdf), [2](https://podprogramar.com.br/logica-de-programacao-estruturas-de-repeticao/), [3](https://www.devmedia.com.br/forum/como-usar-o-for-em-java/565177)
-* Vetores: [1](https://www.devmedia.com.br/vetores-em-java/21449)
+* Vetores e Matrizes: [1](https://www.devmedia.com.br/vetores-em-java/21449)
+* Sub-Rotinas: [1](https://electronicupstream.wordpress.com/2016/12/22/utilizando-sub-rotinas-java/)
