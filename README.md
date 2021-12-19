@@ -9,7 +9,8 @@ Esse é um repositório que irei colocar e organizar todas as anotações que fi
 
 <div align="center" id='java-basico'/> 
 
-## Java Básico
+## <img height="20em" src="https://user-images.githubusercontent.com/87392633/146660334-ef93d366-1c2c-4f18-8cae-bde3b3668c01.png"/> Java Básico <img height="29em" src="https://emoji.discord.st/emojis/java.png"/>
+
 </div>
 
 #### 🔎 Mini sumário
@@ -18,6 +19,8 @@ Esse é um repositório que irei colocar e organizar todas as anotações que fi
 * [Instalação do Eclipse](#instalacao-eclipse)
 * [Variáveis](#variaveis)
 * [Operadores Aritméticos, de Igualdade, Relacionais e Lógicos](#operadores)
+* [Estruturas de Controle](#estruturas-controle)
+
 
 Java é uma linguagem de programação e plataforma computacional lançada pela primeira vez pela Sun Microsystems em 1995, sendo posteriormente adquirido pela Oracle. Suas características são herdadas do C e C++ e ganhou destaque pelo seu surgimento WEB. O Java ganhou respeito a partir da versão 1.3 e 1.4 e foi adquirida pela Oracle em 2009. Pode ser utilizado para desenvolvimento de aplicações Desktop, mobile e Web. É uma linguagem fortemente tipada e case-sensitive. Possui um garbage collection e é orientada a objetos.
 
@@ -104,7 +107,7 @@ Como dito anteriormente, as variáveis **finais** são declaradas quando precisa
 
 <div id='operadores'/> 
 
-#### Operadores Aritméticos e de Igualdade
+#### ➕ Operadores Aritméticos e de Igualdade
 
 Para comparar se um valor é igual ao outro, utilizamos o operador de igual `==`. Agora quando queremos comparar se um valor é diferente de outro, utilizamos o operador diferente `!=`. Para realizarmos contas no Java, usamos alguns operadores aritméticos que funcionam como na vida real.
 
@@ -137,6 +140,83 @@ São usados com os operadores relacionais para comparar mais de uma condição. 
 
 </div>
 
+<div id='estruturas-controle'/>
+
+#### 💻 Estruturas de Controle
+
+Estruturas de Controle de decisão são instruções em linguagem Java que permitem que blocos específicos de código sejam escolhidos para serem executados, redirecionando determinadas partes do fluxo do programa. Essa é a primeira estrutura que irá **mudar o fluxo do código**, não lendo o código por inteiro que nem antes.
+
+##### Declaração If
+
+A declaração if específica que uma instrução ou bloco de instruções seja executado e se, somente se, uma expressão lógica for verdadeira.
+
+```
+if(condição)
+  instrução
+```
+
+Ou
+
+```
+If(condição){
+  bloco de instruções;
+  ...
+}
+```
+Também temos o chamado IF ternário. Onde caso ela seja verdadeira, o código 1, declarado após o ponto de interrogação `?` será executado; do contrário, o programa irá executar o código 2, declarado após os dois pontos `:`.
+
+```
+(expressão booleana) ? código 1 : código 2;
+```
+
+##### If-Else
+
+A declaração Else vem acompanhada da declaração If. Este cascateamento de estruturas permite ter decisões lógicas muito mais complexas. Pode ter várias estruturas else-if depois de uma declaração if. A estrutura else é opcional e pode ser omitida Essa declaração possui a seguinte forma:
+
+```
+if(condição){
+  intrução 1;
+} else {
+  intrução 2;
+}
+```
+Nesse exemplo, se a condição for verdadeira, ele entra no if executa a instrução 1. Se não for verdadeira, o programa executa a instrução 2.
+
+<div align="center">
+  
+![ifElse](https://user-images.githubusercontent.com/87392633/146660170-7ac240c8-bd4c-4544-9ec9-5a03d0d222a5.png)
+</div>
+
+##### Switch-Case
+
+O Switch Case é uma estrutura de controle apenas para comparar se uma variável é igual a determinados valores. Ele serve para que não precisemos fazer uma cadeia gigante de ifs para determinar o que executar dependendo do valor da variável. Ele é muito mais legível e permite que uma variável tenha múltiplas possibilidades de execução.
+
+```
+switch(variavel){
+  case valor1:
+     intrucao1;
+     ...
+     break;
+  case valor2:
+     instrução2;
+     ...
+     break;
+  default: 
+     instrução3;
+     ...
+     break;
+}
+```
+
+Nesse exemplo, ele verifica qual o valor da variável. Se for o valor1, executa a primeira instrução, se for o valor 2, executa a segunda instrução. Se não for nenhum dos valores anteriores, ele cai no `default` (padrão) e executa o código lá. O comando `break` é utilizado para sair de uma estrutura, ele pode ser usado em estruturas de repetição também.
+
+<div align="center">
+  
+![switchCase](https://user-images.githubusercontent.com/87392633/146660425-6b7ed3b0-72fb-489d-b109-2a1bbd870241.png)
+</div>
+
+</div>
+
 <div align="center" id='conceitos'/> 
 
 ## Conceitos Gerais
@@ -163,3 +243,4 @@ São usados com os operadores relacionais para comparar mais de uma condição. 
 * Instalação: [1](https://www.youtube.com/watch?v=Cq7gdAVPlF4)
 * Variáveis: [1](https://www.devmedia.com.br/java-variaveis-e-constantes/38311)
 * Operadores Lógicos e Aritméticos: [1](https://www.devmedia.com.br/operadores-logicos-e-matematicos-da-linguagem-java/25248)
+* Estruturas de Controle: [1](https://pt.slideshare.net/professor.samuka/java-bsico-mdulo-04-estruturas-de-controle), [2](https://www.devmedia.com.br/java-if-else-e-o-operador-ternario/38185)
