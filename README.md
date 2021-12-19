@@ -20,6 +20,7 @@ Esse é um repositório que irei colocar e organizar todas as anotações que fi
 * [Variáveis](#variaveis)
 * [Operadores Aritméticos, de Igualdade, Relacionais e Lógicos](#operadores)
 * [Estruturas de Controle](#estruturas-controle)
+* [Estruturas de Repetição](#estruturas-repeticao)
 
 
 Java é uma linguagem de programação e plataforma computacional lançada pela primeira vez pela Sun Microsystems em 1995, sendo posteriormente adquirido pela Oracle. Suas características são herdadas do C e C++ e ganhou destaque pelo seu surgimento WEB. O Java ganhou respeito a partir da versão 1.3 e 1.4 e foi adquirida pela Oracle em 2009. Pode ser utilizado para desenvolvimento de aplicações Desktop, mobile e Web. É uma linguagem fortemente tipada e case-sensitive. Possui um garbage collection e é orientada a objetos.
@@ -217,6 +218,32 @@ Nesse exemplo, ele verifica qual o valor da variável. Se for o valor1, executa 
 
 </div>
 
+
+<div id='estruturas-repeticao'/>
+
+#### 💻 Estruturas de Repetição
+
+Estruturas de repetição permitem executar **mais de uma vez** um mesmo trecho de código. Trata-se de uma forma de executar blocos de comandos somente sob determinadas condições, mas com a opção de **repetir** o mesmo bloco quantas vezes for necessário. As estruturas de repetição são úteis, por exemplo, para repetir uma série de operações semelhantes que são executadas para todos os elementos de uma lista ou de uma tabela de dados, ou simplesmente para repetir um mesmo processamento até que uma certa condição seja satisfeita. 
+
+##### While
+
+O while é a estrutura de repetição mais simples. Ele repete a execução de um bloco desentenças **enquanto** uma condição permanecer verdadeira. Na primeira vez que a condição se tornar **falsa**, o while não repetirá a execução do bloco.
+
+```
+while(expressao){
+  instrução;
+  ...
+}
+```
+Normalmente usamos o while quando não sabemos quantas vezes o bloco de código terá que ser executado.
+
+<div align="center">
+  
+![while](https://user-images.githubusercontent.com/87392633/146661160-5aa2f990-6180-433e-b33e-c294d4b65252.png)
+</div>
+
+</div>
+
 <div align="center" id='conceitos'/> 
 
 ## Conceitos Gerais
@@ -244,3 +271,4 @@ Nesse exemplo, ele verifica qual o valor da variável. Se for o valor1, executa 
 * Variáveis: [1](https://www.devmedia.com.br/java-variaveis-e-constantes/38311)
 * Operadores Lógicos e Aritméticos: [1](https://www.devmedia.com.br/operadores-logicos-e-matematicos-da-linguagem-java/25248)
 * Estruturas de Controle: [1](https://pt.slideshare.net/professor.samuka/java-bsico-mdulo-04-estruturas-de-controle), [2](https://www.devmedia.com.br/java-if-else-e-o-operador-ternario/38185)
+* Estruturas de Repetição: [1](https://www.ic.unicamp.br/~wainer/cursos/2s2011/Cap06-RepeticaoControle-texto.pdf), [2](https://podprogramar.com.br/logica-de-programacao-estruturas-de-repeticao/)
