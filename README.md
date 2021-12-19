@@ -18,6 +18,8 @@ Esse é um repositório que irei colocar e organizar todas as anotações que fi
 * [Instalação do Java](#instalacao-java)
 * [Instalação do Eclipse](#instalacao-eclipse)
 * [Variáveis](#variaveis)
+* [Scanner](#scanner)
+* [JOptionPane](#JOptionPane)
 * [Operadores Aritméticos, de Igualdade, Relacionais e Lógicos](#operadores)
 * [Estruturas de Controle](#estruturas-controle)
 * [Estruturas de Repetição](#estruturas-repeticao)
@@ -107,6 +109,18 @@ Neste código informamos que a variável numero é do tipo inteiro e, por isso, 
 Em relação a nomeação das variáveis: elas podem conter letras, números e o caractere sublinhado (_), mas não pode começar com um número. Devem ser declaradas em minúsculo, caso sejam nomes compostos, a primeira letra de todas as palavras, menos da primeira, deve ser maiúscula. É importante destacar que Java é uma linguagem **case sensitive**, ou seja, o nome numeroUm é diferente de numeroum.
 
 Como dito anteriormente, as variáveis **finais** são declaradas quando precisamos lidar com dados que não devem ser alterados durante a execução do programa. No Java declaramos uma variável final utilizando a palavra-chave `final` antes do tipo da variável. No caso das **constantes**, seu conceito é melhor entendido após o POO. Para declarar uma constante uitilizamos as palavras-chave `static final` antes do tipo da variável. Quando nomeamos uma constante, utilizamos apenas letras maíusculas e um caractere sublinhado (_) para os espaços.
+</div>
+
+<div id='scanner'/> 
+
+#### 💻 Scanner 🚧
+
+</div>
+
+<div id='JOptionPane'/> 
+
+#### 💻 JOptionPane 🚧
+
 </div>
 
 <div id='operadores'/> 
