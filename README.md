@@ -159,6 +159,27 @@ O Scanner também tem outros métodos importantes, como o método `close()` que 
 
 #### 💻 JOptionPane 🚧
 
+O **JOptionPane** é uma classe do pacote visual **Swing** e é a forma mais simples de ter uma programação mais visual no Java. Ele nos proporciona uma série de métodos estáticos que ao serem invocados criam caixas de diálogos simples e objetivas. Para usá-lo, devemos primeiramente importar o seu pacote com o seguinte comando:
+
+```
+import javax.swing.JOptionPane;
+```
+Existem alguns comandos que invocam caixinhas específicas, agora vamos falar um pouco sobre cada uma delas.
+
+##### Caixa de Diálogo Input
+
+Essa caixinha serve para fazer uma requisição de algum dado ao usuário de forma bem simples e direta. O que é digitado é retornado em formato de String. Além disso, a caixa conta com opções de OK, CANCEL e o X que faz o mesmo que cancelar.
+
+<div align="center">
+  
+![caixaInput](https://user-images.githubusercontent.com/87392633/146680044-1a595ed7-2d94-4b35-864a-328588f75102.png)
+</div>
+
+Para chamar essa caixinha, chamamos o comando e a mensagem que queremos que aparece colocamos entre os parênteses. Essa mensagem podemos passar como uma String direto ou como uma variável String. Além disso, como no Scanner, podemos usar essa caixinha para atribuir um valor a uma variável.
+
+```
+String nome = JOptionPane.showInputDialog("Qual o seu nome?");
+```
 </div>
 
 <div id='operadores'/> 
