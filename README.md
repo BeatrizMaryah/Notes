@@ -180,6 +180,64 @@ Para chamar essa caixinha, chamamos o comando e a mensagem que queremos que apar
 ```
 String nome = JOptionPane.showInputDialog("Qual o seu nome?");
 ```
+
+##### Caixa de Diálogo Confirm
+
+Essa é uma caixa de confirmação com as opções, que  consiste de uma caixa contendo uma mensagem, um ícone e três botões: sim, não e cancelar. Essa caixa pode ser facilmente configurada. 
+
+<div align="center">
+  
+![image](https://user-images.githubusercontent.com/87392633/146682488-e655fcd1-902e-43d0-863c-a74f15112c5f.png)
+</div>
+
+Esse método sempre retorna uma constante referente a opção que o usuário clicou. Caso ele clique em `YES`, retornará **0**, caso ele clique em `NO` retornará **1** e caso ele clique em `CANCEL` retornará **2**. Também é possível **armazenar** esse valor retornado em uma variável para poder alterar o **fluxo** do programa dependendo da opção que o usuário escreveu, seja com ifs ou o próprio switch case.
+
+```
+int opcao = JOptionPane.showConfirmDialog(null, "O seu nome é Fulano?");
+```
+
+Quando chamamos o método padrão, usamos dois **argumentos**. O primeiro sinaliza de qual janela esta confirmação está sendo gerada e por enquanto sempre usaremos `null` nesse argumento. O segundo argumento é a **mensagem** que desejamos mostrar ao usuário.
+
+##### Caixa de Diálogo de Mensagem
+
+A caixa de diálogo de mensagem é uma caixa que serve apenas para emitir uma **mensagem**. Esta caixa também é muito configurável e versátil, pois serve para muitas situações distintas como uma mensagem de **erro, um alerta**, ou simplesmente uma informação. Essa caixa apenas contém uma mensagem e um botão de OK.
+
+<div align="center">
+  
+![image](https://user-images.githubusercontent.com/87392633/146682912-19afac2d-6731-4d1c-80f9-2d740346610c.png)
+</div>
+
+Como a caixa de Confirm, essa caixa padrão também tem os dois argumentos, sendo o que iremos usar o `null` e a mensagem em si. Esse método não usamos para atribuir valores, ele é mais como um `System.out.print()`.
+
+```
+JOptionPane.showMessageDialog(null, "Seu nome é Fulano");
+```
+
+Aqui está um pequeno exemplo da utilização de todos as caixas comentadas acima:
+
+```
+  String nome = null;
+  int resposta;
+  nome = JOptionPane.showInputDialog("Qual é o seu nome?"); //Pergunta o nome
+  resposta = JOptionPane.showConfirmDialog(null, "O seu nome é " + nome + "?"); //Pede para confirmar o nome
+  
+   if (resposta == JOptionPane.YES_OPTION) { // verifica se o usuário clicou no botão YES
+       JOptionPane.showMessageDialog(null, "Seu nome é " + nome); //Clicou no yes
+   } else {
+        JOptionPane.showMessageDialog(null, "Seu nome não é " + nome); //Não clicou no yes
+   }
+```
+
+##### Customizações
+
+Além disso, como dito anteriormente, algumas caixas são customizáveis. Nós podemos mudar o que vem escrito em cima dela e até mudar o ícone para um ícone de erro entre outros. Para customizar uma caixinha, vamos adicionar mais alguns argumentos aos métodos. Vou usar de exemplo uma caixa de mensagem.
+
+```
+JOptionPane.showMessageDialog(null, "Mensagem central", "Sub Mensagem", JOptionPane.[tipo do ícone])
+```
+
+A mensagem central será a mensagem que irá aparecer como as anteriores. A sub-mensagem irá aparecer em cima da caixinha. O tipo do ícone será referente a qual ícone aparecera na mensagem. No tipo de ícone temos: o `INFORMATION_MESSAGE` para informações, que terá um ícone de `i`, o `WARNING_MESSAGE` para avisos, que terá um `!` e o	`ERROR_MESSAGE` para erros, que terá um `x`.
+
 </div>
 
 <div id='operadores'/> 
@@ -521,6 +579,7 @@ Nesse caso, eu passei o número **3** e o número **4** para serem somados. Cons
 * Instalação: [1](https://www.youtube.com/watch?v=Cq7gdAVPlF4)
 * Variáveis: [1](https://www.devmedia.com.br/java-variaveis-e-constantes/38311)
 * Scanner: [1](https://www.devmedia.com.br/como-funciona-a-classe-scanner-do-java/28448), [2](https://www.devmedia.com.br/entrada-de-dados-classe-scanner/21366)
+* JOptionPane: [1](https://www.lncc.br/~rogerio/lingprog/JOptionPane.pdf), [2](https://docs.oracle.com/javase/7/docs/api/javax/swing/JOptionPane.html)
 * Operadores Lógicos e Aritméticos: [1](https://www.devmedia.com.br/operadores-logicos-e-matematicos-da-linguagem-java/25248)
 * Estruturas de Controle: [1](https://pt.slideshare.net/professor.samuka/java-bsico-mdulo-04-estruturas-de-controle), [2](https://www.devmedia.com.br/java-if-else-e-o-operador-ternario/38185)
 * Estruturas de Repetição: [1](https://www.ic.unicamp.br/~wainer/cursos/2s2011/Cap06-RepeticaoControle-texto.pdf), [2](https://podprogramar.com.br/logica-de-programacao-estruturas-de-repeticao/), [3](https://www.devmedia.com.br/forum/como-usar-o-for-em-java/565177)
