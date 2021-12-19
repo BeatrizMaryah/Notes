@@ -17,6 +17,7 @@ Esse é um repositório que irei colocar e organizar todas as anotações que fi
 * [Instalação do Java](#instalacao-java)
 * [Instalação do Eclipse](#instalacao-eclipse)
 * [Variáveis](#variaveis)
+* [Operadores Aritméticos, de Igualdade, Relacionais e Lógicos](#operadores)
 
 Java é uma linguagem de programação e plataforma computacional lançada pela primeira vez pela Sun Microsystems em 1995, sendo posteriormente adquirido pela Oracle. Suas características são herdadas do C e C++ e ganhou destaque pelo seu surgimento WEB. O Java ganhou respeito a partir da versão 1.3 e 1.4 e foi adquirida pela Oracle em 2009. Pode ser utilizado para desenvolvimento de aplicações Desktop, mobile e Web. É uma linguagem fortemente tipada e case-sensitive. Possui um garbage collection e é orientada a objetos.
 
@@ -65,7 +66,7 @@ Para baixar o eclipse, clique no link [aqui](https://www.eclipse.org/downloads/d
 <div id='variaveis'/> 
 
 #### 🗃️ Variáveis
-</div>
+
 
 Uma variável é um recurso das linguagens de programação utilizado para **armazenar** valores em memória. Assim, sempre que precisarmos desse valor, basta referenciarmos essa variável. Nossas variáveis são como caixas, onde nomeamos que tipo de coisa ela irá guardar e depois podemos facilmente pegar o que está guardado para utilizar. 
 
@@ -99,6 +100,42 @@ Neste código informamos que a variável numero é do tipo inteiro e, por isso, 
 Em relação a nomeação das variáveis: elas podem conter letras, números e o caractere sublinhado (_), mas não pode começar com um número. Devem ser declaradas em minúsculo, caso sejam nomes compostos, a primeira letra de todas as palavras, menos da primeira, deve ser maiúscula. É importante destacar que Java é uma linguagem **case sensitive**, ou seja, o nome numeroUm é diferente de numeroum.
 
 Como dito anteriormente, as variáveis **finais** são declaradas quando precisamos lidar com dados que não devem ser alterados durante a execução do programa. No Java declaramos uma variável final utilizando a palavra-chave `final` antes do tipo da variável. No caso das **constantes**, seu conceito é melhor entendido após o POO. Para declarar uma constante uitilizamos as palavras-chave `static final` antes do tipo da variável. Quando nomeamos uma constante, utilizamos apenas letras maíusculas e um caractere sublinhado (_) para os espaços.
+</div>
+
+<div id='operadores'/> 
+
+#### Operadores Aritméticos e de Igualdade
+
+Para comparar se um valor é igual ao outro, utilizamos o operador de igual `==`. Agora quando queremos comparar se um valor é diferente de outro, utilizamos o operador diferente `!=`. Para realizarmos contas no Java, usamos alguns operadores aritméticos que funcionam como na vida real.
+
+<div align="center">
+  
+![operadoresAritmeticos](https://user-images.githubusercontent.com/87392633/146659244-1d07435d-4112-47ad-bd9b-463ab9942b21.png)
+</div>
+
+Os primeiros operadores a serem executados sempre serão os de multiplicação, divisão e resto de divisão. Depois disso são executados os de soma e subtração e só ai o de atribuição(=). Para definir uma ordem de precedência(execução), usamos os **parênteses()**.
+
+#### Operadores Relacionais
+
+São utilizados para formar condições, que iremos usar nos métodos `if` depois. Essas condições expressam valores **booleanos**, ou seja, que podem ser verdadeiras o falsas.
+
+<div align="center">
+  
+![operadoresRelacionais](https://user-images.githubusercontent.com/87392633/146659368-a0542194-ed35-42fa-abdc-bfebefadda09.png)
+
+</div>
+
+Por exemplo, se eu formo a condição `14 > 20` retornará falso, pois 14 não é maior que 20.
+
+#### Operadores Lógicos
+
+São usados com os operadores relacionais para comparar mais de uma condição. Também retornam valores booleanos.
+
+* **E:** Só resulta verdadeiro quando os dois são verdadeiros. Se determinada coisa é verdadeira **E** outra também é verdadeira, então ele executa. No java é representado por `&&`;
+* **OU:** Só resulta falso quando os dois valores forem falsos. Já executa se uma condição for verdadeira. É representado por `||` no java;
+* **NÃO:** Inverte o valor, se for verdadeiro fica falso e se for falso fica verdadeiro. É representado por `!` no java.
+
+</div>
 
 <div align="center" id='conceitos'/> 
 
@@ -125,3 +162,4 @@ Como dito anteriormente, as variáveis **finais** são declaradas quando precisa
 * JRE e JDK: [1](https://www.java.com/pt-BR/download/help/techinfo_pt-br.html), [2](https://dicasdejava.com.br/qual-a-diferenca-entre-jdk-jre-e-jvm/)
 * Instalação: [1](https://www.youtube.com/watch?v=Cq7gdAVPlF4)
 * Variáveis: [1](https://www.devmedia.com.br/java-variaveis-e-constantes/38311)
+* Operadores Lógicos e Aritméticos: [1](https://www.devmedia.com.br/operadores-logicos-e-matematicos-da-linguagem-java/25248)
