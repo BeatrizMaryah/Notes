@@ -605,6 +605,8 @@ Nesse caso, eu passei o número **3** e o número **4** para serem somados. Cons
 
 Também chamado de **debugging** ou, em português, **depuração**, é o nome dado ao processo de encontrar e remover os **erros**. O termo faz parte do processo de desenvolvimento e com ele, é possível determinar o que está ocorrendo dentro do **código-fonte** e obter sugestões de ações de melhorias. Com ele é possível controlar as variáveis, o que elas estão guardando e passar pelo programa de linha de código por linha de código.
 
+Para de
+
 </div>
 
 <div align="center" id='conceitos'/> 
@@ -639,4 +641,4 @@ Também chamado de **debugging** ou, em português, **depuração**, é o nome d
 * Estruturas de Repetição: [1](https://www.ic.unicamp.br/~wainer/cursos/2s2011/Cap06-RepeticaoControle-texto.pdf), [2](https://podprogramar.com.br/logica-de-programacao-estruturas-de-repeticao/), [3](https://www.devmedia.com.br/forum/como-usar-o-for-em-java/565177)
 * Vetores e Matrizes: [1](https://www.devmedia.com.br/vetores-em-java/21449)
 * Sub-Rotinas: [1](https://electronicupstream.wordpress.com/2016/12/22/utilizando-sub-rotinas-java/)
-* Debug: [1](https://www.hostgator.com.br/blog/debug-desenvolvimento-web/),
+* Debug: [1](https://www.hostgator.com.br/blog/debug-desenvolvimento-web/), [2](https://www.alura.com.br/conteudo/java-debug)
