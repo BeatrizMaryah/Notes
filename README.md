@@ -19,6 +19,7 @@ Java é uma linguagem de programação e plataforma computacional lançada pela 
 * [Processo de Compilação](#compilacao-java)
 * [Instalação do Java](#instalacao-java)
 * [Instalação do Eclipse](#instalacao-eclipse)
+* [Iniciando](#iniciando)
 * [Variáveis](#variaveis)
 * [Scanner](#scanner)
 * [JOptionPane](#JOptionPane)
@@ -72,6 +73,37 @@ Para testar se tudo está funcionando, temos que abrir o CMD (prompt de comando)
 Para baixar o eclipse, clique no link [aqui](https://www.eclipse.org/downloads/download.php?file=/oomph/epp/2021-12/R/eclipse-inst-jre-win64.exe) e clique em Download. Após o download ser feito, clique em Eclipse IDE for Enterprise Java and Web Developers. Após isso clique em download e está feito!
 </div>
 
+
+<div id='iniciando'/>
+
+#### 💻 Iniciando
+
+Para começarmos a aprender os conteúdos a seguir, primeiro vamos aprender os primeiros passos de um programa. Primeiramente, no eclipse, vamos criar um novo **projeto**. Um projeto é onde estarão todos os seus arquivos e códigos. Para isso, vá no seguinte botão e aperte em `Project`.
+
+<img height="220em" src="https://user-images.githubusercontent.com/87392633/146822395-fa8efb61-4427-421e-a7c0-ecfa09624bee.png"/>
+
+Depois disso, clique em `Java Project` e em `Next`. Após isso, informe o **nome** que você quer dar para o seu projeto em `Project Name` e clique em `Finish`. Clique em `Don't Create` na janela que irá aparecer e com isso, nosso projeto está criado.
+
+Depois disso, você irá clicar no seu projeto para **abri-lo**. Irá aparecer duas coisas, uma pasta `src` onde estará todo o nosso código e uma pasta `JRE System Library`, onde estarão todos os elementos necessários para o java funcionar, como o compilador. Clicando com o botão direito na pasta src, e indo em `new`, podemos criar novos elementos. Nesse momento, iremos criar um **pacote**, que é uma forma de deixar o projeto organizado, como pastas com arquivos.
+
+<img height="100em" src="https://user-images.githubusercontent.com/87392633/146823812-867dd7b8-521b-4867-978d-9a7805db20f1.png"/>
+
+Após isso, de o **nome** ao seu pacote e clique em `Finish`. Depois de criar um pacote, iremos criar uma **classe** no mesmo caminho, porém clicando no `Class`. Uma classe é o arquivo que guardará o código em si, ou seja, sempre que quisermos fazer um código, teremos que criar uma classe. 
+
+Iremos abordar mais assuntos da classe após a programação orientada a objetos, por enquanto, iremos colocar todo o código no **método main** da nossa classe. O método main é o ponto de partida do seu programa, ou seja, se você tiver mais classes, quem irá ser responsável por iniciar e gerenciar o programa é o **main**. O main é composto pelos seguintes elementos:
+
+```
+public static void main(String[] args) {
+	System.out.print("Exemplo de código") //Irá imprimir na tela: Exemplo de código	
+}
+```
+
+Para rodar nosso programa, iremos clicar no botão <img height="30em" src="https://user-images.githubusercontent.com/87392633/146824865-247a6769-44aa-4c5b-ae9b-0f7bd130b4fd.png"/>.
+
+É importante saber, que no java, temos algumas **convenções** em relação a **nomeação** dos elementos. Em geral, **não** usamos acentos, cedilha (`Ç`), e símbolos em si nos nomes quando estamos programando, apenas quando mostramos algo na tela. Nossos pacotes serão todos com letras minúsculas e a separação de níveis será feita com um ponto (`.`). Nossas classes sempre terão a primeira letra maiúscula.
+
+</div>
+
 <div id='variaveis'/> 
 
 #### 🗃️ Variáveis
@@ -106,7 +138,7 @@ boolean isValid = true;
 
 Neste código informamos que a variável numero é do tipo inteiro e, por isso, só poderá receber valores desse tipo. No caso da variável nome, já iniciamos ela atribuindo um valor "Maria" com o sinal de `=`. Quando lidamos com valores com vírgula no Java, utilizamos o `.` no lugar dela. 
 
-Em relação a nomeação das variáveis: elas podem conter letras, números e o caractere sublinhado (_), mas não pode começar com um número. Devem ser declaradas em minúsculo, caso sejam nomes compostos, a primeira letra de todas as palavras, menos da primeira, deve ser maiúscula. É importante destacar que Java é uma linguagem **case sensitive**, ou seja, o nome numeroUm é diferente de numeroum.
+Em relação a nomeação das variáveis: elas podem conter letras, números e o caractere sublinhado (_), mas não pode começar com um número. Devem ser declaradas em minúsculo, caso sejam nomes compostos, a primeira letra de todas as palavras, menos da primeira, deve ser maiúscula. É importante destacar que Java é uma linguagem **case sensitive**, ou seja, o nome numeroUm é diferente de numeroum. Além disso, os nomes tem que fazer sentido para que o seu programa seja mais legível. Por exemplo, não faz sentido que uma variável que vá guardar um nome tenha o nome de abacaxi, pois esse "abacaxi" não indica nada para o programador.
 
 Como dito anteriormente, as variáveis **finais** são declaradas quando precisamos lidar com dados que não devem ser alterados durante a execução do programa. No Java declaramos uma variável final utilizando a palavra-chave `final` antes do tipo da variável. No caso das **constantes**, seu conceito é melhor entendido após o POO. Para declarar uma constante uitilizamos as palavras-chave `static final` antes do tipo da variável. Quando nomeamos uma constante, utilizamos apenas letras maíusculas e um caractere sublinhado (_) para os espaços.
 </div>
@@ -571,7 +603,7 @@ Nesse caso, eu passei o número **3** e o número **4** para serem somados. Cons
 
 #### 🐛 Debugar 🚧
 
-Também chamado de debugging ou, em português, depuração, é o nome dado ao processo de encontrar e remover os erros. O termo faz parte do processo de desenvolvimento e com ele, é possível determinar o que está ocorrendo dentro do código-fonte e obter sugestões de ações de melhorias.
+Também chamado de **debugging** ou, em português, **depuração**, é o nome dado ao processo de encontrar e remover os **erros**. O termo faz parte do processo de desenvolvimento e com ele, é possível determinar o que está ocorrendo dentro do **código-fonte** e obter sugestões de ações de melhorias. Com ele é possível controlar as variáveis, o que elas estão guardando e passar pelo programa de linha de código por linha de código.
 
 </div>
 
