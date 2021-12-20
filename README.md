@@ -157,7 +157,7 @@ O Scanner também tem outros métodos importantes, como o método `close()` que 
 
 <div id='JOptionPane'/> 
 
-#### 💻 JOptionPane 🚧
+#### 💻 JOptionPane 
 
 O **JOptionPane** é uma classe do pacote visual **Swing** e é a forma mais simples de ter uma programação mais visual no Java. Ele nos proporciona uma série de métodos estáticos que ao serem invocados criam caixas de diálogos simples e objetivas. Para usá-lo, devemos primeiramente importar o seu pacote com o seguinte comando:
 
@@ -228,6 +228,24 @@ Aqui está um pequeno exemplo da utilização de todos as caixas comentadas acim
    }
 ```
 
+##### Caixa de Diálogo com opções
+
+Também é possível fazer uma caixa de diálogo com **opções** personalizadas, onde você precisará criar um vetor de String com as opções e usá-las no comando:
+
+```
+String[] opcoes = { "Opção 1", "Opção 2", "Opção 3" };
+
+		int opcao = JOptionPane.showOptionDialog(null, "Mensagem Central", "Sub",
+				JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcoes, opcoes[0]);
+```
+
+Essa caixa é totalmente **customizável** e retorna constantes igual a caixa de confirmação. O número que retornará será referente a qual posição o elemento está no vetor. Nesse caso, a Opção 1 retornará **0**, a Opção 2 retornará **1** e assim por diante. A caixa terá essa aparência:
+
+<div align="center">
+  
+![image](https://user-images.githubusercontent.com/87392633/146770033-3ce7f348-c5da-4138-9327-55a432cdd8e5.png)
+</div>
+
 ##### Customizações
 
 Além disso, como dito anteriormente, algumas caixas são customizáveis. Nós podemos mudar o que vem escrito em cima dela e até mudar o ícone para um ícone de erro entre outros. Para customizar uma caixinha, vamos adicionar mais alguns argumentos aos métodos. Vou usar de exemplo uma caixa de mensagem.
@@ -237,6 +255,8 @@ JOptionPane.showMessageDialog(null, "Mensagem central", "Sub Mensagem", JOptionP
 ```
 
 A mensagem central será a mensagem que irá aparecer como as anteriores. A sub-mensagem irá aparecer em cima da caixinha. O tipo do ícone será referente a qual ícone aparecera na mensagem. No tipo de ícone temos: o `INFORMATION_MESSAGE` para informações, que terá um ícone de `i`, o `WARNING_MESSAGE` para avisos, que terá um `!` e o	`ERROR_MESSAGE` para erros, que terá um `x`.
+
+
 
 </div>
 
