@@ -4,6 +4,7 @@ Esse é um repositório que irei colocar e organizar todas as anotações que fi
 
 ### 🔎 Sumário 
 * [Java Básico](#java-basico)
+* [Programação Orientada a Objetos](#poo)
 * [Conceitos](#conceitos)
 * [Referências](#referencias)
 
@@ -601,7 +602,7 @@ Nesse caso, eu passei o número **3** e o número **4** para serem somados. Cons
 
 <div id='debug'/> 
 
-#### 🐛 Debugar 🚧
+#### 🐛 Debugar
 
 Também chamado de **debugging** ou, em português, **depuração**, é o nome dado ao processo de encontrar e remover os **erros**. O termo faz parte do processo de desenvolvimento e com ele, é possível determinar o que está ocorrendo dentro do **código-fonte** e obter sugestões de ações de melhorias. Com ele é possível controlar as variáveis, o que elas estão guardando e passar pelo programa de linha de código por linha de código. Por enquanto veremos apenas o básico da funcionalidade do debug.
 
@@ -634,6 +635,53 @@ Com isso, podemos passar por todo o nosso programa visualizando o que está acon
 No exemplo acima por exemplo, temos um `i` que guarda um valor `0`. 
 
 Para **sair** do modo debug, você pode rodar o programa normalmente e clicar no botão <img height="30em" src="https://user-images.githubusercontent.com/87392633/146939440-193b9271-b015-43bd-ada9-b2c858d2388c.png"/> no canto diagonal direito para mudar para o modo Java novamente.
+
+</div>
+
+<div align="center" id='poo'/> 
+
+## Programação Orientada a Objetos 🚧
+</div>
+
+Como a maioria das atividades que fazemos no dia a dia, programar também possui modos diferentes de se fazer. Esses modos são chamados de **paradigmas de programação** e antigamente havia apenas o paradigma estruturado. No paradigma estruturado, um programa é composto por **três** tipos básicos de estruturas: as **sequências**, que são os comandos a serem executados, as **condições** (if, else, switch) e as **repetições** (for, while, do-while). 
+
+No inicio da década de 70, a **Programação Orientada a Objetos** foi criada por **Alan Kay**, autor da linguagem Smalltalk. O intuito da sua criação também foi o de aproximar o manuseio das estruturas de um programa ao manuseio das coisas do mundo real, daí o nome **"objeto"** como uma algo genérico, que pode representar qualquer coisa tangível. 
+
+Considerando isso, quando trabalhamos com a programação orientada a objetos, pensamos na **vida real** para solucionar um determinado problema. Por exemplo, pense em um objeto de caneta. Para representar ela no nosso código, temos que pensar nas características que ela apresenta, como cor, tamanho da ponta, marca e até se sua tinta está vazia ou não. Além das suas características, temos algumas coisas que ela pode fazer, como escrever ou desenhar.
+
+Considerando o exemplo da nossa caneta, vamos abordar os dois principais conceitos: Classe e Objeto.
+
+#### 🔎 Mini sumário
+* [Classe](#classe)
+
+<div id='classe'/>
+
+#### 💻 Classe
+
+Uma classe descreve uma ideia, ela apresenta as características que uma entidade terá no nosso programa. Ela é como se fosse uma forma, e não o objeto em si. Pense no exemplo da caneta, uma classe seria o conjunto de características que toda caneta tem e coisas que ela pode fazer, como eu descrevi anteriormente. Ela é dividida em dois membros principais: Atributos e Métodos.
+
+##### Atributos
+
+Elas descrevem as características da classe e todas as informações de que ela precisa. No exemplo anterior, teríamos uma classe caneta com os atributos cor, tamanho da ponta, marca e se sua tinta está vazia. Essas informações serão variáveis criadas especificamente para esta classe e serão as variáveis que toda caneta deverá preencher com um valor. Eles seguem a mesma regra das variáveis, porém, não instânciamos ela nem atribuímos um valor a ela na classe. O código do nosso exemplo ficaria assim:
+
+```
+String cor;
+Float tamanhoPonta;
+String marca;
+boolean isTintaVazia;
+```
+
+##### Métodos
+
+Os métodos são as "ações" que uma classe pode realizar. Eles sempre serão sub-rotinas e seguem a mesma regra, ou seja, são equivalentes a uma função, subrotina ou procedimento. Não existem métodos globais, eles sempre devem estar dentro de uma classe, mas uma classe não precisa ter obrigatoriamente um método. 
+
+No exemplo da caneta, meus métodos seriam os de escrever e desenhar. Imagine que nossa classe teria um método que receberia uma mensagem para escrever, mas primeiro verificaria se a tinta está vazia e caso esteja, não retornará nada. Se ela não estiver vazia, iremos retornar a mensagem.
+
+```
+public String escreverMensagem(String mensagem){
+	
+	if(mensagem.is
+```
 
 </div>
 
@@ -670,3 +718,4 @@ Para **sair** do modo debug, você pode rodar o programa normalmente e clicar no
 * Vetores e Matrizes: [1](https://www.devmedia.com.br/vetores-em-java/21449)
 * Sub-Rotinas: [1](https://electronicupstream.wordpress.com/2016/12/22/utilizando-sub-rotinas-java/)
 * Debug: [1](https://www.hostgator.com.br/blog/debug-desenvolvimento-web/), [2](https://www.alura.com.br/conteudo/java-debug)
+* POO [1](https://www.devmedia.com.br/introducao-a-programacao-orientada-a-objetos-em-java/26452), [2](https://www.alura.com.br/artigos/poo-programacao-orientada-a-objetos)
