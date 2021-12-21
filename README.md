@@ -680,15 +680,39 @@ No exemplo da caneta, meu método seria o de **escrever**. Imagine que nossa cla
 ```
 public String escreverMensagem(String mensagem) {	
 
-	if(this.isTintaCheia == true) {
+	if(this.isTintaCheia == false) {
 		return mensagem;
 	} else {
 		return null;
 	}
 }
 ```
-
+O comando this.[atributo] basicamente está retornando o atributo da caneta que for chamá-lo, já que ele pertence a classe, precisamos indicar para ele de qual caneta é ele quer buscar o valor do atributo. É um comando que basicamente diz 
 Além das outras convenções, a **nomeação** de um método normalmente deve ser feita com pelo menos um **verbo**, indicando que aquele verbo **fará** algo e não "será".
+</div>
+
+<div id='classe'/>
+
+#### 💻 Objeto
+
+Um objeto é criado a partir de uma classe e será sempre uma especificação daquela classe. Ele as características de uma determinada classe e preenche essas características para formar um objeto único. Quando criamos um objeto, criamos uma instância dele em memória e podemos preencher as informações dos atributos para aquele objeto específico, que poderemos guardar com todas as informações reunidas. Pensando no exemplo da caneta, se eu crio um objeto caneta eu crio uma caneta específica. Eu poderia criar uma caneta de cor roxa, com o tamanho de ponta de 2 milímetros, com a marca bic e o com a tinta cheia. 
+
+Esse objeto pode ser criado em qualquer método, mas a fim de exemplo, iremos criar no método main para rodarmos o nosso programa como exemplo. Lembra de como criavámos os vetores? Com o comando `new` para instânciá-los em memória? Com o objeto faremos o mesmo. Porém, o tipo da nossa variável que estará nosso objeto será a própria classe.
+
+```
+Caneta caneta = new Caneta();
+```
+
+O tipo Caneta (classe) definirá que nossa variável de caneta (objeto), poderá preencher e guardar todas as informações que definimos na nossa classe. Para atribuirmos alguns valores para essa caneta, iremos usar o `.` e o atributo desejado para buscar o valor dele e usá-lo com o `=` para atribuir uma informação. Com isso teremos algo assim:
+
+```
+caneta.cor = "Roxo";
+caneta.tamanhoPonta = 2f; //O f é para indicar que é um float
+caneta.marca = "Bic";
+caneta.isTintaCheia = true;
+```
+
+Para mostrar isso na tela, podemos simplesmente chamar o objeto.atributo para retornar seu valor. Para nosso objeto realizar nosso método, ele fará 
 
 </div>
 
