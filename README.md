@@ -647,7 +647,7 @@ Como a maioria das atividades que fazemos no dia a dia, programar também possui
 
 No inicio da década de 70, a **Programação Orientada a Objetos** foi criada por **Alan Kay**, autor da linguagem Smalltalk. O intuito da sua criação também foi o de aproximar o manuseio das estruturas de um programa ao manuseio das coisas do mundo real, daí o nome **"objeto"** como uma algo genérico, que pode representar qualquer coisa tangível. 
 
-Considerando isso, quando trabalhamos com a programação orientada a objetos, pensamos na **vida real** para solucionar um determinado problema. Por exemplo, pense em um objeto de caneta. Para representar ela no nosso código, temos que pensar nas características que ela apresenta, como cor, tamanho da ponta, marca e até se sua tinta está vazia ou não. Além das suas características, temos algumas coisas que ela pode fazer, como escrever ou desenhar.
+Considerando isso, quando trabalhamos com a programação orientada a objetos, pensamos na **vida real** para solucionar um determinado problema. Por exemplo, pense em um objeto de caneta. Para representar ela no nosso código, temos que pensar nas características que ela apresenta, como cor, tamanho da ponta, marca e até se sua tinta está vazia ou não. Além das suas características, temos algumas coisas que ela pode fazer, como escrever.
 
 Considerando o exemplo da nossa caneta, vamos abordar os dois principais conceitos: Classe e Objeto.
 
@@ -658,30 +658,37 @@ Considerando o exemplo da nossa caneta, vamos abordar os dois principais conceit
 
 #### 💻 Classe
 
-Uma classe descreve uma ideia, ela apresenta as características que uma entidade terá no nosso programa. Ela é como se fosse uma forma, e não o objeto em si. Pense no exemplo da caneta, uma classe seria o conjunto de características que toda caneta tem e coisas que ela pode fazer, como eu descrevi anteriormente. Ela é dividida em dois membros principais: Atributos e Métodos.
+Uma classe descreve uma **ideia**, ela apresenta as características que uma entidade terá no nosso programa. Ela é como se fosse uma **forma**, e não o objeto em si. Pense no exemplo da caneta, uma classe seria o conjunto de características que toda caneta tem e coisas que ela pode fazer, como eu descrevi anteriormente. Ela é dividida em **dois** membros principais: **Atributos** e **Métodos**.
 
 ##### Atributos
 
-Elas descrevem as características da classe e todas as informações de que ela precisa. No exemplo anterior, teríamos uma classe caneta com os atributos cor, tamanho da ponta, marca e se sua tinta está vazia. Essas informações serão variáveis criadas especificamente para esta classe e serão as variáveis que toda caneta deverá preencher com um valor. Eles seguem a mesma regra das variáveis, porém, não instânciamos ela nem atribuímos um valor a ela na classe. O código do nosso exemplo ficaria assim:
+Eles descrevem as **características** da classe e todas as informações de que ela precisa. No exemplo anterior, teríamos uma classe caneta com os atributos cor, tamanho da ponta, marca e se sua tinta está vazia. Essas informações serão **variáveis** criadas especificamente para esta classe e toda caneta deverá preencher com um valor. Eles seguem a mesma regra das variáveis, porém, não **instânciamos** ela nem atribuímos um **valor** a ela na classe. O código do nosso exemplo ficaria assim:
 
 ```
 String cor;
 Float tamanhoPonta;
 String marca;
-boolean isTintaVazia;
+boolean isTintaCheia;
 ```
 
 ##### Métodos
 
-Os métodos são as "ações" que uma classe pode realizar. Eles sempre serão sub-rotinas e seguem a mesma regra, ou seja, são equivalentes a uma função, subrotina ou procedimento. Não existem métodos globais, eles sempre devem estar dentro de uma classe, mas uma classe não precisa ter obrigatoriamente um método. 
+Os métodos são as **"ações"** que uma classe pode realizar. Eles sempre serão **sub-rotinas** e seguem a mesma regra, ou seja, são equivalentes a uma função ou procedimento. Não existem métodos globais, eles sempre devem estar **dentro** de uma classe, mas uma classe **não** precisa ter obrigatoriamente um método. 
 
-No exemplo da caneta, meus métodos seriam os de escrever e desenhar. Imagine que nossa classe teria um método que receberia uma mensagem para escrever, mas primeiro verificaria se a tinta está vazia e caso esteja, não retornará nada. Se ela não estiver vazia, iremos retornar a mensagem.
+No exemplo da caneta, meu método seria o de **escrever**. Imagine que nossa classe teria um método que receberia uma mensagem para escrever, mas primeiro verificaria se a tinta estiver cheia e caso esteja, iremos retornar a mensagem. Se ela não estiver cheia, não retornará nada. Isso ficaria mais ou menos assim:
 
 ```
-public String escreverMensagem(String mensagem){
-	
-	if(mensagem.is
+public String escreverMensagem(String mensagem) {	
+
+	if(this.isTintaCheia == true) {
+		return mensagem;
+	} else {
+		return null;
+	}
+}
 ```
+
+Além das outras convenções, a **nomeação** de um método normalmente deve ser feita com pelo menos um **verbo**, indicando que aquele verbo **fará** algo e não "será".
 
 </div>
 
