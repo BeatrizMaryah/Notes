@@ -654,6 +654,7 @@ Considerando o exemplo da nossa caneta, vamos abordar os dois principais conceit
 #### 🔎 Mini sumário
 * [Classe](#classe)
 * [Objeto](#objeto)
+* [Encapsulamento, Modificadores de Acesso e Métodos de Acesso](#encapsulamento)
 
 <div id='classe'/>
 
@@ -725,6 +726,32 @@ Porém, tem alguns problemas em usar os atributos do objeto assim diretamente e 
 
 </div>
 
+<div id='encapsulamento'/>
+
+#### 💻 Encapsulamento, Modificadores de Acesso e Métodos de Acesso
+
+Vimos anteriormente que nossos objetos terão alguns atributos referentes ao tipo de classe que ele tem. Porém, o uso anterior deles impacta em alguns problemas de segurança do nosso código. Nesse momento, esses atributos ou métodos podem ser facilmente visíveis e modificáveis isso pode dar liberdade para que alterações indesejáveis sejam feitas, resultando em efeitos colaterais imprevisíveis.
+
+Ou seja, as atribuições dos objetos não devem ser acessadas fora dele e para isso, precisamos mudar quem tem acesso ao atributo ou método desse objeto.	Para fazer isso, usamos os modificadores de acesso.
+
+##### Modificadores de Acesso
+
+Os modificadores de acesso são padrões de visibilidade de acessos às classes, atributos e métodos. Esses modificadores são palavras-chaves reservadas pelo Java, ou seja, não podem ser usadas como nomes que criamos. São eles:
+
+* **public:** uma declaração com o modificador public pode ser acessada de qualquer lugar e por qualquer entidade que possa visualizar a classe a que ela pertence. Normalmente os **métodos** são declarados com ele.
+* **private:** uma declaração com o modificador private **não** pode ser acessada ou usada por nenhuma outra classe, apenas a dona do que foi declarado. Usamos ele para os **métodos e atributos** de uma classe, pelo motivo que vimos anteriormente. Eles também não podem ser visualizados pelas classes herdadas. (veremos mais sobre isso depois).
+* **protected:** uma declaração com o modificador protect torna o membro acessível às classes do mesmo pacote ou através de herança, seus membros herdados não são acessíveis a outras classes fora do pacote em que foram declarados. 
+
+Se não for informado o mofidicador de acesso, ele definirá como **default(padrão)** onde seus membros são acessíveis somente por classes do mesmo pacote.
+
+Para usarmos os modificadores de acesso, botamos ele **antes dos elementos**. Todos os métodos que vimos até agora tinha um `public` no começo certo? Esse era o modificador de acesso public, indicando que ele seria um método público. 
+
+Agora solucionamos nosso problema de segurança dos nosso atributos colocando o **private** antes deles. Porém, você chegou a pensar como vamos **acessar** eles agora? Vamos ver isso a seguir.
+
+##### Métodos de Acesso (Get e Set)
+ 
+</div>
+
 <div align="center" id='conceitos'/> 
 
 ## Conceitos Gerais
@@ -758,4 +785,6 @@ Porém, tem alguns problemas em usar os atributos do objeto assim diretamente e 
 * Vetores e Matrizes: [1](https://www.devmedia.com.br/vetores-em-java/21449)
 * Sub-Rotinas: [1](https://electronicupstream.wordpress.com/2016/12/22/utilizando-sub-rotinas-java/)
 * Debug: [1](https://www.hostgator.com.br/blog/debug-desenvolvimento-web/), [2](https://www.alura.com.br/conteudo/java-debug)
-* POO [1](https://www.devmedia.com.br/introducao-a-programacao-orientada-a-objetos-em-java/26452), [2](https://www.alura.com.br/artigos/poo-programacao-orientada-a-objetos)
+* POO (em geral) [1](https://www.devmedia.com.br/introducao-a-programacao-orientada-a-objetos-em-java/26452), [2](https://www.alura.com.br/artigos/poo-programacao-orientada-a-objetos)
+* Encapsulamento: [1](https://www.devmedia.com.br/metodos-atributos-e-classes-no-java/25404)
+* 
