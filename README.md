@@ -653,6 +653,7 @@ Considerando o exemplo da nossa caneta, vamos abordar os dois principais conceit
 
 #### 🔎 Mini sumário
 * [Classe](#classe)
+* [Objeto](#objeto)
 
 <div id='classe'/>
 
@@ -680,30 +681,31 @@ No exemplo da caneta, meu método seria o de **escrever**. Imagine que nossa cla
 ```
 public String escreverMensagem(String mensagem) {	
 
-	if(this.isTintaCheia == false) {
+	if(this.isTintaCheia == true) {
 		return mensagem;
 	} else {
 		return null;
 	}
 }
 ```
-O comando this.[atributo] basicamente está retornando o atributo da caneta que for chamá-lo, já que ele pertence a classe, precisamos indicar para ele de qual caneta é ele quer buscar o valor do atributo. É um comando que basicamente diz 
+O comando `this.[atributo]` basicamente está retornando o atributo da caneta que for **chamá-lo**, já que ele pertence a classe, precisamos indicar para ele de qual caneta é ele quer buscar o valor do atributo. É um comando que basicamente indica que o atributo é **"dessa"** caneta.
+
 Além das outras convenções, a **nomeação** de um método normalmente deve ser feita com pelo menos um **verbo**, indicando que aquele verbo **fará** algo e não "será".
 </div>
 
-<div id='classe'/>
+<div id='objeto'/>
 
 #### 💻 Objeto
 
-Um objeto é criado a partir de uma classe e será sempre uma especificação daquela classe. Ele as características de uma determinada classe e preenche essas características para formar um objeto único. Quando criamos um objeto, criamos uma instância dele em memória e podemos preencher as informações dos atributos para aquele objeto específico, que poderemos guardar com todas as informações reunidas. Pensando no exemplo da caneta, se eu crio um objeto caneta eu crio uma caneta específica. Eu poderia criar uma caneta de cor roxa, com o tamanho de ponta de 2 milímetros, com a marca bic e o com a tinta cheia. 
+Um objeto é criado a partir de uma classe e será sempre uma **especificação** daquela classe. Ele pega as características de uma determinada classe e **preenche** essas características para formar um objeto. Quando criamos um objeto, criamos uma **instância** dele em memória e podemos preencher as informações dos atributos para aquele objeto específico, que poderemos guardar com todas as informações reunidas. Pensando no exemplo da caneta, se eu crio um objeto caneta eu crio uma caneta específica. Eu poderia criar um objeto caneta de cor roxa, com o tamanho de ponta de 2 milímetros, com a marca bic e o com a tinta cheia. 
 
-Esse objeto pode ser criado em qualquer método, mas a fim de exemplo, iremos criar no método main para rodarmos o nosso programa como exemplo. Lembra de como criavámos os vetores? Com o comando `new` para instânciá-los em memória? Com o objeto faremos o mesmo. Porém, o tipo da nossa variável que estará nosso objeto será a própria classe.
+Esse objeto pode ser criado em qualquer método, mas a fim de exemplo, iremos criar no método **main** para rodarmos o nosso programa como exemplo. Lembra de como criavámos os vetores? Com o comando `new` para **instânciá-los** em memória? Com o objeto faremos o mesmo. Porém, o tipo da nossa variável que estará nosso objeto será a própria classe.
 
 ```
 Caneta caneta = new Caneta();
 ```
 
-O tipo Caneta (classe) definirá que nossa variável de caneta (objeto), poderá preencher e guardar todas as informações que definimos na nossa classe. Para atribuirmos alguns valores para essa caneta, iremos usar o `.` e o atributo desejado para buscar o valor dele e usá-lo com o `=` para atribuir uma informação. Com isso teremos algo assim:
+O tipo **Caneta (classe)** definirá que nossa variável de **caneta (objeto)**, poderá preencher e guardar todas as informações que definimos na nossa classe. Para atribuirmos alguns valores para essa caneta, iremos usar o `.` e o **atributo** desejado para buscar o valor dele e usá-lo com o `=` para atribuir uma informação. Com isso teremos algo assim:
 
 ```
 caneta.cor = "Roxo";
@@ -712,7 +714,14 @@ caneta.marca = "Bic";
 caneta.isTintaCheia = true;
 ```
 
-Para mostrar isso na tela, podemos simplesmente chamar o objeto.atributo para retornar seu valor. Para nosso objeto realizar nosso método, ele fará 
+Para mostrar isso na tela, podemos simplesmente chamar o `objeto.atributo` para retornar seu valor. Para nosso objeto realizar nosso método, ele também usará o `.` e o método. Veja a seguir:
+
+```
+System.out.println(caneta.cor); //Retorna a cor da caneta (nesse caso, retornará roxo)
+System.out.println(caneta.escreverMensagem("Olá mundo!")); //Retorna a mensagem passada no argumento caso a tinta da caneta esteja cheia (nesse caso está, então retornará)
+```
+
+Porém, tem alguns problemas em usar os atributos do objeto assim diretamente e isso conflita com o conceito de **Encapsulamento** que veremos a seguir.
 
 </div>
 
