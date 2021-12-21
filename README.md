@@ -603,9 +603,37 @@ Nesse caso, eu passei o número **3** e o número **4** para serem somados. Cons
 
 #### 🐛 Debugar 🚧
 
-Também chamado de **debugging** ou, em português, **depuração**, é o nome dado ao processo de encontrar e remover os **erros**. O termo faz parte do processo de desenvolvimento e com ele, é possível determinar o que está ocorrendo dentro do **código-fonte** e obter sugestões de ações de melhorias. Com ele é possível controlar as variáveis, o que elas estão guardando e passar pelo programa de linha de código por linha de código.
+Também chamado de **debugging** ou, em português, **depuração**, é o nome dado ao processo de encontrar e remover os **erros**. O termo faz parte do processo de desenvolvimento e com ele, é possível determinar o que está ocorrendo dentro do **código-fonte** e obter sugestões de ações de melhorias. Com ele é possível controlar as variáveis, o que elas estão guardando e passar pelo programa de linha de código por linha de código. Por enquanto veremos apenas o básico da funcionalidade do debug.
 
-Para de
+Para debugar no java, primeiro você deverá dar dois cliques na lateral esquerda do seu código, ao lado do número das linhas. Se você fizer isso, aparecerá a seguinte bolinha:
+
+<div align="center">
+<img height="50em" src="https://user-images.githubusercontent.com/87392633/146936986-b5e5376f-aa49-4493-b69c-238df8b373a1.png"/>
+</div>
+
+Essa bolinha se chama `breakpoint`, ele representa em qual ponto gostaríamos que a aplicação fosse **pausada**. Também podemos criar um breakpoint com o atalho `Ctrl + Shift + B`. Essa pausa que o breakpoint da no programa, será o nosso ponto de partida do debug. 
+
+Para rodarmos o programa em modo de depuração, podemos clicar no botão <img height="30em" src="https://user-images.githubusercontent.com/87392633/146937743-afa299f4-9995-43e0-b05a-3c762dc76537.png"/> ou clicar em nossa classe, ir em `Debug As` e clicar em `Java Application`. Após começarmos a rodar o programa, ele irá pedir para trocar para o modo de Debug. Clique em `Switch` na janela que irá aparecer e o programa iniciará.
+
+<div align="center">
+<img height="50em" src="https://user-images.githubusercontent.com/87392633/146938324-a28b6a98-27ea-4a85-a3c5-e8b7668c24f4.png"/>
+</div>
+
+Percebe-se que a linha que selecionamos ficou **verde**. Esse destaque verde sinaliza qual a linha que o programa irá **executar** no próximo passo. A partir dai, podemos rodar nosso programa passo a passo para verificar os valores desejados. Para seguir para o próximo, clique no botão a seguir ou clique em `F6`.
+
+<div align="center">
+<img height="50em" src="https://user-images.githubusercontent.com/87392633/146938629-1d5d50de-5e3b-4d6d-9609-13fff82858df.png"/>
+</div>
+
+Com isso, podemos passar por todo o nosso programa visualizando o que está acontecendo em cada passo. No lado direito estão localizadas as **variáveis**, onde podemos verificar seus valores. Além das variáveis, temos os nossos **breakpoints** e onde estão colocados e as **expressões**, que veremos mais tarde no java avançado.
+
+<div align="center">
+<img height="140em" src="https://user-images.githubusercontent.com/87392633/146939263-2703eb1d-a887-480b-8428-d214289b60f8.png"/>
+</div>
+	
+No exemplo acima por exemplo, temos um `i` que guarda um valor `0`. 
+
+Para **sair** do modo debug, você pode rodar o programa normalmente e clicar no botão <img height="30em" src="https://user-images.githubusercontent.com/87392633/146939440-193b9271-b015-43bd-ada9-b2c858d2388c.png"/> no canto diagonal direito para mudar para o modo Java novamente.
 
 </div>
 
