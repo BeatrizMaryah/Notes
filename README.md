@@ -655,6 +655,7 @@ Considerando o exemplo da nossa caneta, vamos abordar os dois principais conceit
 * [Classe](#classe)
 * [Objeto](#objeto)
 * [Encapsulamento, Modificadores de Acesso e Métodos de Acesso](#encapsulamento)
+* [Métodos de Construção (Construtores)](#construtores)
 
 <div id='classe'/>
 
@@ -668,7 +669,7 @@ Eles descrevem as **características** da classe e todas as informações de que
 
 ```
 String cor;
-Float tamanhoPonta;
+float tamanhoPonta;
 String marca;
 boolean isTintaCheia;
 ```
@@ -783,7 +784,7 @@ O parâmetro normalmente tem o mesmo nome que o atributo, por convenção. Por i
 caneta.setCor("Roxo");
 ```
 
-Levando esse conceito ao nosso código de caneta, os métodos de get e set do atributo **COR** ficariam mais ou menos assim.
+Levando esse conceito ao nosso código de caneta, os métodos de get e set do atributo **COR** ficariam mais ou menos assim. 
 
 ```
 public String getCor(){
@@ -793,7 +794,49 @@ public void setCor(String cor){
      this.cor = cor;
 }
 ```
- 
+
+Isso deve ser feito em **todos** os atributos private.
+</div>
+
+<div id='construtores'/>
+
+#### 💻 Métodos de Construção (Construtores)
+
+Os construtores são os responsáveis por **criar** o objeto em memória, ou seja, instanciar a classe que foi definida. Lembra de quando criamos nosso objeto caneta e utilizamos o `new Caneta()`? Esse `Caneta()` é o **construtor padrão** que foi criado quando criamos nossa classe `Caneta`. Os construtores padrões são **vazios** e por isso não precisamos passar nenhum valor para ele, é como se criássemos um objeto com todos os atributos vazios. 
+
+Com o construtor vazio, nós tinhamos que primeiro **criar** o objeto e depois **atribuir** todos os valores aos seus atributos respectivos na mão. Porém, isso é trabalhoso demais e por isso, podemos criar o objeto com seus atributos preenchidos automaticamente com o **construtor**. Podemos criar quantos construtores quisermos na nossa classe, desde que sua assinatura não esteja igual. A **assinatura** se estende desde o **tipo de retorno** (que os construtores não tem) até os **parâmetros** e sua **ordem**, ou seja, se eu tiver dois construtores com os mesmos parâmetros e na mesma ordem, o Java não deixará. A sintaxe de um construtor é a seguinte:
+
+```
+public [nome da classe] ([tipo do parametro] [nome do parâmetro]){
+	this.[atributo] = [nome do parâmetro];
+}
+```
+
+O nome da classe terá que ser com a primeira letra **maíuscula**, considerando que estamos nos referênciando a classe em si. O tipo do parâmetro, o nome do parâmetro e o `this.[atributo] = [nome do parâmetro]` seguem a mesma regra do **get e set**, ele irá receber um valor e atribuir a variável. Por exemplo, se criassemos um construtor com todos os atributos de caneta, ficaria mais ou menos assim:
+
+```
+public Caneta(String cor, Float tamanhoPonta, String marca, boolean isTintaCheia){
+	this.cor = cor;
+	this.tamanhoPonta = tamanhoPonta;
+	this.marca = marca;
+	this.isTintaCheia = isTintaCheia;
+}
+```
+
+É importante destacar que quando criamos um ou mais construtores, obrigatoriamente temos que usar **um** deles. Se criamos dois construtores, um com dois parâmetros e um com quatro, obrigatoriamente só poderemos criar um objeto passando dois ou quatro valores. Por isso, se quisermos criar um objeto vazio novamente, teremos que criar um **construtor vazio** na nossa classe também, sem passar nenhum parâmetro, com o seguinte comando:
+
+```
+public Caneta(){}	 //Um construtor vazio
+```
+
+Para chamar esse construtor em algum lugar, basta dar o mesmo comando que antes, mas passando os argumentos necessários ou desejados. Considerando o construtor de caneta que criamos poderíamos utilizar algo assim:
+
+```
+Caneta caneta = new Caneta("Roxo", 2f, "Bic", true);	//Preenchem respectivamente a cor, o tamanho da ponta, a marca e se a tinta está cheia.
+```
+
+É importante que os valores respeitem a ordem que colocamos no nosso construtor!
+
 </div>
 
 <div align="center" id='conceitos'/> 
@@ -832,3 +875,4 @@ public void setCor(String cor){
 * POO (em geral) [1](https://www.devmedia.com.br/introducao-a-programacao-orientada-a-objetos-em-java/26452), [2](https://www.alura.com.br/artigos/poo-programacao-orientada-a-objetos)
 * Encapsulamento: [1](https://www.devmedia.com.br/metodos-atributos-e-classes-no-java/25404)
 * Métodos de Acesso (Get e Set): [1](https://www.devmedia.com.br/criando-metodos-get-e-set-em-java/24623)
+* Construtores: [1](https://www.devmedia.com.br/construtores-em-java-primeiros-passos/28618)
