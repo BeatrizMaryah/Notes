@@ -749,6 +749,50 @@ Para usarmos os modificadores de acesso, botamos ele **antes dos elementos**. To
 Agora solucionamos nosso problema de segurança dos nosso atributos colocando o **private** antes deles. Porém, você chegou a pensar como vamos **acessar** eles agora? Vamos ver isso a seguir.
 
 ##### Métodos de Acesso (Get e Set)
+
+Os métodos GET e SET são técnicas padronizadas para gerenciamento sobre o acesso dos atributos. Ou seja, eles são métodos que usamos para acessar os atributos de forma segura, de uma maneira que a própria classe tenha controle sobre seus atributos. Existem dois métodos, o GET e o SET e iremos criar eles para cada atributo que for private. Eles devem ser criados com o nome Get ou Set junto do nome do atributo.
+
+###### Get
+
+Serve para **retornar** o valor do atributo. Ele basicamente **"pega"** o valor guardado e retorna para a gente. Para construirmos um get, precisamos da seguinte sintaxe:
+
+```
+public [tipo de retorno] get[Atributo] (){
+	return [atributo];
+}
+```
+
+O tipo de retorno deve ser o **mesmo** que o atributo! Depois disso, podemos chamar esse atributo em qualquer lugar com segurança. Por exemplo:
+
+```
+System.out.print("A cor da caneta é " + caneta.getCor());
+```
+
+###### Set
+
+Serve para **atribuir um valor** a um atributo de forma protegida. Esse método **não** terá um retorno, pois o atributo será somente modificado. Porém ele deve receber algum **parâmetro** para que possa ocorrer a devida alteração. Esse parâmetro será nosso valor que queremos atribuir, por isso, deve ser do mesmo tipo do atributo. Ele seguirá a seguinte sintaxe:
+
+```
+public void set[atributo] ([tipo do Atributo] [parâmetro]){
+	this.[atributo] = [parâmetro]
+}
+```
+O parâmetro normalmente tem o mesmo nome que o atributo, por convenção. Por isso, usamos o `this.[atributo]` para o indicar que o atributo daquela classe receberá o valor passado e não ao contrário. É uma forma de deixar o código mais organizado, evitando erros de compilação. É como se passassemos o valor ao método e o método colocasse nosso valor em nossa variável, fazendo assim, com que a própria classe seja responsável pelas atribuições. Para chamarmos ele, segue o mesmo exemplo do get com o `objeto.método`, porém, agora temos que passar o **valor** como argumento:
+
+```
+caneta.setCor("Roxo");
+```
+
+Levando esse conceito ao nosso código de caneta, os métodos de get e set do atributo **COR** ficariam mais ou menos assim.
+
+```
+public String getCor(){
+     return cor;
+}
+public void setCor(String cor){
+     this.cor = cor;
+}
+```
  
 </div>
 
@@ -787,4 +831,4 @@ Agora solucionamos nosso problema de segurança dos nosso atributos colocando o 
 * Debug: [1](https://www.hostgator.com.br/blog/debug-desenvolvimento-web/), [2](https://www.alura.com.br/conteudo/java-debug)
 * POO (em geral) [1](https://www.devmedia.com.br/introducao-a-programacao-orientada-a-objetos-em-java/26452), [2](https://www.alura.com.br/artigos/poo-programacao-orientada-a-objetos)
 * Encapsulamento: [1](https://www.devmedia.com.br/metodos-atributos-e-classes-no-java/25404)
-* 
+* Métodos de Acesso (Get e Set): [1](https://www.devmedia.com.br/criando-metodos-get-e-set-em-java/24623)
