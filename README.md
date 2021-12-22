@@ -656,6 +656,7 @@ Considerando o exemplo da nossa caneta, vamos abordar os dois principais conceit
 * [Objeto](#objeto)
 * [Encapsulamento, Modificadores de Acesso e Métodos de Acesso](#encapsulamento)
 * [Métodos de Construção (Construtores)](#construtores)
+* [Herança](#heranca)
 
 <div id='classe'/>
 
@@ -835,8 +836,17 @@ Para chamar esse construtor em algum lugar, basta dar o mesmo comando que antes,
 Caneta caneta = new Caneta("Roxo", 2f, "Bic", true);	//Preenchem respectivamente a cor, o tamanho da ponta, a marca e se a tinta está cheia.
 ```
 
-É importante que os valores respeitem a ordem que colocamos no nosso construtor!
+É importante que os valores respeitem a **ordem** que colocamos no nosso construtor!
 
+</div>
+
+<div id='heranca'/>
+
+#### 💻 Herança 🚧
+
+A herança é um princípio da POO que permite a criação de novas classes a partir de outras previamente criadas. Ela é um relacionamento entre classes, como se fosse uma hierarquia. Usamos ela quando duas ou mais classes que, apesar de representarem coisas diferentes, tem algo em comum.
+
+Por exemplo, vamos pensar que temos três classes: **Quadrado, Retângulo e um Losango**. Essas três formas tem uma característica em comum, todas elas tem **quatro lados**. Sendo assim, poderíamos criar uma classe acima delas, chamada Quadrilátero, que guardaria essa característica. A partir disso, nossas três classes **herdariam** essa
 </div>
 
 <div align="center" id='conceitos'/> 
