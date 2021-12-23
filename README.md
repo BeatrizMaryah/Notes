@@ -846,7 +846,31 @@ Caneta caneta = new Caneta("Roxo", 2f, "Bic", true);	//Preenchem respectivamente
 
 A herança é um princípio da POO que permite a criação de novas classes a partir de outras previamente criadas. Ela é um relacionamento entre classes, como se fosse uma hierarquia. Usamos ela quando duas ou mais classes que, apesar de representarem coisas diferentes, tem algo em comum.
 
-Por exemplo, vamos pensar que temos três classes: **Quadrado, Retângulo e um Losango**. Essas três formas tem uma característica em comum, todas elas tem **quatro lados**. Sendo assim, poderíamos criar uma classe acima delas, chamada Quadrilátero, que guardaria essa característica. A partir disso, nossas três classes **herdariam** essa
+Por exemplo, vamos pensar que temos três classes: **Quadrado, Retângulo e um Losango**. Essas três formas tem uma característica em comum, todas elas tem **quatro lados**. Sendo assim, poderíamos criar uma classe acima delas, chamada **Quadrilátero**, que guardaria essa característica. A partir disso, nossas três classes **herdariam** essa classe e consequentemente, sua característica. Sendo assim, nossa estrutura agora estaria mais ou menos assim: 
+
+<div align="center">
+	
+<img height="150em" src="https://user-images.githubusercontent.com/87392633/147241752-ec8c0422-8cab-4848-b1df-a39ad274c53c.png"/>
+</div>
+
+Nesse exemplo, nossas classes **abaixo** da hierarquia são chamadas de **classes filhas, classes derivadas** ou **subclasses**. A classe de `Quadrilátero`, que está **acima** da hierarquia, é chamada de **superclasse, classe pai** ou **classe base**. 
+
+* **Superclasse:** é a classe que concede características para as outras classes (as subclasses). Ela é uma classe que contém informações mais genéricas e quanto mais subirmos na hierarquia, mais abstrato ficará.
+* **Subclasse:** é a classe que herda as características de uma classe (superclasse). Elas são classes com informações mais específicas e quando mais descermos na hierarquia, mais concreta ela será.
+
+Pensando no exemplo dos quadriláteros, devemos entender que um quadrilátero não deverá ser criado como um objeto. Pois um quadrilátero é apenas uma **definição**, se refere a toda forma geométrica que tenha quatro lados. **Não existe** a forma geométrica quadrilátero que podemos criar, por isso, a classe quadrilátero será uma **classe abstrata**. Uma **classe abstrata** é uma classe que serve de **modelo** para outras classes. Ela sempre será uma **superclasse genérica** e ela não pode ser instanciada.
+
+Considerando isso, podemos ver que as subclasses sempre serão mais **concretas**. Ou seja, poderão ser **criados objetos** a partir dela. Podemos perceber isso no exemplo dos quadriláteros: apesar de não existir um objeto quadrilátero em si, existem retângulos, quadrados e losangos. Isso se dá, pois eles são conceitos mais **específicos** e **concretos**, que **existem** de fato.
+
+Para passar para o código, vamos usar um exemplo mais **"real"**:
+
+<div align="center">
+	
+<img height="180em" src="https://user-images.githubusercontent.com/87392633/147255664-ce200a42-13a2-4dca-906c-d4d34171cf09.png"/>
+</div>
+
+Podemos ver que nesse exemplo, teremos uma superclasse Cliente e duas subclasses de Pessoa física e Pessoa jurídica.
+
 </div>
 
 <div align="center" id='conceitos'/> 
@@ -886,3 +910,4 @@ Por exemplo, vamos pensar que temos três classes: **Quadrado, Retângulo e um L
 * Encapsulamento: [1](https://www.devmedia.com.br/metodos-atributos-e-classes-no-java/25404)
 * Métodos de Acesso (Get e Set): [1](https://www.devmedia.com.br/criando-metodos-get-e-set-em-java/24623)
 * Construtores: [1](https://www.devmedia.com.br/construtores-em-java-primeiros-passos/28618)
+* Herança: [1](https://pt.wikiversity.org/wiki/Conceitos_de_Orienta%C3%A7%C3%A3o_a_Objetos/Classe_Abstrata), [2](https://www.devmedia.com.br/entendendo-e-aplicando-heranca-em-java/24544), [3](https://www.devmedia.com.br/entendendo-o-conceito-de-heranca-e-composicao/25456)
