@@ -869,7 +869,45 @@ Para passar para o código, vamos usar um exemplo mais **"real"**:
 <img height="180em" src="https://user-images.githubusercontent.com/87392633/147255664-ce200a42-13a2-4dca-906c-d4d34171cf09.png"/>
 </div>
 
-Podemos ver que nesse exemplo, teremos uma superclasse Cliente e duas subclasses de Pessoa física e Pessoa jurídica.
+Podemos ver que nesse exemplo, teremos uma superclasse Cliente e duas subclasses de Pessoa física e Pessoa jurídica. Na nossa classe de cliente, temos os atributos de País e Data de Cadastro.
+
+```
+public class Cliente {
+   String pais;
+   Date dataCadastro;
+}
+```
+
+Além disso, teremos nossa classe **Pessoa Física** com os atributos de Nome, Sobrenome e Cpf.
+
+```
+public class PessoaFisica exntends Cliente {
+   String nome;
+   String sobrenome;
+   String cpf;
+}
+```
+
+Por último, teremos nossa classe de **Pessoa Jurídica**, com os atributos de Razão Social, Nome Fantasia, Sigla e Cnpj.
+
+```
+public class PessoaJuridica extends Cliente {
+   String razaoSocial;
+   String nomeFantasia;
+   String sigla;
+   String cnpj;
+}
+```
+
+Percebe-se que nas duas subclasses utilizamos o `extends Cliente`. Esse é o comando que **estabelece** a herança e faz com que essas classes herdem a nossa superclasse Cliente. A partir dai, nossas duas subclasses também terão os atributos de **pais e dataCadastro**. Além disso, é importante destacar que as duas subclasses irão herdar tudo da superclasse, inclusive os métodos em geral.
+
+Tendo essa estrutura, podemos observar que nossa superclasse Cliente será uma **classe abstrata**, pois não poderá ser criado uma instância de cliente no nosso programa. Para isso, vamos utilizar a palavra `abstract` em nossa classe.
+
+```
+public abstract class Cliente { ...
+```
+
+Além disso, temos uma coisa importante em relação aos construtores quando se trata de herança. Apesar de criarmos apenas objetos de Pessoa física e jurídica, quem tem controle sobre os atributos pais e dataCadastro ainda é a classe Cliente. Considerando isso, podemos
 
 </div>
 
