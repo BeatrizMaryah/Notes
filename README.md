@@ -657,6 +657,7 @@ Considerando o exemplo da nossa caneta, vamos abordar os dois principais conceit
 * [Encapsulamento, Modificadores de Acesso e Métodos de Acesso](#encapsulamento)
 * [Métodos de Construção (Construtores)](#construtores)
 * [Herança](#heranca)
+* [Polimorfismo](#polimorfismo)
 
 <div id='classe'/>
 
@@ -842,7 +843,7 @@ Caneta caneta = new Caneta("Roxo", 2f, "Bic", true);	//Preenchem respectivamente
 
 <div id='heranca'/>
 
-#### 💻 Herança 🚧
+#### 💻 Herança
 
 A herança é um princípio da POO que permite a criação de novas classes a partir de outras previamente criadas. Ela é um relacionamento entre classes, como se fosse uma hierarquia. Usamos ela quando duas ou mais classes que, apesar de representarem coisas diferentes, tem algo em comum.
 
@@ -907,9 +908,35 @@ Tendo essa estrutura, podemos observar que nossa superclasse Cliente será uma *
 public abstract class Cliente { ...
 ```
 
-Além disso, temos uma coisa importante em relação aos construtores quando se trata de herança. Apesar de criarmos apenas objetos de Pessoa física e jurídica, quem tem controle sobre os atributos pais e dataCadastro ainda é a classe Cliente. Considerando isso, podemos
+Além disso, temos uma coisa importante em relação aos construtores quando se trata de herança. Apesar de criarmos apenas objetos de Pessoa física e jurídica, quem tem controle sobre os atributos `pais` e `dataCadastro` ainda é a classe **Cliente**. Considerando isso, precisamos "mandar" os valores para a superclasse gerenciá-los. Para isso, usamos o comando `super(atributos);` dentro do construtor. Por exemplo, nossos construtores de PessoaFisica e PessoaJuridica ficariam assim, respectivamente:
+
+```
+public PessoaFisica(String pais, Date dataCadastro, String nome, String sobrenome, String cpf){
+	super(pais, dataCadastro);
+	this.nome = nome;
+	this.sobrenome = sobrenome;
+	this.cpf = cpf;
+}
+```
+
+```
+public PessoaJuridica(String pais, Date dataCadastro, String razaoSocial, String nomeFantasia, String sigla, String cnpj){
+	super(pais, dataCadastro);
+	this.razaoSocial = razaoSocial;
+	this.nomeFantasia = nomeFantasia;
+	this.sigla = sigla;
+	this.cnpj = cnpj;
+}
+```
+Esse comando basicamente está passando a responsabilidade de atribuição dos valores de `pais` e `dataCadastro` para a superclasse, que é a classe que está guardando os atributos. Outro ponto importante da herança, é como funciona o gerenciamento dos **métodos** que são herdados. Para aprender mais sobre isso, iremos entrar no conceito de **polimorfismo**.
+</div>
+
+<div id='polimorfismo'/>
+
+#### 💻 Polimorfismo 🚧
 
 </div>
+
 
 <div align="center" id='conceitos'/> 
 
