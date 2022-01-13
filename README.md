@@ -980,8 +980,50 @@ O conceito de polimorfismo e é muito usado no conceito de Interface que veremos
 
 <div id='interface'/>
 
-#### 💻 Interface 🚧
+#### 💻 Interface
 
+Uma interface em Java nada mais é que uma classe abstrata composta somente por métodos abstratos. E como tal, obviamente não pode ser instanciada e seus métodos tem que ser sobreescritos para serem usados. Ou seja, ela só contém as declarações dos métodos, nenhuma implementação, só o 'molde'. Ela serve para que outras classes, baseadas nessa interface, implementem esses métodos para fins específicos.
+
+Uma interface é como se fosse um **contrato**, onde as classes que implementarem ela **obrigatoriamente** tem que sobreescrever os métodos descritos nela. Para criar uma interface, vamos em um lugar diferente da classe. Clique com o botão direito, vá em `new` e então em `interface`.
+
+<div align="center">
+	
+<img height="100em" src="https://user-images.githubusercontent.com/87392633/149377730-5842a66c-607f-4254-aba3-f7462261c79f.png"/>
+</div>
+
+Após cria-la, é possível observar que sua declaração também é diferente da classe, sendo utilizada `interface` no lugar. Pense em um cenário onde temos que fazer uma calculadora. Toda calculadora tem as funções de somar, subtrair, dividir e multiplicar, por isso, faremos uma interface com esses métodos.
+```
+public interface Operacoes {
+	public double somar(double num1, double num2);
+	public double subtrair(double num1, double num2);
+	public double dividir(double num1, double num2);
+	public double multiplicar(double num1, double num2);
+}
+```
+Para usar esses métodos, devemos selar esse **"contrato"** da interface com alguma classe. Fazemos isso usando o `implements` ao lado da declaração da classe, como fazemos com herança. Após isso, devemos dar um corpo para todos os métodos que declaramos na interface.
+
+```
+public class Calculadora implements Operacoes{
+
+	public double somar(double num1, double num2){
+		return num1 + num2;
+	}
+	
+	public double subtrair(double num1, double num2){
+		return num1 - num2;
+	}
+	
+	public double dividir(double num1, double num2){
+		return num1/num2;
+	}
+	
+	public double multiplicar(double num1, double num2){
+		return num1 * num2;
+	}
+}
+```
+
+Uma classe pode implementar mais de uma interface!
 </div>
 
 
@@ -1024,3 +1066,4 @@ O conceito de polimorfismo e é muito usado no conceito de Interface que veremos
 * Construtores: [1](https://www.devmedia.com.br/construtores-em-java-primeiros-passos/28618)
 * Herança: [1](https://pt.wikiversity.org/wiki/Conceitos_de_Orienta%C3%A7%C3%A3o_a_Objetos/Classe_Abstrata), [2](https://www.devmedia.com.br/entendendo-e-aplicando-heranca-em-java/24544), [3](https://www.devmedia.com.br/entendendo-o-conceito-de-heranca-e-composicao/25456)
 * Polimorfismo: [1](https://www.devmedia.com.br/uso-de-polimorfismo-em-java/26140), [2](https://www.devmedia.com.br/encapsulamento-polimorfismo-heranca-em-java/12991)
+* Interface: [1](https://www.javaprogressivo.net/2012/10/Interface-em-Java-implements-O-que-e-para-que-serve-como-funciona.html),
