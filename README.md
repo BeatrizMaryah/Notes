@@ -935,6 +935,23 @@ Esse comando basicamente está passando a responsabilidade de atribuição dos v
 
 #### 💻 Polimorfismo 🚧
 
+Polimorfismo significa **"muitas formas"** e descreve uma situação na qual um objeto pode se comportar de maneiras diferentes, dependendo do seu tipo de criação. O polimorfismo se encontra no cenário as classes derivadas de uma mesma superclasse podem invocar métodos que têm a mesma identificação, mas comportamentos distintos e específicos para cada classe derivada, usando como referência o método criado na superclasse. No Polimorfismo temos dois tipos: **Sobrescrita ou Sobreposição (Override)** e **Sobrecarga (Overload)**. Além disso, em Java, o polimorfismo se manifesta apenas em chamadas de **métodos**.
+
+Voltando para o exemplo das formas geométricas. Pense que temos uma superclasse `FormaGeometrica` e três subclasses `Triangulo`, `Retangulo` e `Trapezio`. Vamos considerar que a superclasse terá um método de **calcular área** que recebera dois números e retornará um float. Porém, como não é possível calcular a área de uma forma geométrica em si, pois ela é um conceito **abstrato**, o nosso método não tem como ter um corpo. Por isso, nossas classes filhas terão que obrigatoriamente dar um corpo para esse método. Para fazer isso, adicionamos o `abstract` no método.
+
+```
+public abstract float calcularArea(float num1, float num2) {}
+```
+
+Todas as subclasses irão herdar esse método. Porém, as formas de calcular a área de um triângulo, de um retângulo e de um trapézio são diferentes. Com essa visão, iremos explicar os dois tipos de Polimorfismo.
+
+##### Sobrescrita ou Sobreposição (Override)
+
+Nesse cenário, temos um método na classe filha identido ao da superclasse, com o mesmo nome, retorno e argumentos. Portanto, temos que uma classe filha fornece apenas uma nova implementação para o método herdado e não um novo método.
+
+Por exemplo, eu irei
+
+##### Sobrecarga (Overload)
 </div>
 
 
@@ -976,3 +993,4 @@ Esse comando basicamente está passando a responsabilidade de atribuição dos v
 * Métodos de Acesso (Get e Set): [1](https://www.devmedia.com.br/criando-metodos-get-e-set-em-java/24623)
 * Construtores: [1](https://www.devmedia.com.br/construtores-em-java-primeiros-passos/28618)
 * Herança: [1](https://pt.wikiversity.org/wiki/Conceitos_de_Orienta%C3%A7%C3%A3o_a_Objetos/Classe_Abstrata), [2](https://www.devmedia.com.br/entendendo-e-aplicando-heranca-em-java/24544), [3](https://www.devmedia.com.br/entendendo-o-conceito-de-heranca-e-composicao/25456)
+* Polimorfismo: [1](https://www.devmedia.com.br/uso-de-polimorfismo-em-java/26140), [2](https://www.devmedia.com.br/encapsulamento-polimorfismo-heranca-em-java/12991)
