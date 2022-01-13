@@ -658,6 +658,7 @@ Considerando o exemplo da nossa caneta, vamos abordar os dois principais conceit
 * [Métodos de Construção (Construtores)](#construtores)
 * [Herança](#heranca)
 * [Polimorfismo](#polimorfismo)
+* [Interface](#interface)
 
 <div id='classe'/>
 
@@ -933,7 +934,7 @@ Esse comando basicamente está passando a responsabilidade de atribuição dos v
 
 <div id='polimorfismo'/>
 
-#### 💻 Polimorfismo 🚧
+#### 💻 Polimorfismo
 
 Polimorfismo significa **"muitas formas"** e descreve uma situação na qual um objeto pode se comportar de maneiras diferentes, dependendo do seu tipo de criação. O polimorfismo se encontra no cenário as classes derivadas de uma mesma superclasse podem invocar métodos que têm a mesma identificação, mas comportamentos distintos e específicos para cada classe derivada, usando como referência o método criado na superclasse. No Polimorfismo temos dois tipos: **Sobrescrita ou Sobreposição (Override)** e **Sobrecarga (Overload)**. Além disso, em Java, o polimorfismo se manifesta apenas em chamadas de **métodos**.
 
@@ -947,11 +948,40 @@ Todas as subclasses irão herdar esse método. Porém, as formas de calcular a �
 
 ##### Sobrescrita ou Sobreposição (Override)
 
-Nesse cenário, temos um método na classe filha identido ao da superclasse, com o mesmo nome, retorno e argumentos. Portanto, temos que uma classe filha fornece apenas uma nova implementação para o método herdado e não um novo método.
+Nesse cenário, temos um método na classe filha identico ao da superclasse, com o mesmo nome, tipo de retorno e argumentos. Portanto, temos que uma classe filha fornece apenas uma nova implementação para o método herdado e não um novo método.
 
-Por exemplo, eu irei
+Por exemplo, para calcular um retângulo e um triângulo precisamos de dois valores como argumento. Por isso, as classes filhas irão apenas sobreescrever um método que já existe.
+
+Na classe Triângulo:
+```
+public float calcularArea(float num1, float num2) {
+	return (num1 * num2)/2;
+```
+
+Na classe Retângulo:
+```
+public float calcularArea(float num1, float num2) {
+	return num1 * num2;
+```
 
 ##### Sobrecarga (Overload)
+
+Nesse cenário, temos um método na classe filha **parecida** com o método da superclasse, que tem o mesmo nome e tipo de retorno porém difere ou no número ou no tipo dos argumentos. Nesse caso não se trata mais de redefinição, trata-se de uma sobrecarga, pois criou-se um **novo método**. O método que será chamado depende dos argumentos sendo passados na **chamada** deste método.
+
+Por exemplo, para calcular um trapézio precisamos de três valores como argumento. Como o valor difere, será criado um novo método.
+
+```
+public float calcularArea(float baseMenor, float baseMaior, float altura){
+	return ((baseMenor + baseMaior) * altura)/2;
+```
+
+O conceito de polimorfismo e é muito usado no conceito de Interface que veremos a seguir.
+</div>
+
+<div id='interface'/>
+
+#### 💻 Interface 🚧
+
 </div>
 
 
