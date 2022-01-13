@@ -659,6 +659,7 @@ Considerando o exemplo da nossa caneta, vamos abordar os dois principais conceit
 * [Herança](#heranca)
 * [Polimorfismo](#polimorfismo)
 * [Interface](#interface)
+* [Associação, Agregação e Composição](#associacao-agregacao-composicao)
 
 <div id='classe'/>
 
@@ -1026,6 +1027,14 @@ public class Calculadora implements Operacoes{
 Uma classe pode implementar mais de uma interface!
 </div>
 
+<div id='associacao-agregacao-composicao'/>
+
+#### 💻 Associação, Agregação e Composição 🚧
+
+Uma das coisas mais importantes da programação orientada a objetos é a relação entre os objetos em si. A seguir, veremos um pouco mais sobre isso.
+
+##### Associação
+</div>
 
 <div align="center" id='conceitos'/> 
 
@@ -1066,4 +1075,5 @@ Uma classe pode implementar mais de uma interface!
 * Construtores: [1](https://www.devmedia.com.br/construtores-em-java-primeiros-passos/28618)
 * Herança: [1](https://pt.wikiversity.org/wiki/Conceitos_de_Orienta%C3%A7%C3%A3o_a_Objetos/Classe_Abstrata), [2](https://www.devmedia.com.br/entendendo-e-aplicando-heranca-em-java/24544), [3](https://www.devmedia.com.br/entendendo-o-conceito-de-heranca-e-composicao/25456)
 * Polimorfismo: [1](https://www.devmedia.com.br/uso-de-polimorfismo-em-java/26140), [2](https://www.devmedia.com.br/encapsulamento-polimorfismo-heranca-em-java/12991)
-* Interface: [1](https://www.javaprogressivo.net/2012/10/Interface-em-Java-implements-O-que-e-para-que-serve-como-funciona.html),
+* Interface: [1](https://www.javaprogressivo.net/2012/10/Interface-em-Java-implements-O-que-e-para-que-serve-como-funciona.html)
+* Associação, Agregação e Composição: [1](#https://qastack.com.br/programming/885937/what-is-the-difference-between-association-aggregation-and-composition), [2](#https://pt.slideshare.net/armandodaniel777/java-orientao-a-objetos-associacao-composicao-agregacao)
