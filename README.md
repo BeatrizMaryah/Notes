@@ -5,6 +5,14 @@ Esse é um repositório que irei colocar e organizar todas as anotações que fi
 ### 🔎 Sumário 
 * [Java Básico](#java-basico)
 * [Programação Orientada a Objetos](#poo)
+* [Estruturas de dados](#estruturas-de-dados) 🚧
+* [Java Avançado](#java-avancado) 🚧
+* [Banco de Dados (PostgreSQL)](#banco-de-dados) 🚧
+* [Maven](#maven) 🚧
+* [Spring](#spring) 🚧
+* [GitHub](#github) 🚧
+* [Html, JavaScript e Css](#frontend) 🚧
+* [Angular 2+](#angular) 🚧
 * [Conceitos](#conceitos)
 * [Referências](#referencias)
 
@@ -1029,7 +1037,7 @@ Uma classe pode implementar mais de uma interface!
 
 <div id='associacao-agregacao-composicao'/>
 
-#### 💻 Associação, Agregação e Composição 🚧
+#### 💻 Associação, Agregação e Composição
 
 Uma das coisas mais importantes da programação orientada a objetos é a relação entre os objetos em si. Um sistema é composto de várias classes e essas classes se comunicam. Vamos ver essas relações agora.
 
@@ -1067,6 +1075,50 @@ Para um relacionamento de composição, usamos o termo **possui**.
 
 Lembre-se, agregação ou composição não é um estado fixo para as mesmas coisas sempre. Depende da semântica do seu sistema. Ou seja, você que irá definir com a construção do seu sistema quais serão suas relações.
 
+</div>
+
+<div align="center" id='estruturas-de-dados'/> 
+
+## Estruturas de Dados 🚧
+</div>
+
+<div align="center" id='java-avancado'/> 
+
+## Java Avançado 🚧
+</div>
+
+#### 🔎 Mini sumário
+* [Threads](#threads) 🚧
+* [Anotations](#anotations) 🚧
+
+<div align="center" id='banco-de-dados'/> 
+
+## Banco de Dados 🚧
+</div>
+
+<div align="center" id='maven'/> 
+
+## Maven 🚧
+</div>
+
+<div align="center" id='spring'/> 
+
+## Spring 🚧
+</div>
+
+<div align="center" id='github'/> 
+
+## Github 🚧
+</div>
+
+<div align="center" id='frontend'/> 
+
+## Html, JavaScript e Css 🚧
+</div>
+
+<div align="center" id='angular'/> 
+
+## Angular 2+ 🚧
 </div>
 
 <div align="center" id='conceitos'/> 
