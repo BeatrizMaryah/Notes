@@ -1035,18 +1035,37 @@ Uma das coisas mais importantes da programação orientada a objetos é a relaç
 
 ##### Associação
 
-Uma associação ocorre quando temos uma classe que possui atributos de um tipo de outra classe. Por exemplo, imagine que temos duas classes: carro e pneu. A classe carro possui quatro pneus, então ela teria quatro atributos do tipo Pneu. 
+Uma associação ocorre quando temos uma classe que possui atributos de um tipo de outra classe. É o termo mais geral que define a relação entre duas classes, enquanto agregação e composição são relativamente especiais. Por exemplo, imagine que temos duas classes: carro e pneu. A classe carro possui quatro pneus, então ela teria quatro atributos do tipo Pneu. 
 
 <div align="center">
 	
 <img height="170em" src="https://user-images.githubusercontent.com/87392633/149788344-f2835c87-7bd3-4626-a414-60f74ae0b79c.png"/>
 </div>
 
-Para facilitar a identificação dessa relação, temos que fazer a pergunta **tem um(a)**. Um carro tem um pneu, por isso é uma associação. 
+Para facilitar a identificação dessa relação, temos que fazer a pergunta **tem um(a)**. Um carro tem um pneu, por isso é uma associação. Sempre que não há posse em vigor, consideramos tal relacionamento apenas como uma Associação e simplesmente usamos o termo *tem-a*, ou às vezes o verbo que descreve o relacionamento. Por exemplo, um professor *tem-um* ou *ensina* um ou mais alunos. Não há posse entre o professor e o aluno, e cada um tem seu próprio ciclo de vida. Exemplo:
+
+```
+public class Aluno{
+	private String nome;
+	private Professor professor;
+}
+```
 
 ##### Agregação
 
-Agregação é um tipo fraco de associação
+Agregação é um tipo **fraco** de associação com uma posse parcial. Ele é uma forma mais desaclopada e traz mais independência entre as classes. Nessa relação se um objeto for destruído, ele não afetará o outro objeto, ou seja, ambos os objetos podem funcionar de forma **independente**. É um tipo de relacionamento caracterizado como **PARTE-TODO** e ocorre quando um determinado objeto que representa a PARTE do TODO faça sentido que sobreviva sem o TODO, mesmo que o TODO não exista. 
+
+Imagine um time de futebol que tem seus jogadores. Nesse cenário, a classe time teriam vários jogadores. Porém mesmo sem um time, os jogadores ainda seriam jogadores e ainda poderiam existir. 
+
+##### Composição
+
+Composição é um tipo **forte** de associação com posse completa. É um relacionamento caracterizado como PARTE-TODO, mas em caso de composição o TODO ele é responsável pelo ciclo de vida da PARTE. Sendo assim a composição é aplicada quando a PARTE não faz sentido existir **sem** o TODO e quando o objeto que representa o TODO for destruido a PARTE **também** deverá ser destruída.
+
+Por exemplo, pense em uma escola que possui várias turmas. Nesse cenário, não faz sentido as turmas existirem sem a escola e se a escola for destruída, suas turmas também serão.
+
+Para um relacionamento de composição, usamos o termo **possui**.
+
+Lembre-se, agregação ou composição não é um estado fixo para as mesmas coisas sempre. Depende da semântica do seu sistema. Ou seja, você que irá definir com a construção do seu sistema quais serão suas relações.
 
 </div>
 
@@ -1090,4 +1109,4 @@ Agregação é um tipo fraco de associação
 * Herança: [1](https://pt.wikiversity.org/wiki/Conceitos_de_Orienta%C3%A7%C3%A3o_a_Objetos/Classe_Abstrata), [2](https://www.devmedia.com.br/entendendo-e-aplicando-heranca-em-java/24544), [3](https://www.devmedia.com.br/entendendo-o-conceito-de-heranca-e-composicao/25456)
 * Polimorfismo: [1](https://www.devmedia.com.br/uso-de-polimorfismo-em-java/26140), [2](https://www.devmedia.com.br/encapsulamento-polimorfismo-heranca-em-java/12991)
 * Interface: [1](https://www.javaprogressivo.net/2012/10/Interface-em-Java-implements-O-que-e-para-que-serve-como-funciona.html)
-* Associação, Agregação e Composição: [1](https://qastack.com.br/programming/885937/what-is-the-difference-between-association-aggregation-and-composition), [2](https://pt.slideshare.net/armandodaniel777/java-orientao-a-objetos-associacao-composicao-agregacao), [3](https://techvidvan.com/tutorials/java-association/), [4](https://www.codeproject.com/Articles/22769/Introduction-to-Object-Oriented-Programming-Concep#Composition)
+* Associação, Agregação e Composição: [1](https://qastack.com.br/programming/885937/what-is-the-difference-between-association-aggregation-and-composition), [2](https://pt.slideshare.net/armandodaniel777/java-orientao-a-objetos-associacao-composicao-agregacao), [3](https://techvidvan.com/tutorials/java-association/), [4](https://www.codeproject.com/Articles/22769/Introduction-to-Object-Oriented-Programming-Concep#Composition), [5](https://www.guj.com.br/t/composicao-vs-agregacao/90068)
