@@ -1031,9 +1031,23 @@ Uma classe pode implementar mais de uma interface!
 
 #### 💻 Associação, Agregação e Composição 🚧
 
-Uma das coisas mais importantes da programação orientada a objetos é a relação entre os objetos em si. A seguir, veremos um pouco mais sobre isso.
+Uma das coisas mais importantes da programação orientada a objetos é a relação entre os objetos em si. Um sistema é composto de várias classes e essas classes se comunicam. Vamos ver essas relações agora.
 
 ##### Associação
+
+Uma associação ocorre quando temos uma classe que possui atributos de um tipo de outra classe. Por exemplo, imagine que temos duas classes: carro e pneu. A classe carro possui quatro pneus, então ela teria quatro atributos do tipo Pneu. 
+
+<div align="center">
+	
+<img height="170em" src="https://user-images.githubusercontent.com/87392633/149788344-f2835c87-7bd3-4626-a414-60f74ae0b79c.png"/>
+</div>
+
+Para facilitar a identificação dessa relação, temos que fazer a pergunta **tem um(a)**. Um carro tem um pneu, por isso é uma associação. 
+
+##### Agregação
+
+Agregação é um tipo fraco de associação
+
 </div>
 
 <div align="center" id='conceitos'/> 
@@ -1076,4 +1090,4 @@ Uma das coisas mais importantes da programação orientada a objetos é a relaç
 * Herança: [1](https://pt.wikiversity.org/wiki/Conceitos_de_Orienta%C3%A7%C3%A3o_a_Objetos/Classe_Abstrata), [2](https://www.devmedia.com.br/entendendo-e-aplicando-heranca-em-java/24544), [3](https://www.devmedia.com.br/entendendo-o-conceito-de-heranca-e-composicao/25456)
 * Polimorfismo: [1](https://www.devmedia.com.br/uso-de-polimorfismo-em-java/26140), [2](https://www.devmedia.com.br/encapsulamento-polimorfismo-heranca-em-java/12991)
 * Interface: [1](https://www.javaprogressivo.net/2012/10/Interface-em-Java-implements-O-que-e-para-que-serve-como-funciona.html)
-* Associação, Agregação e Composição: [1](#https://qastack.com.br/programming/885937/what-is-the-difference-between-association-aggregation-and-composition), [2](#https://pt.slideshare.net/armandodaniel777/java-orientao-a-objetos-associacao-composicao-agregacao)
+* Associação, Agregação e Composição: [1](https://qastack.com.br/programming/885937/what-is-the-difference-between-association-aggregation-and-composition), [2](https://pt.slideshare.net/armandodaniel777/java-orientao-a-objetos-associacao-composicao-agregacao), [3](https://techvidvan.com/tutorials/java-association/), [4](https://www.codeproject.com/Articles/22769/Introduction-to-Object-Oriented-Programming-Concep#Composition)
