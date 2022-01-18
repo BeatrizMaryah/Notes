@@ -560,13 +560,15 @@ Trazendo isso para as nossas posições nos `[]`, temos esse cenário:
 Quando trabalhamos com matrizes, precisamos utilizar **dois for**. Isso acontece pois precisamos percorrer pelas linhas e pelas colunas, usando respectivamente o `i` e o `j`. Além disso, as condições do for ficam um pouco diferentes. O primeiro for usa apenas o `m.lenght`, que irá retornar o número de linhas da matriz. O segundo for usaremos o `m[i].lenght` que irá retornar o número de colunas da i-ésima linha. Por exemplo:
 
 ```
- for (i=0; i<m.length; i++) {
-    System.out.printf("linha: ", (i+1)); //Mostra em que linha está
-    for (j=0; j<m[i].length; j++) {
-       System.out.printf("valor", m[i][j]); //Imprime o valor alocado na linha i + coluna j.
-    }
-    System.out.printf("\n"); //Pula a linha
- }
+	for (int i = 0; i < matriz.length; i++) {
+		System.out.printf("linha " + (i+1) + ": "); //Mostra em que linha está
+		    
+		for (int j = 0; j < matriz[i].length; j++) {
+			System.out.printf(matriz[i][j] + ", "); //Imprime o valor alocado na linha i + coluna j.
+		}
+		    
+		System.out.printf("\n"); //Pula a linha
+	}
 ```
 </div>
 
