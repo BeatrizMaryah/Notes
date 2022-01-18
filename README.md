@@ -103,7 +103,7 @@ Iremos abordar mais assuntos da classe após a programação orientada a objetos
 
 ```
 public static void main(String[] args) {
-	System.out.print("Exemplo de código") //Irá imprimir na tela: Exemplo de código	
+	System.out.print("Exemplo de código"); //Irá imprimir na tela: Exemplo de código	
 }
 ```
 
