@@ -165,7 +165,7 @@ import java.util.Scanner;
 É importante destacar que esse import ficará acima da declaração da classe que você está fazendo! Após isso, precisamos criar e instânciar nosso Scanner para ser utilizado, como uma variável.
 
 ```
-Scanner leitor = new Scanner (System.in);
+Scanner sc = new Scanner (System.in);
 ```
 
 Nesse caso, o nome que dei ao Scanner é **leitor** e é o que utilizarei nos exemplos seguintes. Porém, você pode chamar como preferir, seja ler, scr, read, etc. Também é comum instânciar o Scanner logo abaixo do método main.
