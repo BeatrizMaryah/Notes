@@ -234,7 +234,7 @@ Essa é uma caixa de confirmação com as opções, que  consiste de uma caixa c
 Esse método sempre retorna uma constante referente a opção que o usuário clicou. Caso ele clique em `YES`, retornará **0**, caso ele clique em `NO` retornará **1** e caso ele clique em `CANCEL` retornará **2**. Também é possível **armazenar** esse valor retornado em uma variável para poder alterar o **fluxo** do programa dependendo da opção que o usuário escreveu, seja com ifs ou o próprio switch case.
 
 ```
-int opcao = JOptionPane.showConfirmDialog(null, "O seu nome é Fulano?");
+int opcao = JOptionPane.showConfirmDialog(null, "O seu nome é " + nome + "?");
 ```
 
 Quando chamamos o método padrão, usamos dois **argumentos**. O primeiro sinaliza de qual janela esta confirmação está sendo gerada e por enquanto sempre usaremos `null` nesse argumento. O segundo argumento é a **mensagem** que desejamos mostrar ao usuário.
@@ -251,7 +251,7 @@ A caixa de diálogo de mensagem é uma caixa que serve apenas para emitir uma **
 Como a caixa de Confirm, essa caixa padrão também tem os dois argumentos, sendo o que iremos usar o `null` e a mensagem em si. Esse método não usamos para atribuir valores, ele é mais como um `System.out.print()`.
 
 ```
-JOptionPane.showMessageDialog(null, "Seu nome é Fulano");
+JOptionPane.showMessageDialog(null, "Seu nome é " + nome);
 ```
 
 Aqui está um pequeno exemplo da utilização de todos as caixas comentadas acima:
