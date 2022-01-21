@@ -9,6 +9,7 @@ Esse é um repositório que irei colocar e organizar todas as anotações que fi
 * [Java Avançado](#java-avancado) 🚧
 * [Banco de Dados (PostgreSQL)](#banco-de-dados) 🚧
 * [Maven](#maven) 🚧
+* [Hibernate](#hibernate) 🚧
 * [Spring](#spring) 🚧
 * [GitHub](#github) 🚧
 * [Html, JavaScript e Css](#frontend) 🚧
@@ -1039,7 +1040,7 @@ Uma classe pode implementar mais de uma interface!
 
 <div id='associacao-agregacao-composicao'/>
 
-#### 💻 Associação, Agregação e Composição
+#### 🤝 Associação, Agregação e Composição
 
 Uma das coisas mais importantes da programação orientada a objetos é a relação entre os objetos em si. Um sistema é composto de várias classes e essas classes se comunicam. Vamos ver essas relações agora.
 
@@ -1084,6 +1085,13 @@ Lembre-se, agregação ou composição não é um estado fixo para as mesmas coi
 ## Estruturas de Dados 🚧
 </div>
 
+#### 🔎 Mini sumário
+* [Listas](#listas) 🚧
+* [Filas](#filas) 🚧 
+* [Pilhas](#pilhas) 🚧
+* [Árvores](#arvores) 🚧
+* [Hash](#hash) 🚧
+
 <div align="center" id='java-avancado'/> 
 
 ## Java Avançado 🚧
@@ -1098,10 +1106,57 @@ Lembre-se, agregação ou composição não é um estado fixo para as mesmas coi
 ## Banco de Dados 🚧
 </div>
 
+#### 🔎 Mini sumário
+* [Tipos de dados](#tipos-de-dados) 🚧
+* [Comandos DDL e DML](#ddl-dml) 🚧
+* [Constrains](#constrains) 🚧
+* [Comandos DQL (select)](#select) 🚧
+* [Funções de Agregação](#funcoes-agregacao) 🚧
+* [Subconsultas](#subconsultas) 🚧
+* [Join](#join) 🚧
+* [Sequences](#sequences) 🚧
+* [comandos PL/SQL (Procedures e funcions)](#procedures-functions) 🚧
+
+O banco de dados é a **organização** e **armazenagem** de **dados** sobre um domínio específico. É uma coleção de dados relacionados que tem informação sobre algo do mundo real. Por exemplo, lojas, escritórios, bancos e bilbiotecas, etc. Ou seja, ele não precisa ser só o banco virtual que estamos acostumados. Ele pode ser toda base de informação organizada, como um caderno ou uma planilha no Excel. Por exemplo, em uma biblioteca, temos prateleiras que guardam livros. Esses livros possuem algumas informações relacionadas a eles, como autor, nome, quantidade de páginas, preço e etc.
+
+O **dado** é a informação mais abstrata que podemos ter. Ele é um componente básico de um arquivo e é um elemento com um significado no mundo real, que compõe um sistema de arquivos. Por exemplo dados de nome, sobrenome, cidade, entre outros. 
+
+A **informação** é obtida após a interpretação dos dados e é possível associar um significado aos dados ou processa-los. Normalmente a informação vem de convenções utilizadas por meio de associações de dados. 
+
+O **conhecimento** é todo o discernimento, obtido por meio de critérios, e apreciação por pessoas por meio de associações aos dados. Ou seja, é o que pode se entender a partir da informação obtida através dos dados.
+
+Um exemplo mais prático, em relação a uma **conta de banco**. O número **-15000** seria um **dado**, onde não expressa sentido e pode ser qualquer coisa. Agora, através desse dado, podemos dar um sentido a ele e transformá-lo em uma **informação**, sabendo agora que o saldo bancário dessa pessoa é igual a R$-15000,00. Agora, através dessa informação, podemos entender e obter o **conhecimento** de que essa pessoa esta endividada, considerando que temos a informação de que sua conta está negativa. 
+
+Um banco de dados possui **coerência lógica** entre dados e significados. De nada adianta você fazer uma tabela teste com colunas aleatórias, isso não vai trazer nenhuma informação ou conhecimento. Além disso, O banco de dados sempre estará associado a aplicações onde existem usuários com **interesse** aos dados relacionados. De nada adianta armazenar uma grande quantia de dados se eles não servirem para nada. 
+
+Os dados do nosso banco são organizados em **Tabelas**. Elas são organizadas com linhas e colunas, onde as **colunas** da tabela são um **tipo** de informação específica, como se fosse um atributo de uma classe. As linhas de uma tabela vão ser o **valor atribuído** aquele respectibo atributo, sendo o valor respectivo daquela entidade.
+
+
 <div align="center" id='maven'/> 
 
 ## Maven 🚧
 </div>
+
+#### 🔎 Mini sumário
+* [Download](#download-maven) 🚧
+* [Criação de projeto e estrutura padrão](#criacao-estrutura) 🚧
+* [POM (Dependências, Escopos, Repositórios, Plugins e Profiles)](#pom) 🚧
+
+<div align="center" id='hibernate'/> 
+
+## Hibernate 🚧
+</div>
+
+#### 🔎 Mini sumário
+* [JPA, Hibernate e JDBC](#jpa-hibernate-jdbc) 🚧
+* [Usando o hibernate](#usando-hibernate) 🚧
+* [Anotações do hibernate](#anotacoes-hibernate) 🚧
+* [Repositories](#repositores-hibernate) 🚧
+* [Querys customizadas](#querys-customizadas) 🚧
+* [Mapeamentos de associação](#mapeamento-associacao) 🚧
+* [CustomRepository](#custom-repository) 🚧
+* [QueryDSL](#querydsl) 🚧
+* [Validations](#validations) 🚧
 
 <div align="center" id='spring'/> 
 
@@ -1164,3 +1219,6 @@ Lembre-se, agregação ou composição não é um estado fixo para as mesmas coi
 * Polimorfismo: [1](https://www.devmedia.com.br/uso-de-polimorfismo-em-java/26140), [2](https://www.devmedia.com.br/encapsulamento-polimorfismo-heranca-em-java/12991)
 * Interface: [1](https://www.javaprogressivo.net/2012/10/Interface-em-Java-implements-O-que-e-para-que-serve-como-funciona.html)
 * Associação, Agregação e Composição: [1](https://qastack.com.br/programming/885937/what-is-the-difference-between-association-aggregation-and-composition), [2](https://pt.slideshare.net/armandodaniel777/java-orientao-a-objetos-associacao-composicao-agregacao), [3](https://techvidvan.com/tutorials/java-association/), [4](https://www.codeproject.com/Articles/22769/Introduction-to-Object-Oriented-Programming-Concep#Composition), [5](https://www.guj.com.br/t/composicao-vs-agregacao/90068)
+* Estruturas de dados: [1](http://www2.ouropreto.ifmg.edu.br/tp/slides/aula-04-listas-filas-e-pilhas), [2](https://www.letscode.com.br/blog/estruturas-de-dados-em-java), [3](https://www.youtube.com/playlist?list=PLGxZ4Rq3BOBrgumpzz-l8kFMw2DLERdxi)
+* Funções de Agregação: [1](https://www.devmedia.com.br/sql-funcoes-de-agregacao/38463)
+* GitHub: [1](https://www.youtube.com/watch?v=UBAX-13g8OM)
