@@ -1107,7 +1107,7 @@ Lembre-se, agregação ou composição não é um estado fixo para as mesmas coi
 </div>
 
 #### 🔎 Mini sumário
-* [Tipos de dados](#tipos-de-dados) 🚧
+* [Tipos de dados](#tipos-de-dados-banco) 🚧
 * [Comandos DDL e DML](#ddl-dml) 🚧
 * [Constrains](#constrains) 🚧
 * [Comandos DQL (select)](#select) 🚧
@@ -1130,6 +1130,53 @@ Um exemplo mais prático, em relação a uma **conta de banco**. O número **-15
 Um banco de dados possui **coerência lógica** entre dados e significados. De nada adianta você fazer uma tabela teste com colunas aleatórias, isso não vai trazer nenhuma informação ou conhecimento. Além disso, O banco de dados sempre estará associado a aplicações onde existem usuários com **interesse** aos dados relacionados. De nada adianta armazenar uma grande quantia de dados se eles não servirem para nada. 
 
 Os dados do nosso banco são organizados em **Tabelas**. Elas são organizadas com linhas e colunas, onde as **colunas** da tabela são um **tipo** de informação específica, como se fosse um atributo de uma classe. As linhas de uma tabela vão ser o **valor atribuído** aquele respectibo atributo, sendo o valor respectivo daquela entidade.
+
+<div align="center">
+	
+<img height="170em" src="https://user-images.githubusercontent.com/87392633/150702875-ed3e52cd-8313-45f1-b6a3-a5c00d8e3b27.png"/>
+</div>
+
+<div id="tipos-de-dados-banco">
+	
+#### 💻 Tipos de Dados
+</div>
+
+##### Numeros Inteiros
+
+* **smallint** | 2 bytes | -32768 to +32767
+* **integer** | 4 bytes | -2147483648 to +2147483647
+* **bigint** | 8 bytes | -9223372036854775808 to 9223372036854775807
+
+##### Numeros Fracionados (com vírgula)
+
+* **decimal** | variable | no limit
+* **numeric** | variable | no limit
+* **real** | 4 bytes | 6 decimal digits precision
+* **double precision** | 8 bytes | 15 decimal digits precision
+
+##### Caracteres
+
+* **caracter varying(n)**: comprimento variável com limite
+* **varchar(n)**: comprimento variável com limite
+* **character(n)**: comprimento fixo, completado com bracos
+* **char(n)**: comprimento fixo, completado com bracos
+* **text**: comprimento variável não limitado
+
+##### Data e Hora
+
+* **Timestamp without Time Zone**: tanto data quanto hora
+* **Timestamp with Time Zone**: tanto data quanto hora
+* **Interval**: intervalos de tempo
+* **Date**: somente datas
+* **Time without Time Zone**: somente a hora do dia
+* **Time with Time Zone**: somente a hora do dia
+
+##### Boolean
+
+* **Verdadeiro**: ‘t’, ‘true’, ‘y’, ‘yes’, ‘1’
+* **Falso**: ‘f’, ‘false’, ‘n’, ‘no’, ‘0’
+
+
 
 
 <div align="center" id='maven'/> 
@@ -1220,5 +1267,6 @@ Os dados do nosso banco são organizados em **Tabelas**. Elas são organizadas c
 * Interface: [1](https://www.javaprogressivo.net/2012/10/Interface-em-Java-implements-O-que-e-para-que-serve-como-funciona.html)
 * Associação, Agregação e Composição: [1](https://qastack.com.br/programming/885937/what-is-the-difference-between-association-aggregation-and-composition), [2](https://pt.slideshare.net/armandodaniel777/java-orientao-a-objetos-associacao-composicao-agregacao), [3](https://techvidvan.com/tutorials/java-association/), [4](https://www.codeproject.com/Articles/22769/Introduction-to-Object-Oriented-Programming-Concep#Composition), [5](https://www.guj.com.br/t/composicao-vs-agregacao/90068)
 * Estruturas de dados: [1](http://www2.ouropreto.ifmg.edu.br/tp/slides/aula-04-listas-filas-e-pilhas), [2](https://www.letscode.com.br/blog/estruturas-de-dados-em-java), [3](https://www.youtube.com/playlist?list=PLGxZ4Rq3BOBrgumpzz-l8kFMw2DLERdxi)
+* Tipos de dados (Banco de dados): [1](https://www.devmedia.com.br/tipos-de-dados-no-postgresql-e-sql-server/23362)
 * Funções de Agregação: [1](https://www.devmedia.com.br/sql-funcoes-de-agregacao/38463)
 * GitHub: [1](https://www.youtube.com/watch?v=UBAX-13g8OM)
