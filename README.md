@@ -1390,24 +1390,84 @@ create table endereco (
 
 <div id="select">
 	
-#### 💻 Comandos DQL (SELECT)
+#### 🔎 Comandos DQL (SELECT)
 </div>
 
 Usamos o comando SELECT para recuperarmos dados inseridos em nossas tabelas. Ele é um dos comandos mais complexos do banco de dados, pois tem muitas cláusulas que podem fazer uma consulta extremamente flexível. 
 
+O comando mais básico é `select * from [tabela];` que irá retornar todos os dados inseridos em uma determinada tabela. Também podemos utilizar `select [coluna], [coluna] from [tabela];` que irá retornar apenas os dados daquelas colunas de determinada tabela. Para dar um nome diferente do que já está definido na coluna da tabela, usamos o `AS`, por exemplo: `select [coluna] as [outro-nome] from [tabela];`
+
 ##### 🔎 Sumário do Select
-* [Distinct](#distinct) 🚧
-* [Order By](#order-by) 🚧
-* [Fetch ou Limit](#fetch) 🚧
-* [Where](#where) 🚧
-* [Like](#having) 🚧
+* [Distinct](#distinct)
+* [Order By](#order-by)
+* [Limit e Fetch](#limit-fetch)
+* [Where (Like, Between, And, Or e Not)](#where) 🚧
 * [Between](#between) 🚧
 * [Group By](#group-by) 🚧
 * [Having](#having) 🚧
 * [Funções de Agregação](#funcoes-agregacao) 🚧
 * [Subconsultas](#subconsultas) 🚧
 * [Join](#join) 🚧
-* [Union, Intersect e Except](#join) 🚧
+* [Union, Intersect e Except](#union-intersect-except) 🚧
+
+<div id="distinct">
+	
+#### 💻 Distinct
+</div>
+
+A cláusula `DISTINCT` remove as linhas **duplicadas** da nossa consulta e deixa apenas uma para cada duplicação. Ou seja, ela nao irá retornar **dados repetidos**, se tiver repetição ela irá retirar do nosso retorno. Pode ser aplicada em uma ou mais colunas. Sua sintaxe é:
+
+```
+select distinct [coluna] from [tabela];
+```
+
+<div id="order-by">
+	
+#### 💻 Order By
+</div>
+
+A cláusula ORDER BY serve para ordenar os dados de acordo com uma determinada coluna. Pode ser ascendente ou descendente. Sua sintaxe é:
+
+```
+select [coluna] from [tabela] order by [coluna] asc; //ascendente
+
+select [coluna] from [tabela] order by [coluna] desc; //descendente
+```
+
+<div id="limit-fetch">
+	
+#### 💻 Limit e Fetch
+</div>
+
+As duas cláusulas fazem a mesma função: **limitar** a quantidade de linhas que será retornado na minha consulta. A única diferença entre eles é que a cláusula `FETCH` é um padrão SQL enquanto o `LIMIT` não é, por isso se você quiser portabilizar para outro tipo banco o fetch é mais recomendado, apesar de o limit também estar presente em muitos deles.
+
+##### Limit
+
+A claúsula LIMIT tem uma sintaxe simples, onde você apenas a usa e coloca a quantidade de linhas que você quer que retorne.
+
+```
+select [coluna] from [tabela] LIMIT [quantidade-linhas-para-limitar];
+```
+
+Além disso, você pode pular uma quantidade de linhas antes de limitar a quantidade que você quer que retorne.
+
+```
+select [coluna] from [tabela] LIMIT [quantidade-linhas-para-limitar] OFFSET [quantidade-linhas-para-pular];
+```
+
+##### Fetch
+
+A sintaxe do Fetch é um pouco mais comprida, mas é também mais legível, ele basicamente diz "busque apenas as primeiras [...] linhas". Para limitarmos as linhas retornadas usamos:
+
+```
+select [coluna] from [tabela] FETCH FIRST [quantidade-linhas-para-limitar] ROW ONLY;
+```
+
+Também é possível pular as linhas antes de limitá-las, também usando o OFFSET, porém antes:
+
+```
+select [coluna] from [tabela] OFFSET [quantidade-linhas-para-pular] ROWS FETCH FIRST [quantidade-linhas-para-limitar] ROW ONLY;
+```
 
 <div align="center" id='maven'/> 
 
