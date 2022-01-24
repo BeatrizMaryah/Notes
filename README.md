@@ -1107,8 +1107,9 @@ Lembre-se, agregação ou composição não é um estado fixo para as mesmas coi
 </div>
 
 #### 🔎 Mini sumário
-* [Tipos de dados](#tipos-de-dados-banco) 🚧
-* [Comandos DDL e DML](#ddl-dml) 🚧
+* [Instalação PostgreSQL e Dbeaver](#download-postgresql-dbeaver)
+* [Tipos de dados](#tipos-de-dados-banco)
+* [Comandos DDL e DML](#ddl-dml)
 * [Constrains](#constrains) 🚧
 * [Comandos DQL (select)](#select) 🚧
 * [Funções de Agregação](#funcoes-agregacao) 🚧
@@ -1129,7 +1130,13 @@ Um exemplo mais prático, em relação a uma **conta de banco**. O número **-15
 
 Um banco de dados possui **coerência lógica** entre dados e significados. De nada adianta você fazer uma tabela teste com colunas aleatórias, isso não vai trazer nenhuma informação ou conhecimento. Além disso, O banco de dados sempre estará associado a aplicações onde existem usuários com **interesse** aos dados relacionados. De nada adianta armazenar uma grande quantia de dados se eles não servirem para nada. 
 
-Os dados do nosso banco são organizados em **Tabelas**. Elas são organizadas com linhas e colunas, onde as **colunas** da tabela são um **tipo** de informação específica, como se fosse um atributo de uma classe. As linhas de uma tabela vão ser o **valor atribuído** aquele respectibo atributo, sendo o valor respectivo daquela entidade.
+Os dados do nosso banco são organizados em **Tabelas**. Elas são organizadas com linhas e colunas, onde as **colunas** da tabela são um **tipo** de informação específica, como se fosse um atributo de uma classe. As linhas de uma tabela vão ser o **valor atribuído** aquele respectibo atributo, sendo o valor respectivo daquela entidade. As convenções para a criação de um nome de uma tabela são:
+
+* Deve começar com uma letra 
+* Pode ter de 1 a 30 caracteres 
+* Deve conter somente A-Z, a-z, 0-9, _, $ e # 
+* Não deve duplicar o nome de outro objeto (dois objetos não podem ter nomes iguais) 
+* Não deve usar palavra registrada (palavra reservada) 
 
 <div align="center">
 	
@@ -1138,7 +1145,7 @@ Os dados do nosso banco são organizados em **Tabelas**. Elas são organizadas c
 
 <div id="tipos-de-dados-banco">
 	
-#### 💻 Tipos de Dados
+#### 🎲 Tipos de Dados
 </div>
 
 ##### Numeros Inteiros
@@ -1176,8 +1183,79 @@ Os dados do nosso banco são organizados em **Tabelas**. Elas são organizadas c
 * **Verdadeiro**: ‘t’, ‘true’, ‘y’, ‘yes’, ‘1’
 * **Falso**: ‘f’, ‘false’, ‘n’, ‘no’, ‘0’
 
+<div id="ddl-dml">
+	
+#### 💻 Comandos DDL e DML
+</div>
 
+Para conseguir usar os comandos no Dbeaver, você deve clicar com o botao direito em uma conexão, ir em `SQL Editor` e clicar em `Open SQL Console`. Ou aperte `cntrl + alt + enter` para utilizar o atalho.
 
+<div align="center">
+	
+<img height="100em" src="https://user-images.githubusercontent.com/87392633/150795635-c9e2faa6-25e1-4316-817b-de47ff273609.png"/>
+</div>
+
+##### DDL
+
+É a linguagem de **definição e criação** de dados que vamos usar para criar um banco ou uma tabela. Ele é um conjunto de instruções usado para criar e modificar as estruturas dos objetos armazenados no banco de dados. Ele é usado para modificar a estrutura do banco e não os dados em si. Alguns comandos são: 
+
+* **CREATE**: instrução utilizada para definir novas entidades. Cria alguma estrutura do banco. Por exemplo, para criar um banco de dados o comando é **create database [nome]**; para criar uma tabela o comando é **create table [nome] (nome coluna – tipo de dado – tamanho, ...);**
+* **ALTER**: instrução utilizada para modificar a definição de entidades existentes. Básicamente atualiza o dado (tipo ou nome, não os valores atribuidos a eles). 
+* **DROP**: instrução utilizada para remover algo da estrutura do banco, como o próprio banco ou uma tabela, etc. Por exemplo, para apagar uma tabela o comando é drop table nome; 
+
+<div align="center">
+	
+<img height="250em" src="https://user-images.githubusercontent.com/87392633/150790972-84334bc0-bf3c-422d-9a02-69aab2b127c5.png"/>
+</div>
+
+Com o uso do dbeaver, também podemos fazer esses comandos a partir da interface. Por exemplo, para criarmos uma database basta clicarmos com o botão direito em nossa conexão, clicar em `create` e ir em `database`.
+
+<div align="center">
+	
+<img height="120em" src="https://user-images.githubusercontent.com/87392633/150792954-46ac860f-eb71-4603-821e-2e2d1558e591.png"/>
+</div>
+
+Também podemos fazer isso para criarmos uma tabela:
+
+<div align="center">
+	
+<img height="120em" src="https://user-images.githubusercontent.com/87392633/150793195-7b0d6e9f-1341-4b02-a5c7-37cb014eb146.png"/>
+</div>
+
+Clicando com o botão direito em uma tabela e clicando em `View Table`, ele mostrará a estrutura da nossa tabela diretamente em uma interface. Assim, é possível clicar com o botão direito em uma coluna e fazer as mudanças e alterações diretamente por ela, como criar uma nova coluna, deletar uma coluna, renomear uma coluna, mudar o tipo de dado dela, etc.
+
+<div align="center">
+	
+<img height="270em" src="https://user-images.githubusercontent.com/87392633/150794116-d2067baa-21f7-4e33-ad99-275dd4fc7bb0.png"/>
+</div>
+
+##### DML 
+
+É a linguagem para **manipulação** de dados. Ou seja, ele será utilizado para gerenciar os dados em si e não a estrutura do banco. É um conjunto de instruções usadas nas consultas e modificações dos dados armazenados nas tabelas de banco de dados. Alguns comandos são: 
+
+* **INSERT**: instrução utilizada para **inserir** dados em uma ou mais tabelas no banco de dados. 
+* **SELECT**: instrução utilizada para **recuperar** linhas e colunas do banco de dados de uma ou mais tabelas do banco de dados. 
+* **UPDATE**: instrução utilizada para **atualizar** dados de uma ou mais tabelas no banco de dados. 
+* **DELETE**: instrução utilizada para **excluir** dados de uma ou mais tabelas no banco de dados. 
+
+<div align="center">
+	
+<img height="230em" src="https://user-images.githubusercontent.com/87392633/150792146-e49a7b9c-6d2a-4246-98dc-be50f3c1d69d.png"/>
+</div>
+
+Clicando com o botão direito em uma tabela e clicando em `View Data`, podemos ver a interface que mostra os dados que já foram inseridos em nosso banco. Além disso, clicando com o botão direito em qualquer lugar dessa interface, irá aparecer uma janela e lá você pode ir em `edit` que irá mostrar várias opções como adicionar um novo dado, remover um dado, etc.
+
+<div align="center">
+	
+<img height="230em" src="https://user-images.githubusercontent.com/87392633/150794964-5c6140c1-f417-4d01-8948-4ba470be8345.png"/>
+</div>
+
+Outra coisa importante é que os comandos que nós executamos no console, será referenciado a um banco de dados específico. Nós definimos qual é esse banco de dados no botão <img height="30em" src="https://user-images.githubusercontent.com/87392633/150796516-a0e5afa2-4a3d-415d-ad96-fe415f450b15.png"/> na barra de cima do dbeaver. Clicando nesse botão, irá abrir uma janela onde você escolherá qual banco você quer e clicará em public na outra coluna.
+
+<div align="center">
+	
+<img height="220em" src="https://user-images.githubusercontent.com/87392633/150796930-a6bfe227-c0cf-4266-935c-20f529507cca.png"/>
+</div>
 
 <div align="center" id='maven'/> 
 
