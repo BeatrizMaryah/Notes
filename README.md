@@ -1112,9 +1112,6 @@ Lembre-se, agregação ou composição não é um estado fixo para as mesmas coi
 * [Comandos DDL e DML](#ddl-dml)
 * [Constraints](#constraints)
 * [Comandos DQL (select)](#select) 🚧
-* [Funções de Agregação](#funcoes-agregacao) 🚧
-* [Subconsultas](#subconsultas) 🚧
-* [Join](#join) 🚧
 * [Sequences](#sequences) 🚧
 * [comandos PL/SQL (Procedures e funcions)](#procedures-functions) 🚧
 
@@ -1391,6 +1388,27 @@ create table endereco (
 );
 ```
 
+<div id="select">
+	
+#### 💻 Comandos DQL (SELECT)
+</div>
+
+Usamos o comando SELECT para recuperarmos dados inseridos em nossas tabelas. Ele é um dos comandos mais complexos do banco de dados, pois tem muitas cláusulas que podem fazer uma consulta extremamente flexível. 
+
+##### 🔎 Sumário do Select
+* [Distinct](#distinct) 🚧
+* [Order By](#order-by) 🚧
+* [Fetch ou Limit](#fetch) 🚧
+* [Where](#where) 🚧
+* [Like](#having) 🚧
+* [Between](#between) 🚧
+* [Group By](#group-by) 🚧
+* [Having](#having) 🚧
+* [Funções de Agregação](#funcoes-agregacao) 🚧
+* [Subconsultas](#subconsultas) 🚧
+* [Join](#join) 🚧
+* [Union, Intersect e Except](#join) 🚧
+
 <div align="center" id='maven'/> 
 
 ## Maven 🚧
@@ -1482,5 +1500,5 @@ create table endereco (
 * Banco de dados: [1](https://www.w3schools.com/sql/sql_constraints.asp)
 * Tipos de dados (Banco de dados): [1](https://www.devmedia.com.br/tipos-de-dados-no-postgresql-e-sql-server/23362)
 * Constrains (Banco de dados): [1](http://www.bosontreinamentos.com.br/postgresql-banco-dados/constraints-no-postgresql-restricoes/), [2](http://www.bosontreinamentos.com.br/bancos-de-dados/restricoes-de-chave-estrangeira-on-delete-cascade-e-outras/#:~:text=ON%20DELETE%20CASCADE%20%E2%80%93%20Uma%20opera%C3%A7%C3%A3o,outra%20tabela%20%C3%A9%20automaticamente%20exclu%C3%ADdo.)
-* Funções de Agregação: [1](https://www.devmedia.com.br/sql-funcoes-de-agregacao/38463)
+* Select: [1](https://www.postgresqltutorial.com/postgresql-select/), [2](https://www.devmedia.com.br/sql-funcoes-de-agregacao/38463), [3](https://qastack.com.br/programming/905379/what-is-the-difference-between-join-and-union)
 * GitHub: [1](https://www.youtube.com/watch?v=UBAX-13g8OM)
