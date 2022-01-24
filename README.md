@@ -1110,7 +1110,7 @@ Lembre-se, agregação ou composição não é um estado fixo para as mesmas coi
 * [Instalação PostgreSQL e Dbeaver](#download-postgresql-dbeaver) 🚧
 * [Tipos de dados](#tipos-de-dados-banco)
 * [Comandos DDL e DML](#ddl-dml)
-* [Constraints](#constraints) 🚧
+* [Constraints](#constraints)
 * [Comandos DQL (select)](#select) 🚧
 * [Funções de Agregação](#funcoes-agregacao) 🚧
 * [Subconsultas](#subconsultas) 🚧
@@ -1132,11 +1132,11 @@ Um banco de dados possui **coerência lógica** entre dados e significados. De n
 
 Os dados do nosso banco são organizados em **Tabelas**. Elas são organizadas com linhas e colunas, onde as **colunas** da tabela são um **tipo** de informação específica, como se fosse um atributo de uma classe. As linhas de uma tabela vão ser o **valor atribuído** aquele respectibo atributo, sendo o valor respectivo daquela entidade. As convenções para a criação de um nome de uma tabela são:
 
-* Deve começar com uma letra 
-* Pode ter de 1 a 30 caracteres 
-* Deve conter somente A-Z, a-z, 0-9, _, $ e # 
-* Não deve duplicar o nome de outro objeto (dois objetos não podem ter nomes iguais) 
-* Não deve usar palavra registrada (palavra reservada) 
+* Deve começar com uma letra; 
+* Pode ter de 1 a 30 caracteres; 
+* Deve conter somente A-Z, a-z, 0-9, _, $ e #;
+* Não deve duplicar o nome de outro objeto (dois objetos não podem ter nomes iguais); 
+* Não deve usar palavra registrada (palavra reservada).
 
 <div align="center">
 	
@@ -1150,38 +1150,38 @@ Os dados do nosso banco são organizados em **Tabelas**. Elas são organizadas c
 
 ##### Numeros Inteiros
 
-* **smallint** | 2 bytes | -32768 to +32767
-* **integer** | 4 bytes | -2147483648 to +2147483647
-* **bigint** | 8 bytes | -9223372036854775808 to 9223372036854775807
+* **smallint** | 2 bytes | -32768 até +32767;
+* **integer** | 4 bytes | -2147483648 até +2147483647;
+* **bigint** | 8 bytes | -9223372036854775808 até 9223372036854775807.
 
 ##### Numeros Fracionados (com vírgula)
 
-* **decimal** | variable | no limit
-* **numeric** | variable | no limit
-* **real** | 4 bytes | 6 decimal digits precision
-* **double precision** | 8 bytes | 15 decimal digits precision
+* **decimal** | variable | sem limite;
+* **numeric** | variable | sem limite;
+* **real** | 4 bytes | 6 digitos decimais de precisão;
+* **double precision** | 8 bytes | 15 digitos decimais de precisão.
 
 ##### Caracteres
 
-* **caracter varying(n)**: comprimento variável com limite
-* **varchar(n)**: comprimento variável com limite
-* **character(n)**: comprimento fixo, completado com espaços em branco
-* **char(n)**: comprimento fixo, completado com espaços em branco
-* **text**: comprimento variável não limitado
+* **caracter varying(n)**: comprimento variável com limite;
+* **varchar(n)**: comprimento variável com limite;
+* **character(n)**: comprimento fixo, completado com espaços em branco;
+* **char(n)**: comprimento fixo, completado com espaços em branco;
+* **text**: comprimento variável não limitado.
 
 ##### Data e Hora
 
-* **Timestamp without Time Zone**: tanto data quanto hora
-* **Timestamp with Time Zone**: tanto data quanto hora
-* **Interval**: intervalos de tempo
-* **Date**: somente datas
-* **Time without Time Zone**: somente a hora do dia
-* **Time with Time Zone**: somente a hora do dia
+* **Timestamp without Time Zone**: tanto data quanto hora;
+* **Timestamp with Time Zone**: tanto data quanto hora;
+* **Interval**: intervalos de tempo;
+* **Date**: somente datas;
+* **Time without Time Zone**: somente a hora do dia;
+* **Time with Time Zone**: somente a hora do dia.
 
 ##### Boolean
 
-* **Verdadeiro**: ‘t’, ‘true’, ‘y’, ‘yes’, ‘1’
-* **Falso**: ‘f’, ‘false’, ‘n’, ‘no’, ‘0’
+* **Verdadeiro**: ‘t’, ‘true’, ‘y’, ‘yes’, ‘1’;
+* **Falso**: ‘f’, ‘false’, ‘n’, ‘no’, ‘0’.
 
 <div id="ddl-dml">
 	
@@ -1310,7 +1310,7 @@ Também é possível definir grupos de colunas para ser a chave primária, poré
 
 ##### FOREIGN KEY
 
-Uma FOREIGN KEY (Chave Estrangeira) em uma tabela é um campo que aponta para uma chave primária em outra tabela. Desta forma, é usada para criar os relacionamentos entre as tabelas no banco de dados, como dito anteriormente. Ela Especifica que os valores em uma coluna devem corresponder aos valores que estão registrados em uma coluna de outra tabela. Dessa forma é mantida a integridade referencial entre as tabelas relacionadas.
+Uma FOREIGN KEY (Chave Estrangeira) em uma tabela é um campo que aponta para uma chave primária em outra tabela. Desta forma, é usada para criar os relacionamentos entre as tabelas no banco de dados, como dito anteriormente. Ela Especifica que os valores em uma coluna devem corresponder aos valores que estão registrados em uma coluna de outra tabela. Dessa forma é mantida a integridade referencial entre as tabelas relacionadas. O tipo de dado da chave estrangeira deve ser exatamente o mesmo que a chave primária do que queremos referenciar. 
 
 Pense que nossos produtos são de uma determinada loja, que também será uma tabela no nosso banco de dados. Nesse cenário, teremos uma coluna em nossa tabela de produto que será uma chave estrangeira que irá referenciar a chave primária da loja. 
 
@@ -1342,6 +1342,26 @@ insert into produto values
 ```
 
 ##### ON DELETE CASCADE e ON UPDATE CASCADE (FOREIGN KEY)
+
+Você já pensou o que acontece com um produto se a loja que ele está relacionado é apagada ou modificada? É para isso que usamos  o `ON DELETE` ou o `ON UPDATE`. 
+
+Para evitar que seja impossível **excluir** a referida loja até que todos os produtos cadastrados que a tenham como referência tenham sido excluídos também, podemos usar algumas estratégias ao criar a chave estrangeira com o `ON DELETE`:
+
+* `ON DELETE CASCADE`: fará com que quando ocorrer uma operação de exclusão em uma tabela referenciada, os produtos que tem as chaves estrangeiras relacionadas com aquela loja serão **apagados**;
+* `ON DELETE SET NULL`: fará com que quando ocorrer uma operação de exclusão em uma tabela referenciada, as chaves estrangeiras relacionadas são definidas com valor **NULL**. Para isso, a foreign key não pode ser NOT NULL;
+* `ON DELETE SET DEFAULT`: fará com que quando ocorrer uma operação de exclusão em uma tabela referenciada, as chaves estrangeiras relacionadas em outras tabelas são definidas com um valor **padrão** (default).
+
+Para evitar que quando fizermos alguma **alteração** na loja, precisemos mudar todas as chaves estrangeiras dos produtos relacionados manualmente, usamos algumas estratégias ao criar a chave estrangeira com o `ON UPDATE`.
+
+* `ON UPDATE CASCADE`: fará com que quando ocorre uma operação de atualização em uma tabela referenciada, essa atualização se propaga para as chaves estrangeiras correspondentes. Ou seja, ao modificar um registro em uma tabela, um registro relacionado em uma coluna de chave estrangeira em outra tabela tem seu valor **automaticamente atualizado**;
+* `ON UPDATE SET NULL`: fará com que quando uma operação de atualização em uma tabela referenciada é realizada, as chaves estrangeiras relacionadas são definidas com valor **NULL**. Para isso a foreign key não pode ser NOT NULL;
+* `ON UPDATE SET DEFAULT`: fará com que quando ocorrer uma operação de atualização em uma tabela referenciada, as chaves estrangeiras relacionadas em outras tabelas serão definidas com um **valor padrão** (default).
+
+Por exemplo: 
+
+```
+   id_loja bigint REFERENCES loja(id) ON DELETE SET NULL ON UPDATE CASCADE
+```
 
 ##### CHECK
 
@@ -1461,6 +1481,6 @@ create table endereco (
 * Estruturas de dados: [1](http://www2.ouropreto.ifmg.edu.br/tp/slides/aula-04-listas-filas-e-pilhas), [2](https://www.letscode.com.br/blog/estruturas-de-dados-em-java), [3](https://www.youtube.com/playlist?list=PLGxZ4Rq3BOBrgumpzz-l8kFMw2DLERdxi)
 * Banco de dados: [1](https://www.w3schools.com/sql/sql_constraints.asp)
 * Tipos de dados (Banco de dados): [1](https://www.devmedia.com.br/tipos-de-dados-no-postgresql-e-sql-server/23362)
-* Constrains (Banco de dados): [1](http://www.bosontreinamentos.com.br/postgresql-banco-dados/constraints-no-postgresql-restricoes/)
+* Constrains (Banco de dados): [1](http://www.bosontreinamentos.com.br/postgresql-banco-dados/constraints-no-postgresql-restricoes/), [2](http://www.bosontreinamentos.com.br/bancos-de-dados/restricoes-de-chave-estrangeira-on-delete-cascade-e-outras/#:~:text=ON%20DELETE%20CASCADE%20%E2%80%93%20Uma%20opera%C3%A7%C3%A3o,outra%20tabela%20%C3%A9%20automaticamente%20exclu%C3%ADdo.)
 * Funções de Agregação: [1](https://www.devmedia.com.br/sql-funcoes-de-agregacao/38463)
 * GitHub: [1](https://www.youtube.com/watch?v=UBAX-13g8OM)
