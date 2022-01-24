@@ -1310,7 +1310,7 @@ Também é possível definir grupos de colunas para ser a chave primária, poré
 
 ##### FOREIGN KEY
 
-Uma FOREIGN KEY (Chave Estrangeira) em uma tabela é um campo que aponta para uma chave primária em outra tabela. Desta forma, é usada para criar os relacionamentos entre as tabelas no banco de dados, como dito anteriormente. Ela Especifica que os valores em uma coluna devem corresponder aos valores que estão registrados em uma coluna de outra tabela. Dessa forma é mantida a integridade referencial entre as tabelas relacionadas. O tipo de dado da chave estrangeira deve ser exatamente o mesmo que a chave primária do que queremos referenciar. 
+Uma `FOREIGN KEY` (Chave Estrangeira) em uma tabela é um campo que aponta para uma chave primária em outra tabela. Desta forma, é usada para criar os relacionamentos entre as tabelas no banco de dados, como dito anteriormente. Ela Especifica que os valores em uma coluna devem corresponder aos valores que estão registrados em uma coluna de outra tabela. Dessa forma é mantida a integridade referencial entre as tabelas relacionadas. O tipo de dado da chave estrangeira deve ser exatamente o mesmo que a chave primária do que queremos referenciar. 
 
 Pense que nossos produtos são de uma determinada loja, que também será uma tabela no nosso banco de dados. Nesse cenário, teremos uma coluna em nossa tabela de produto que será uma chave estrangeira que irá referenciar a chave primária da loja. 
 
