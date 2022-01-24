@@ -1107,7 +1107,7 @@ Lembre-se, agregação ou composição não é um estado fixo para as mesmas coi
 </div>
 
 #### 🔎 Mini sumário
-* [Instalação PostgreSQL e Dbeaver](#download-postgresql-dbeaver)
+* [Instalação PostgreSQL e Dbeaver](#download-postgresql-dbeaver) 🚧
 * [Tipos de dados](#tipos-de-dados-banco)
 * [Comandos DDL e DML](#ddl-dml)
 * [Constraints](#constraints) 🚧
@@ -1345,7 +1345,31 @@ insert into produto values
 
 ##### CHECK
 
+A constraint `CHECK` permite especificar se o valor em uma dada coluna deve satisfazer a uma expressão lógica (booleana), ou seja, que pode retornar um valor verdadeiro ou um valor falso. Ele age como se fosse um IF antes de alocar o valor, ou seja, você define uma **condição** para que o valor seja válido. Pense no exemplo que demos de produto, onde temos o seu preço. Como dito anteriormente, o preço não poderá ser negativo certo? Para definir isso podemos usar a constraints `CHECK`.
+
+```
+create table produto (
+   codigo bigint PRIMARY KEY,
+   nome varchar(80) NOT NULL,
+   preco decimal CHECK (preco >= 0),
+   id_loja bigint REFERENCES loja(id)
+);
+```
+
+Desta forma, se tentarmos inserir um preço com valor abaixo de 0 retornará falso, e o registro não será inserido.
+
 ##### DEFAULT
+
+A constraint `DEFAULT` é usada para definir valores padrões caso não seja inserido nenhum valor em um campo. Por exemplo, pense que no endereço temos o campo país e se não preenchermos, ele irá definir como nosso valor padrão que definimos como Brasil. 
+
+```
+create table endereco (
+   nome text NOT NULL,
+   numero smallint NOT NULL,
+   pais varchar(30) DEFAULT 'Brasil',
+   UNIQUE(nome, numero)
+);
+```
 
 <div align="center" id='maven'/> 
 
