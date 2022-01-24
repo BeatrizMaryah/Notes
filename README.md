@@ -1110,7 +1110,7 @@ Lembre-se, agregação ou composição não é um estado fixo para as mesmas coi
 * [Instalação PostgreSQL e Dbeaver](#download-postgresql-dbeaver)
 * [Tipos de dados](#tipos-de-dados-banco)
 * [Comandos DDL e DML](#ddl-dml)
-* [Constrains](#constrains) 🚧
+* [Constraints](#constraints) 🚧
 * [Comandos DQL (select)](#select) 🚧
 * [Funções de Agregação](#funcoes-agregacao) 🚧
 * [Subconsultas](#subconsultas) 🚧
@@ -1165,8 +1165,8 @@ Os dados do nosso banco são organizados em **Tabelas**. Elas são organizadas c
 
 * **caracter varying(n)**: comprimento variável com limite
 * **varchar(n)**: comprimento variável com limite
-* **character(n)**: comprimento fixo, completado com bracos
-* **char(n)**: comprimento fixo, completado com bracos
+* **character(n)**: comprimento fixo, completado com espaços em branco
+* **char(n)**: comprimento fixo, completado com espaços em branco
 * **text**: comprimento variável não limitado
 
 ##### Data e Hora
@@ -1257,6 +1257,96 @@ Outra coisa importante é que os comandos que nós executamos no console, será 
 <img height="220em" src="https://user-images.githubusercontent.com/87392633/150796930-a6bfe227-c0cf-4266-935c-20f529507cca.png"/>
 </div>
 
+<div id="constraints">
+	
+#### 🚫 Constraints
+</div>
+
+São as **restrições** dos nossos campos/colunas. Pense no cenário onde temos uma tabela de produto com as colunas nome e preço. Não podemos ter um preço negativo certo e nem um produto sem nome certo? Por isso usamos as cosntrains. Com elas, você consegue ter um **controle** muito maior dos dados em sua tabela. Se você tentar inserir um dado que não está de acordo com as restrições, retornará um **erro**.
+
+##### NOT NULL
+
+Impede que uma uma coluna a aceite valores **NULL (nulos)**. Ou seja, a constraint `NOT NULL` obriga um campo a sempre possuir um **valor** inserido. Deste modo, não é possível inserir ou atualizar um registro sem entrar com um dado neste campo.
+
+```
+create table produto (
+   nome varchar(80) NOT NULL
+);
+```
+
+##### UNIQUE
+
+A restrição `UNIQUE` assegura que os dados contidos em uma coluna ou grupo de colunas em uma tabela do banco de dados sejam **únicos**. Ou seja, pense que em nossa coluna de produto teremos um código de produto único, que irá identificar esse produto. Nesse cenário, não podemos ter dois produtos com o mesmo código e por isso usamos essa constraints.
+
+```
+create table produto (
+   codigo bigint UNIQUE,
+   nome varchar(80) NOT NULL,
+);
+```
+
+Também é possível fazer com que um **grupo** de colunas represente um valor único. Pense no caso de um endereço, não podemos ter duas casas na mesma rua e com o mesmo número certo? Porém, é possível termos em nosso banco casas em uma mesma rua e casas com o mesmo número, considerando essas informações separadas. Quando juntamos a rua e o número, deve ser uma informação única e para isso usamos o UNIQUE no final da tabela referenciando as colunas que queremos que sejam únicas juntas.
+
+```
+create table endereco (
+   nome text NOT NULL,
+   numero smallint NOT NULL,
+   UNIQUE(nome, numero)
+);
+```
+
+##### PRIMARY KEY
+
+A constraints `PRIMARY KEY` define qual atributo será a **chave primária** da tabela. Ou seja, é uma constraints que serve para **identificar** os registros que geralmente será um número inteiro e será referenciado como ID. O campo que será uma chave primária deve ser obrigatoriamente UNIQUE e NOT NULL. Ela será usada para fazermos as **relações** no nosso banco de dados, junto com as `FOREIGN KEYS`. Pense no exemplo anterior que utilizamos para explicar o UNIQUE onde o código era o identificador do nosso produto. Agora vamos transformar esse código na nossa chave primária, sendo a identificação de fato.
+
+```
+create table produto (
+   codigo bigint PRIMARY KEY,
+   nome varchar(80) NOT NULL,
+);
+```
+
+Também é possível definir grupos de colunas para ser a chave primária, porém não é muito utilizado.
+
+##### FOREIGN KEY
+
+Uma FOREIGN KEY (Chave Estrangeira) em uma tabela é um campo que aponta para uma chave primária em outra tabela. Desta forma, é usada para criar os relacionamentos entre as tabelas no banco de dados, como dito anteriormente. Ela Especifica que os valores em uma coluna devem corresponder aos valores que estão registrados em uma coluna de outra tabela. Dessa forma é mantida a integridade referencial entre as tabelas relacionadas.
+
+Pense que nossos produtos são de uma determinada loja, que também será uma tabela no nosso banco de dados. Nesse cenário, teremos uma coluna em nossa tabela de produto que será uma chave estrangeira que irá referenciar a chave primária da loja. 
+
+```
+create table loja (
+   id bigint PRIMARY KEY,
+   nome text NOT NULL UNIQUE,
+   cnpj varchar(19) NOT NULL UNIQUE
+);
+
+create table produto (
+   codigo bigint PRIMARY KEY,
+   nome varchar(80) NOT NULL,
+   id_loja bigint REFERENCES loja(id)
+);
+```
+
+Agora, quando inserirmos um novo produto, teremos que referenciar qual é a loja que aquele produto pertence. Por exemplo:
+
+```
+insert into loja values 
+(1, 'Primeira loja', '22.462.475/0001-32'), 
+(2, 'Segunda loja', '57.032.227/0001-36');
+
+insert into produto values 
+(1, 'Exemplo de um produto', 1),
+(2, 'Exemplo de outro produto', 2),
+(3, 'Outro exemplo de produto', 1);
+```
+
+##### ON DELETE CASCADE e ON UPDATE CASCADE (FOREIGN KEY)
+
+##### CHECK
+
+##### DEFAULT
+
 <div align="center" id='maven'/> 
 
 ## Maven 🚧
@@ -1345,6 +1435,8 @@ Outra coisa importante é que os comandos que nós executamos no console, será 
 * Interface: [1](https://www.javaprogressivo.net/2012/10/Interface-em-Java-implements-O-que-e-para-que-serve-como-funciona.html)
 * Associação, Agregação e Composição: [1](https://qastack.com.br/programming/885937/what-is-the-difference-between-association-aggregation-and-composition), [2](https://pt.slideshare.net/armandodaniel777/java-orientao-a-objetos-associacao-composicao-agregacao), [3](https://techvidvan.com/tutorials/java-association/), [4](https://www.codeproject.com/Articles/22769/Introduction-to-Object-Oriented-Programming-Concep#Composition), [5](https://www.guj.com.br/t/composicao-vs-agregacao/90068)
 * Estruturas de dados: [1](http://www2.ouropreto.ifmg.edu.br/tp/slides/aula-04-listas-filas-e-pilhas), [2](https://www.letscode.com.br/blog/estruturas-de-dados-em-java), [3](https://www.youtube.com/playlist?list=PLGxZ4Rq3BOBrgumpzz-l8kFMw2DLERdxi)
+* Banco de dados: [1](https://www.w3schools.com/sql/sql_constraints.asp)
 * Tipos de dados (Banco de dados): [1](https://www.devmedia.com.br/tipos-de-dados-no-postgresql-e-sql-server/23362)
+* Constrains (Banco de dados): [1](http://www.bosontreinamentos.com.br/postgresql-banco-dados/constraints-no-postgresql-restricoes/)
 * Funções de Agregação: [1](https://www.devmedia.com.br/sql-funcoes-de-agregacao/38463)
 * GitHub: [1](https://www.youtube.com/watch?v=UBAX-13g8OM)
