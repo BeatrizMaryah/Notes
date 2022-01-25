@@ -1401,8 +1401,7 @@ O comando mais básico é `select * from [tabela];` que irá retornar todos os d
 * [Distinct](#distinct)
 * [Order By](#order-by)
 * [Limit e Fetch](#limit-fetch)
-* [Where (Like, Between, And, Or e Not)](#where) 🚧
-* [Between](#between) 🚧
+* [Where (Like, Between, Is Null, And, Or e Not)](#where) 🚧
 * [Group By](#group-by) 🚧
 * [Having](#having) 🚧
 * [Funções de Agregação](#funcoes-agregacao) 🚧
@@ -1468,6 +1467,97 @@ Também é possível pular as linhas antes de limitá-las, também usando o OFFS
 ```
 select [coluna] from [tabela] OFFSET [quantidade-linhas-para-pular] ROWS FETCH FIRST [quantidade-linhas-para-limitar] ROW ONLY;
 ```
+
+<div id="where">
+	
+#### 💻 Where
+</div>
+
+A cláusula WHERE serve para definirmos uma **condição** para a nossa consulta. Ele vai retornar apenas as linhas "onde" determinada condição for verdadeira. Pode ser apenas uma condição, ou uma combinação de condições usando `AND` ou `OR`, com o mesmo papel que o **E(&&)** e **OU(||)** do java. O where não é só usado no select, ele também aparece no `update` e no `delete` para **filtrar** o dado a ser alterado ou deletado. Ele deve ser usado com os operadores relacionais, de igualdade e lógicos do banco. Sendo eles:
+
+* = - Igual. Retorna os elementos que são iguais a determinada informação. Retornar os produtos com o preço igual a 10, por exemplo.
+* > - Maior que. Retorna os elementos que determinada informação for maior que outra. Retornar os produtos com preço maior que 10, por exemplo.
+* < - Menor que. Retorna os elementos que determinada informação for menor que outra. Retornar os produtos com preço menor que 10, por exemplo.
+* >= - Maior ou igual a. Retorna os elementos que determinada informação for maior ou igual a outra. Retornar os produtos com preço maior ou igual a 10, por exemplo.
+* <= - Menor ou igual a. Retorna os elementos que determinada informação for menor ou igual a outra. Retornar os produtos com preço menor ou igual a 10, por exemplo.
+* <> ou != - Diferente de. Retorna os elementos que determinada informação for diferente de outra. Retornar os produtos que o preço é diferente de 10, por exemplo.
+
+Sendo assim, sua sintaxe é:
+
+```
+select [coluna] from [tabela] WHERE [coluna] [operador] [valor];
+```
+
+Trazendo isso para o exemplo de produto, retornando os elementos com preço menor e igual a 10:
+
+```
+select (nome, preco) from produto WHERE preco <= 10;
+```
+
+Além disso, como dito anteriormente, podemos encadear mais de uma condição com os comandos AND e OR. Por exemplo:
+
+```
+select (nome, preco) from produto WHERE preco <= 10 AND id_loja = 2;
+```
+
+Nesse caso, ele irá retornar os produtos com preço menor e igual a 10 e que são da loja de id 2. Além disso, o where tem mais alguns operadores, veja um pouco mais deles a seguir.
+
+##### IN
+
+O `IN` vai retornar verdadeiro se algum valor bater (for igual) com um valor de uma **lista**. Ele é muito usado com as subconsultas, porém iremos ver isso depois. Sua sintaxe é:
+
+```
+select [coluna] from [tabela] WHERE [coluna] IN [lista];
+```
+
+Por exemplo, veja como seria um select na tabela de aluno: 
+
+```
+select nome from aluno WHERE nome IN ('Maria', 'João', 'Leonardo');
+```
+
+##### LIKE
+
+Pense no seguinte cenário: você quer procurar um nome no seu banco de dados, mas você não lembra exatamente como ele é. Você só lembra que ele começa com **"Th"**. Se você procurasse com um where e um operador de igualdade, você não iria encontrar pois retornaria apenas nomes que são exatamente "Th". Ai que entra o `LIKE`, que basicamente serve para compararmos se um dado **começa** ou **termina** com alguma informação e até se essa informação está localizada no **"meio"** de outra.
+
+```
+select [coluna] from [tabela] WHERE [coluna] LIKE [texto];
+```
+
+O LIKE funciona de duas formas, ele funciona tanto com o `%` quando o `_`. A diferença entre eles está nos caracteres em si. A porcentagem `%` não limita os caracteres da pesquisa e retornara independente da quantidade de letras. Trazendo para o exemplo do nome com "Th", se você colocá-lo após `(Th%)` ele irá trazer todas as informações que começam com "Th", independente da quantidade de letras a seguir. 
+
+```
+select nome from aluno WHERE nome LIKE `Th%`;
+```
+
+Nesse caso, irá retornar todos os nomes que começarem com Th no nosso banco, como Theo, Thiago, Thaís, Thomas e Thatianne por exemplo. Percebe-se que o número de caracteres após o "Th" varia. Utilizando o underline `_` ele retorna os nomes com o caracteres limitados a quantidade de underlines `_` que colocamos. Por exemplo, se quisermos apenas os nomes que começem com "Th" e que tem 4 letras a seguir, colocamos 4 underlines `_`.
+
+```
+select nome from aluno WHERE nome LIKE `Th____`;
+```
+
+Nesse caso, irá retornar apenas os nomes Thiago e Thomas, que possuem 4 letras após o "Th". Além disso, como dito anteriormente, não é só possível buscar dados que começem com determinada coisa, mas que terminam e ate buscar informações que estão no meio. Segue a mesma regra dos caracteres para os dois, por exemplo:
+
+```
+select nome from aluno WHERE nome LIKE '%th';  //Retorna nomes que terminam com th, como Smith, Judith, Lilith e etc
+select nome from aluno where nome LIKE '%th%';  //Retorna nomes com th no meio, como Anthony, Jonathan, Nathan, Arthur e etc
+
+select nome from aluno where nome LIKE '___th';  //Retorna nomes que terminam com th, porém com apenas 3 caracteres antes, como Smith
+select nome from aluno where nome LIKE '__th__';  //Retorna nomes com th no meio, porém com apenas 2 caracteres antes e depois, como Nathan e Arthur
+
+//Também podemos msiturar os dois, como:
+select nome from aluno where nome LIKE '%th__';  //Retornará nomes com th no meio, porém com apenas 2 caracteres depois e caracteres ilimitados antes. Nesse caso poderia retornar tanto Nathan e Arthur quanto Jonathan.
+```
+
+Além disso, também temos como negar com o NOT `LIKE`. Ou seja, ele irá retornar nomes que não possuem determinada informação e segue a mesma regra com a porcentagem e o underline. Por exemplo:
+
+```
+select nome from aluno where nome NOT LIKE 'Th%';  //Retornará todos os nomes que não começam com Th.
+```
+
+No postgreSQL também temos o `ILIKE` que serve para tirar o case-sensitive da consulta. Ou seja, irá pesquisar independente se a letra estiver maiúscula ou minúscula.
+
+##### BETWEEN
 
 <div align="center" id='maven'/> 
 
