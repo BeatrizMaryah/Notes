@@ -1475,12 +1475,12 @@ select [coluna] from [tabela] OFFSET [quantidade-linhas-para-pular] ROWS FETCH F
 
 A cláusula WHERE serve para definirmos uma **condição** para a nossa consulta. Ele vai retornar apenas as linhas "onde" determinada condição for verdadeira. Pode ser apenas uma condição, ou uma combinação de condições usando `AND` ou `OR`, com o mesmo papel que o **E(&&)** e **OU(||)** do java. O where não é só usado no select, ele também aparece no `update` e no `delete` para **filtrar** o dado a ser alterado ou deletado. Ele deve ser usado com os operadores relacionais, de igualdade e lógicos do banco. Sendo eles:
 
-* = - Igual. Retorna os elementos que são iguais a determinada informação. Retornar os produtos com o preço igual a 10, por exemplo.
-* > - Maior que. Retorna os elementos que determinada informação for maior que outra. Retornar os produtos com preço maior que 10, por exemplo.
-* < - Menor que. Retorna os elementos que determinada informação for menor que outra. Retornar os produtos com preço menor que 10, por exemplo.
-* >= - Maior ou igual a. Retorna os elementos que determinada informação for maior ou igual a outra. Retornar os produtos com preço maior ou igual a 10, por exemplo.
-* <= - Menor ou igual a. Retorna os elementos que determinada informação for menor ou igual a outra. Retornar os produtos com preço menor ou igual a 10, por exemplo.
-* <> ou != - Diferente de. Retorna os elementos que determinada informação for diferente de outra. Retornar os produtos que o preço é diferente de 10, por exemplo.
+* **=** - Igual. Retorna os elementos que são iguais a determinada informação. Retornar os produtos com o preço igual a 10, por exemplo.
+* **>** - Maior que. Retorna os elementos que determinada informação for maior que outra. Retornar os produtos com preço maior que 10, por exemplo.
+* **<** - Menor que. Retorna os elementos que determinada informação for menor que outra. Retornar os produtos com preço menor que 10, por exemplo.
+* **>=** - Maior ou igual a. Retorna os elementos que determinada informação for maior ou igual a outra. Retornar os produtos com preço maior ou igual a 10, por exemplo.
+* **<=** - Menor ou igual a. Retorna os elementos que determinada informação for menor ou igual a outra. Retornar os produtos com preço menor ou igual a 10, por exemplo.
+* **<> ou !=** - Diferente de. Retorna os elementos que determinada informação for diferente de outra. Retornar os produtos que o preço é diferente de 10, por exemplo.
 
 Sendo assim, sua sintaxe é:
 
