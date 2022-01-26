@@ -1549,15 +1549,27 @@ select nome from aluno where nome LIKE '__th__';  //Retorna nomes com th no meio
 select nome from aluno where nome LIKE '%th__';  //Retornará nomes com th no meio, porém com apenas 2 caracteres depois e caracteres ilimitados antes. Nesse caso poderia retornar tanto Nathan e Arthur quanto Jonathan.
 ```
 
-Além disso, também temos como negar com o NOT `LIKE`. Ou seja, ele irá retornar nomes que não possuem determinada informação e segue a mesma regra com a porcentagem e o underline. Por exemplo:
+Além disso, também temos como **negar** com o `NOT LIKE`. Ou seja, ele irá retornar nomes que **não** possuem determinada informação e segue a mesma regra com a porcentagem e o underline. Por exemplo:
 
 ```
 select nome from aluno where nome NOT LIKE 'Th%';  //Retornará todos os nomes que não começam com Th.
 ```
 
-No postgreSQL também temos o `ILIKE` que serve para tirar o case-sensitive da consulta. Ou seja, irá pesquisar independente se a letra estiver maiúscula ou minúscula.
+No postgreSQL também temos o `ILIKE` que serve para tirar o case-sensitive da consulta. Ou seja, irá pesquisar independente se a letra estiver **maiúscula ou minúscula**.
 
 ##### BETWEEN
+
+Nós usamos o `BETWEEN` para comparar se algo está entre um intervalo de valores. Por exemplo, podemos retornar as colunas em que o preço está entre 10 e 50 reais. Sua sintaxe é:
+
+```
+select [coluna] from [tabela] WHERE [coluna] BETWEEN [menor-valor] AND [maior-valor];
+```
+
+O BETWEEN pode ser reescrito com os operadores de **maior que (>=)** e **menor que (<=)** e é basicamente um facilitador de mesmo uso. Também podemos pegar valores que **NÃO** estão em um intervalo de valores utilizando o `NOT BETWEEN`. Também é possível usar o between com datas, sendo assim um intervalo de tempo. Para isso precisa-se usar o formato **YYYY-MM-DD**, ou seja, ano, mês e dia. Por exemplo, para retornar todos os produtos cadastrados entre 29/12/2021 e 20/01/2022 ficará assim:
+
+```
+select data_cadastro from produto WHERE data_cadastro BETWEEN 2021-12-29 AND 2022-01-20;
+```
 
 <div align="center" id='maven'/> 
 
