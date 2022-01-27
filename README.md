@@ -1732,6 +1732,34 @@ Além disso, também temos:
 * **Subconsultas correlacionadas:** fazem referência a uma ou mais colunas na instrução SQL externa;
 * **Subconsultas aninhadas:** são feitas dentro de outra subconsulta (podemos aninhar até 255 subconsultas).
 
+<div id="join">
+	
+#### 💻 Join
+</div>
+
+Um join(junção) é usado para consultar dadps de uma ou mais tabelas baseado em valores em comum entre as tabelas relacionadas.  Quando for usar o join sempre terá que ser usado com uma **condição de junção**. Uma condição de junção é quando uma linha está ligada a um registro de outra tabela. É a informação é usada para juntar essas tabelas. As colunas mais comuns são a de **chave primária (primary key)** da **primeira** tabela e **chave estrangeira (foreign key)** na **segunda** tabela.
+
+Quando o join não tem uma condição de junção ele sempre gerará um **produto cartesiano**, que se baseia em uma combinação de todos os elementos de uma tabela com os elementos de outra tabela. Um produto cartesiano é formado quando: uma condição de junção estiver omitida, quando a condição de junção estiver inválida ou quando todas as linhas na primeiras tabelas estão unidas a todas as linhas da segunda tabela. O PostgreSQL suporta inner join, left join, right join, full outer join, cross join, natural join, e um tipo especial de join chamado self-join.
+
+A maneira mais simples de fazer um join é com o próprio WHERE. Onde nós pesquisamos diretamente entre duas tabelas e no WHERE onde vamos dizer para o banco de dados que ele deve nos trazer apenas os dados da tabela1 relacionados aos dados da tabela2 correspondentes. Sua sintaxe é:
+
+```
+SELECT tabela1.coluna, tabela2.coluna
+FROM  tabela1, tabela2
+WHERE tabela1.id_tabela1 = tabela2.id_tabela1;
+```
+
+É importante colocar a tabela.coluna que estamos referenciando, já que nesse caso, utilizamos mais de uma tabela no from. Considerando isso, podemos facilitar a leitura e a escrita do nosso select utilizando o **alias**. O alias é um apelido, um sinônimo, um pseudônimo que você da a uma tabela para referenciá-la de forma mais fácil. Sendo assim nosso exemplo ficaria assim:
+
+```
+SELECT t1.coluna, t2.coluna
+FROM  tabela1 t1, tabela2 t2
+WHERE t1.id_tabela1 = t2.id_tabela1;
+```
+
+No exemplo que fizemos até aqui listamos apenas as informações da tabela1 que estavam associadas as respectivas chaves tabela2. Este conceito de join é conhecido como **inner join.** Em um relacionamento desse tipo, somente serão listadas as linhas da tabela1 e da tabela2 correspondentes que existam em ambas as tabelas.
+
+
 <div align="center" id='maven'/> 
 
 ## Maven 🚧
