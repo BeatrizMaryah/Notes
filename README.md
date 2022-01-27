@@ -1401,7 +1401,7 @@ O comando mais básico é `select * from [tabela];` que irá retornar todos os d
 * [Distinct](#distinct)
 * [Order By](#order-by)
 * [Limit e Fetch](#limit-fetch)
-* [Where (Like, Between, Is Null, And, Or e Not)](#where) 🚧
+* [Where (In, Is Null, Like, Between, And, Or e Not)](#where)
 * [Group By](#group-by) 🚧
 * [Having](#having) 🚧
 * [Funções de Agregação](#funcoes-agregacao) 🚧
@@ -1516,6 +1516,20 @@ Por exemplo, veja como seria um select na tabela de aluno:
 select nome from aluno WHERE nome IN ('Maria', 'João', 'Leonardo');
 ```
 
+##### IS NULL
+
+O `IS NULL` retornará os dados onde determinado campo for nulo. Como NULL não é um valor, você não pode compará-lo com nenhum outro valor, como números ou strings. É importante que a coluna que esteja sendo consultada com o `IS NULL` não tenha a constraints `NOT NULL`! Sua sintaxe é:
+
+```
+select [coluna] from [tabela] WHERE [coluna] IS NULL;
+```
+
+Também é possível retornar os dados onde determinado campo NÃO for nulo, utilizando o `IS NOT NULL`. Por exemplo, pense no caso onde temos a tabela endereço e temos uma coluna de complemento, que pode ser nula. Porém, em uma determinada consulta só queremos retornar os dados que tem um complemento. Nesse caso faríamos a seguinte consulta:
+
+```
+select * from endereco WHERE complemento IS NOT NULL;
+```
+
 ##### LIKE
 
 Pense no seguinte cenário: você quer procurar um nome no seu banco de dados, mas você não lembra exatamente como ele é. Você só lembra que ele começa com **"Th"**. Se você procurasse com um where e um operador de igualdade, você não iria encontrar pois retornaria apenas nomes que são exatamente "Th". Ai que entra o `LIKE`, que basicamente serve para compararmos se um dado **começa** ou **termina** com alguma informação e até se essa informação está localizada no **"meio"** de outra.
@@ -1524,16 +1538,16 @@ Pense no seguinte cenário: você quer procurar um nome no seu banco de dados, m
 select [coluna] from [tabela] WHERE [coluna] LIKE [texto];
 ```
 
-O LIKE funciona de duas formas, ele funciona tanto com o `%` quando o `_`. A diferença entre eles está nos caracteres em si. A porcentagem `%` não limita os caracteres da pesquisa e retornara independente da quantidade de letras. Trazendo para o exemplo do nome com "Th", se você colocá-lo após `(Th%)` ele irá trazer todas as informações que começam com "Th", independente da quantidade de letras a seguir. 
+O LIKE funciona de duas formas, ele funciona tanto com o `%` quando o `_`. A diferença entre eles está nos caracteres em si. A porcentagem `%` não limita os caracteres da pesquisa e retornará independente da quantidade de letras. Trazendo para o exemplo do nome com "Th", se você colocá-lo após `(Th%)` ele irá trazer todas as informações que começam com "Th", independente da quantidade de letras a seguir. 
 
 ```
-select nome from aluno WHERE nome LIKE `Th%`;
+select nome from aluno WHERE nome LIKE 'Th%';
 ```
 
 Nesse caso, irá retornar todos os nomes que começarem com Th no nosso banco, como Theo, Thiago, Thaís, Thomas e Thatianne por exemplo. Percebe-se que o número de caracteres após o "Th" varia. Utilizando o underline `_` ele retorna os nomes com o caracteres limitados a quantidade de underlines `_` que colocamos. Por exemplo, se quisermos apenas os nomes que começem com "Th" e que tem 4 letras a seguir, colocamos 4 underlines `_`.
 
 ```
-select nome from aluno WHERE nome LIKE `Th____`;
+select nome from aluno WHERE nome LIKE 'Th____';
 ```
 
 Nesse caso, irá retornar apenas os nomes Thiago e Thomas, que possuem 4 letras após o "Th". Além disso, como dito anteriormente, não é só possível buscar dados que começem com determinada coisa, mas que terminam e ate buscar informações que estão no meio. Segue a mesma regra dos caracteres para os dois, por exemplo:
@@ -1559,13 +1573,19 @@ No postgreSQL também temos o `ILIKE` que serve para tirar o case-sensitive da c
 
 ##### BETWEEN
 
-Nós usamos o `BETWEEN` para comparar se algo está entre um intervalo de valores. Por exemplo, podemos retornar as colunas em que o preço está entre 10 e 50 reais. Sua sintaxe é:
+Nós usamos o `BETWEEN` para comparar se algo está entre um intervalo de valores. O BETWEEN pode ser reescrito com os operadores de **maior que (>=)** e **menor que (<=)** e é basicamente um facilitador de mesmo uso. Sua sintaxe é:
 
 ```
 select [coluna] from [tabela] WHERE [coluna] BETWEEN [menor-valor] AND [maior-valor];
 ```
 
-O BETWEEN pode ser reescrito com os operadores de **maior que (>=)** e **menor que (<=)** e é basicamente um facilitador de mesmo uso. Também podemos pegar valores que **NÃO** estão em um intervalo de valores utilizando o `NOT BETWEEN`. Também é possível usar o between com datas, sendo assim um intervalo de tempo. Para isso precisa-se usar o formato **YYYY-MM-DD**, ou seja, ano, mês e dia. Por exemplo, para retornar todos os produtos cadastrados entre 29/12/2021 e 20/01/2022 ficará assim:
+Por exemplo, podemos retornar as colunas em que o preço está entre 10 e 50 reais.
+
+```
+select * from produto WHERE preco BETWEEN 10 AND 50;
+```
+
+Também podemos pegar valores que **NÃO** estão em um intervalo de valores utilizando o `NOT BETWEEN`. Além disso, também é possível usar o between com datas, sendo assim um intervalo de tempo. Para isso precisa-se usar o formato **YYYY-MM-DD**, ou seja, ano, mês e dia. Por exemplo, para retornar todos os produtos cadastrados entre 29/12/2021 e 20/01/2022 ficará assim:
 
 ```
 select data_cadastro from produto WHERE data_cadastro BETWEEN 2021-12-29 AND 2022-01-20;
