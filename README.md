@@ -1402,10 +1402,10 @@ O comando mais básico é `select * from [tabela];` que irá retornar todos os d
 * [Order By](#order-by)
 * [Limit e Fetch](#limit-fetch)
 * [Where (In, Is Null, Like, Between, And, Or e Not)](#where)
-* [Group By](#group-by) 🚧
-* [Having](#having) 🚧
-* [Funções de Agregação](#funcoes-agregacao) 🚧
-* [Subconsultas](#subconsultas) 🚧
+* [Group By](#group-by)
+* [Funções de Agregação (Max, Min, Sum, Avg, Count)](#funcoes-agregacao)
+* [Having](#having)
+* [Subconsultas](#subconsultas)
 * [Join](#join) 🚧
 * [Union, Intersect e Except](#union-intersect-except) 🚧
 
@@ -1591,6 +1591,147 @@ Também podemos pegar valores que **NÃO** estão em um intervalo de valores uti
 select data_cadastro from produto WHERE data_cadastro BETWEEN 2021-12-29 AND 2022-01-20;
 ```
 
+<div id="group-by">
+	
+#### 💻 Group By
+</div>
+
+A cláusula `GROUP BY` serve para **agrupar** dados de um select de acordo com a **semelhança** de uma ou mais colunas. Por exemplo, agrupar pedidos que tem o preço igual, ou agrupar os pedidos de uma mesma loja (que tem o mesmo id da loja). Ele pode ser usado junto com as **funções de agregação**, que veremos depois. Sua sintaxe é:
+
+```
+select [coluna] from [tabela] GROUP BY [coluna];
+```
+
+Nesse sentido, o exemplo dos pedidos agrupados pelo **preço** ficaria assim:
+
+```
+select preco from pedido GROUP BY preco;
+```
+
+Uma coisa importante do GROUP BY é que toda coluna que quisermos retornar, deve estar ou no **group by** ou em uma **função de agregação**. Pense assim, você tem três produtos com o preço 10, porém, esses três produtos tem nomes diferentes. Sendo assim, ou você também agruparia por nome, ou usaria uma função de agregação, ou você apenas não poderia retornar esses nomes, pois uma linha teria uma coluna com três informações. Considerando isso, veremos o que são essas funções de agregação.
+
+<div id="funcoes-agregacao">
+	
+#### 💻 Funções de Agregação
+</div>
+
+Uma função de agregação processa as informações de uma determinada coluna em um **conjunto**, retornando apenas **um resultado**. Ou seja, as funções de agregação também **agrupam** os dados e por isso, usamos elas junto do **Group By**. Sua sintaxe é `nome-função(coluna)`. A coluna informada será a que terá os valores processados em um conjunto. Para usarmos uma agregação, elas devem estar localizadas junto das colunas após o select, por exemplo:
+
+```
+select nome-função(coluna), [coluna] from [tabela];
+```
+
+##### MAX e MIN
+
+A função `MAX` analisa um conjunto de valores e retorna o **maior** entre eles. Por exemplo, em um cenário onde queremos retornar o maior preço entre os produtos:
+
+```
+select max(preco) from produto;
+```
+
+A função `MIN` faz o contrário do MAX: analisa um grupo de valores e retorna o **menor** entre eles. Seguindo o mesmo exemplo, um cenário onde queremos retornar o menor preço entre os produtos:
+
+```
+select min(preco) from produto;
+```
+
+##### SUM
+
+A função `SUM` realiza a **soma** dos valores em uma única coluna e retorna esse resultado. Por padrão, a função SUM ignora valores **nulos**. Por exemplo, para somarmos os preços de todos os produtos:
+
+```
+select sum(preco) from produto;
+```
+
+##### AVG
+
+Com a função `AVG` podemos calcular a **média** dos valores em uma única coluna. Por padrão, a função AVG ignora valores **nulos**. Por exemplo, para retornar a média de preço de todos os produtos:
+
+```
+select avg(preco) from produto;
+```
+
+##### COUNT
+
+A função `COUNT` retorna o **total de linhas selecionadas**. Ela pode receber por parâmetro o nome da **coluna** ou um **asterisco** `*`. Por padrão, quando informado o nome de uma coluna, valores do tipo null são ignorados, mas quando informado `*` todas as linhas serão contabilizadas. Por exemplo, para contar a quantidade de dados inseridos na tabela produto:
+
+```
+select count(*) from produto;
+```
+
+Ou seja, ele faz a **"contagem"** de dados de acordo com a informação que você passou como parâmetro. Ele é um ótimo exemplo para mostrar a funcionalidade das funções de agregação em conjunto com o group by.
+
+##### Funções de agregação e GROUP BY
+
+Pense no exemplo que eu dei anteriormente, uma consulta que buscaria o nome e o preco de um produto agrupado pelo preco desse produto. Como disse, ou eu agrupo também por nome, ou eu usaria uma função de agregação. Pense no cenário do count, onde para cada preço agrupado, ele iria contar a quantidade de nomes que foram agrupados, ou seja, a quantidade de produtos que foram agrupados em determinado preço.
+
+```
+select count(nome), preco from produto GROUP BY preco;
+```
+
+Sendo assim, quando usamos o Group By, só podemos colocar colunas para retornar estando em uma **função de agregação** ou estando no **GROUP BY** em si. Pense em outro exemplo, onde eu quero retornar a quantidade de produtos e a média dos preços agrupados pelas suas respectivas lojas. Nesse cenário, nossa consulta seria a seguinte:
+
+```
+select count(*), avg(preco), id_loja from produto GROUP BY id_loja;
+```
+
+<div id="having">
+	
+#### 💻 Having
+</div>
+
+A cláusula `HAVING` especifica uma condição de pesquisa para um grupo ou um agregado. Ela é frequentemente usada com a cláusula **GROUP BY** para filtrar grupos ou agregações com base em uma condição especificada. Ela é como se fosse um **where**, porém ela aceita condições com as funções de agregação. Considerando isso, sempre iremos usar ela com uma **função de agregação** na condição. Sua sintaxe é:
+
+```
+select [funcao-agregação], [coluna] from [tabela] GROUP BY [coluna] HAVING [funcao-agregacao] [operador] [valor];
+```
+Por exemplo, pense no cenário em que queremos retornar a média de preços agrupados por suas respectivas lojas. Porém, queremos retornar apenas onde a média for maior ou igual a 50. Nesse caso teriamos:
+
+```
+select avg(preco), id_loja from produto GROUP BY id_loja HAVING avg(preco) >= 50;
+```
+
+<div id="subconsultas">
+	
+#### 💻 Subconsultas
+</div>
+
+Uma subconsulta é uma consulta embutida **dentro de outra consulta**, passando os resultados da consulta mais **interna** para a consulta mais **externa** por meio de uma cláusula `WHERE` ou de uma cláusula `HAVING`. Ou seja, é basicamente fazer uma consulta comparando com um valor que ainda não sabemos e, por isso, devemos fazer uma subconsulta para conseguir esse valor. 
+
+Pense no cenário onde temos uma tabela de **funcionários**. Agora, pense na seguinte pergunta: "Quais funcionários ganham mais que o João?". Percebe-se que, para consultar os funcionários que ganham mais que o joão, primeiro precisamos consultar quanto o João ganha certo? Para isso é preciso fazer uma subconsulta (salário do João), para usar o retorno na consulta principal (funcionários com maior salário que João). 
+
+Existem dois tipos **principais** de subconsulta:
+
+##### Subconsultas de uma única linha
+
+São subconsultas que retornam zero ou apenas uma única linha, ou seja, apenas um único valor. Considerando isso, utilizamos apenas operadores de uma única linha (=,<,>,<=,>=,<>). Pensando no exemplo que demos de introdução, faríamos algo assim:
+
+```
+select nome, salario from funcionario where salario > (select salario from funcionario where nome = "João");
+```
+
+##### Subconsultas de várias linhas
+
+São subconsultas que retornam uma ou mais linhas. Considerando isso, utilizamos operadores de várias linhas:
+
+* **IN:** Retorna verdadeiro se algum valor bater (for igual) com um valor de uma **lista**.
+* **NOT IN:** Retorna verdadeiro se nenhum valor bater (for igual) com um valor de uma **lista**. Ou seja, tem que ser diferente de todos os valores da lista.
+* **ANY:** Compara o valor a cada valor retornado pela subconsulta. O resultado do ANY é "verdade" se for obtido algum resultado verdade. O resultado é "falso" se nenhum resultado verdade for encontrado (parecido com o **OU**). Por exemplo: É maior que x **ou** maior que x [...]. 
+* **ALL:** Compara o valor a todo valor retornado pela subconsulta (parecido com o **E**). O resultado do ALL é "verdade" se o resultado de todas as linhas for verdade e o resultado é "falso" se for encontrado algum resultado falso. Exemplo: É maior que x **e** maior que x [...].
+
+```
+select [coluna] from [tabela] where [coluna] IN ([subconsulta]); 
+select [coluna] from [tabela] where [coluna] NOT IN ([subconsulta]); 
+select [coluna] from [tabela] where [coluna] = ANY([subconsulta]); 
+select [coluna] from [tabela] where [coluna] = ALL([subconsulta]); 
+```
+
+Além disso, também temos:
+
+* **Subconsultas de várias colunas:** retornam mais de uma coluna para a instrução SQL externa;
+* **Subconsultas correlacionadas:** fazem referência a uma ou mais colunas na instrução SQL externa;
+* **Subconsultas aninhadas:** são feitas dentro de outra subconsulta (podemos aninhar até 255 subconsultas).
+
 <div align="center" id='maven'/> 
 
 ## Maven 🚧
@@ -1682,5 +1823,5 @@ select data_cadastro from produto WHERE data_cadastro BETWEEN 2021-12-29 AND 202
 * Banco de dados: [1](https://www.w3schools.com/sql/sql_constraints.asp)
 * Tipos de dados (Banco de dados): [1](https://www.devmedia.com.br/tipos-de-dados-no-postgresql-e-sql-server/23362)
 * Constrains (Banco de dados): [1](http://www.bosontreinamentos.com.br/postgresql-banco-dados/constraints-no-postgresql-restricoes/), [2](http://www.bosontreinamentos.com.br/bancos-de-dados/restricoes-de-chave-estrangeira-on-delete-cascade-e-outras/#:~:text=ON%20DELETE%20CASCADE%20%E2%80%93%20Uma%20opera%C3%A7%C3%A3o,outra%20tabela%20%C3%A9%20automaticamente%20exclu%C3%ADdo.)
-* Select: [1](https://www.postgresqltutorial.com/postgresql-select/), [2](https://www.devmedia.com.br/sql-funcoes-de-agregacao/38463), [3](https://qastack.com.br/programming/905379/what-is-the-difference-between-join-and-union)
+* Select: [1](https://www.postgresqltutorial.com/postgresql-select/), [2](https://www.devmedia.com.br/sql-funcoes-de-agregacao/38463), [3](https://qastack.com.br/programming/905379/what-is-the-difference-between-join-and-union), [4](https://imasters.com.br/back-end/como-fazer-subconsultas-um-passo-passo#:~:text=Tipos%20de%20subconsultas&text=Subconsultas%20de%20v%C3%A1rias%20colunas%3A%20retornam,podemos%20aninhar%20at%C3%A9%20255%20subconsultas).)
 * GitHub: [1](https://www.youtube.com/watch?v=UBAX-13g8OM)
