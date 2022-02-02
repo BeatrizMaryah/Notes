@@ -1113,7 +1113,7 @@ Lembre-se, agregação ou composição não é um estado fixo para as mesmas coi
 * [Constraints](#constraints)
 * [Comandos DQL (select)](#select) 🚧
 * [Sequences](#sequences)
-* [comandos PL/SQL (Stored Procedures - Procedures e funcions)](#procedures-functions) 🚧
+* [Comandos PL/SQL (Stored Procedures - Procedures e funcions)](#procedures-functions)
 
 O banco de dados é a **organização** e **armazenagem** de **dados** sobre um domínio específico. É uma coleção de dados relacionados que tem informação sobre algo do mundo real. Por exemplo, lojas, escritórios, bancos e bilbiotecas, etc. Ou seja, ele não precisa ser só o banco virtual que estamos acostumados. Ele pode ser toda base de informação organizada, como um caderno ou uma planilha no Excel. Por exemplo, em uma biblioteca, temos prateleiras que guardam livros. Esses livros possuem algumas informações relacionadas a eles, como autor, nome, quantidade de páginas, preço e etc.
 
@@ -1759,6 +1759,41 @@ WHERE t1.id_tabela1 = t2.id_tabela1;
 
 No exemplo que fizemos até aqui listamos apenas as informações da tabela1 que estavam associadas as respectivas chaves tabela2. Este conceito de join é conhecido como **inner join.** Em um relacionamento desse tipo, somente serão listadas as linhas da tabela1 e da tabela2 correspondentes que existam em ambas as tabelas.
 
+Para explicar os joins, pense que temos duas tabelas: livro e autor. Onde o autor guarda o id de livro e, consequentemente, um autor pode ter vários livros. Nessas tabelas temos os seguintes registros, sendo autores e livros respectivamente:
+
+<div align="center">
+	
+![image](https://user-images.githubusercontent.com/87392633/152230588-47364f0a-a5bf-4df2-9642-f2d1344a79e8.png)     ![image](https://user-images.githubusercontent.com/87392633/152230817-b21b23a3-07b3-4491-a7a3-65cd2b8105b1.png)
+
+</div>
+
+
+##### INNER JOIN
+
+Como dado no exemplo anterior, um `INNER JOIN` é o método de junção mais conhecido e retorna os registros que são comuns às duas tabelas. Na teoria de conjuntos, ele é representado pela **intersecção dos conjuntos**, representada pelo símbolo (**∩**).
+
+<div align="center">
+	
+![image](https://user-images.githubusercontent.com/87392633/152226971-df1ec3e3-ccc2-402f-a31d-2a8be39b1dff.png)
+</div>
+
+Sua sintaxe é:
+
+```
+SELECT t1.coluna, t2.coluna
+FROM  tabela1 t1
+INNER JOIN tabela2 t2
+ON t1.id_tabela1 = t2.id_tabela1;
+```
+
+Sendo assim, em nossa tabela retornaria o seguinte:
+
+<div align="center">
+	
+![image](https://user-images.githubusercontent.com/87392633/152231355-99762f82-2813-4543-9ee6-04c3f138a2fa.png)
+</div>
+
+Percebe-se que o Autor4 não foi retornado, isso é porque ele não tem nenhum livro que está relacionado.
 
 <div id="sequences">
 	
@@ -1805,7 +1840,7 @@ Como dito anteriormente, para associar uma sequência a uma coluna de uma tabela
 
 ```
 create table endereco (
-   id SERIAL
+   id SERIAL PRIMARY KEY,
    nome text NOT NULL,
    numero smallint NOT NULL,
    pais varchar(30) DEFAULT 'Brasil',
