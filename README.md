@@ -1112,8 +1112,8 @@ Lembre-se, agregação ou composição não é um estado fixo para as mesmas coi
 * [Comandos DDL e DML](#ddl-dml)
 * [Constraints](#constraints)
 * [Comandos DQL (select)](#select) 🚧
-* [Sequences](#sequences) 🚧
-* [comandos PL/SQL (Procedures e funcions)](#procedures-functions) 🚧
+* [Sequences](#sequences)
+* [comandos PL/SQL (Stored Procedures - Procedures e funcions)](#procedures-functions) 🚧
 
 O banco de dados é a **organização** e **armazenagem** de **dados** sobre um domínio específico. É uma coleção de dados relacionados que tem informação sobre algo do mundo real. Por exemplo, lojas, escritórios, bancos e bilbiotecas, etc. Ou seja, ele não precisa ser só o banco virtual que estamos acostumados. Ele pode ser toda base de informação organizada, como um caderno ou uma planilha no Excel. Por exemplo, em uma biblioteca, temos prateleiras que guardam livros. Esses livros possuem algumas informações relacionadas a eles, como autor, nome, quantidade de páginas, preço e etc.
 
@@ -1759,6 +1759,181 @@ WHERE t1.id_tabela1 = t2.id_tabela1;
 
 No exemplo que fizemos até aqui listamos apenas as informações da tabela1 que estavam associadas as respectivas chaves tabela2. Este conceito de join é conhecido como **inner join.** Em um relacionamento desse tipo, somente serão listadas as linhas da tabela1 e da tabela2 correspondentes que existam em ambas as tabelas.
 
+
+<div id="sequences">
+	
+#### 💻 Sequences
+</div>
+
+Uma sequência é uma **lista ordenada de inteiros**. As ordens dos números na sequência são importantes. Por exemplo {1,2,3,4,5} e {5,4,3,2,1} são sequências totalmente diferentes. Normalmente usamos sequências para os **IDs**, já que eles são gerados automaticamente. Sua sintaxe é:
+
+```
+CREATE SEQUENCE [ IF NOT EXISTS ] sequence_name
+    [ AS { SMALLINT | INT | BIGINT } ]
+    [ INCREMENT [ BY ] increment ]
+    [ MINVALUE minvalue | NO MINVALUE ] 
+    [ MAXVALUE maxvalue | NO MAXVALUE ]
+    [ START [ WITH ] start ] 
+    [ CACHE cache ] 
+    [ [ NO ] CYCLE ]
+    [ OWNED BY { table_name.column_name | NONE } ]
+```
+
+* Começa com `create sequence` para indicar que irá criar uma **sequência**. 
+* O `if not exists` é **opcional**, ele apenas verifica se a sequência já existe. Sequências sempre são números, então para indicar qual seu tipo damos um `as smallint/int/bigint`. Se você não informar, o tipo padrão é **bigint**. 
+* O `increment by` é usado para dizer de quanto em quanto essa sequência irá implementar, se for um valor positivo irá ser uma sequência crescente, se for um valor negativo sera decrescente. 
+* O `min value` é o número **mínimo** que a sequência poderá atingir. O `max value` é ao contrário, indica o **máximo** até onde a sequência pode ir. 
+* O `Start` indica qual ponto minha sequência irá **começar**. 
+* O `Cache` é uma forma de guardar sequências no nosso **cache** para evitar que precise ficar criando novas sequências, ele é útil para aumentar a **rapidez da criação** das sequências. 
+* O `cycle`, sendo NO cycle por padrão, pode dizer que uma sequencia é ou não uma sequencia circular, ou seja, que se ela atingir seu limite, ela irá voltar para o primeiro valor. 
+* O `Owned by` permite que você **associe uma coluna de uma tabela** com a **sequência**. Ela serve para que, se você **apagar** sua coluna dessa tabela ou até a tabela em si, a sequência será automaticamente **apagada** também. Quando usamos SERIAL como tipo de uma coluna, o PostregreSQL automaticamente cria uma sequência associada aquela coluna.
+
+Por exemplo, criando uma sequência crescente, que começara com o valor 100 e irá incrementar de 5 em 5:
+
+```
+CREATE SEQUENCE mysequence
+INCREMENT 5
+START 100;
+```
+
+Para descobrir o próximo comando dessa sequência, usamos a função `nextval`. Esse comando é específico do PostgreSQL.
+
+```
+SELECT nextval('mysequence');
+```
+Como dito anteriormente, para associar uma sequência a uma coluna de uma tabela, podemos usar o `SERIAL`. Vamos usar nossa tabela de endereço como exemplo:
+
+```
+create table endereco (
+   id SERIAL
+   nome text NOT NULL,
+   numero smallint NOT NULL,
+   pais varchar(30) DEFAULT 'Brasil',
+   UNIQUE(nome, numero)
+);
+```
+
+Para apagar uma sequência automaticamente, utilize a seguinte sintaxe:
+
+```
+DROP SEQUENCE [ IF EXISTS ] sequence_name [, ...] 
+[ CASCADE | RESTRICT ];
+```
+
+O cascade é usado caso você quer apagar os objetos que dependem dessa sequência, os objetos que depedem desses objetos e assim vai.
+
+<div id="procedures-functions">
+	
+#### 💻 Comandos PL/SQL (Stored Procedures - Procedures e funcions)
+</div>
+
+A linguagem **PL/SQL** é uma extensão da linguagem SQL que contém recursos das linguagens mais **modernas**. Permite construir blocos de comandos SQL para acesso e manipulação de base de dados. 
+
+Uma **Stored Procedure** é um grupo de comandos SQL e PL/SQL que executam determinada tarefa e podem ser invocados por um nome. Basicamente são como as funções e procedimentos de outras linguagens. Podem retornar valores e tabelas, mas também podem manipular dados. Elas são utilizadas pois tem muitos benefícios, como por exemplo:
+
+* Mantém concentrada a lógica necessária para determinadas funções, tendo assim uma maior agilidade no retorno de informações importantes;
+* Permitem mover regras de negócios de aplicativos para o banco de dados, tornando-as independentes de aplicativos. Por exemplo, se eu tiver vários aplicativos que estão implementados no banco de dados. Para eu não precisar fazer a mesma regra de negócio para todos esses aplicativos, é mais facil fazer essa “função” para ser reaproveitada para todos esses apps;
+* Fornecem um mecanismo eficiente de reutilização de código;
+* Aumentam a performance de aplicativos cliente-servidor.
+
+No PostgreSQL, podemos dividir em duas, sendo as **Procedures** e as **Functions**. A principal diferença entre elas é que a função retorna um valor e a procedure não. Como no Java!
+
+##### Procedures
+
+Como dito anteriormente, uma procedure não retorna um valor. Isso acontece pois sua intenção é apenas fazer o seu papel e terminar, devolvendo o controle para quem a chamou. Assim como em outras linguagens, ela também pode **receber parâmetros** definindo seus nomes e tipos dentro dos parêntes `()` e trabalhando com esses valores. Sua sintaxe é:
+
+```
+CREATE PROCEDURE nome([nome do parâmetro] [tipo do parâmetro])
+AS $$
+  begin
+  [Bloco de código]
+  end;
+$$ language plpgsql;
+```
+
+O `AS $$` e `$$` junto do `begin` e `end` **delimitam** o bloco SQL, como se fosse as chaves do java. A linguagem "plpgsql" é a padrão do PostgreSQL. Veja um exemplo de procedure:
+
+```
+create or replace procedure transferir (
+	conta_origem int,
+	conta_destino int,
+	valor dec(15,2)
+)
+as $$
+begin
+	update contas
+	set saldo = saldo - valor
+	where id = conta_origem;
+	
+	update contas
+	set saldo = saldo + valor
+	where id = conta_destino;
+	
+	commit;
+end;
+$$ language plpgsql;
+```
+
+A ideia dessa procedure é alterar os dados da tabela de contas e setar o saldo - o valor informado no parãmetro e setando o id como o parametro de conta_origem. Após isso ele altera de novo a tabela, dessa vez para fazer o saldo + o valor, setando o id como o parâmetro de conta_destino. Depois ele faz um commit para salvar essas informações. 
+
+Ou seja, ele basicamente **tirou** o valor informado da conta de **origem** e colocou esse valor na conta de **destino**, com seus respectivos IDs.  
+
+##### Function
+
+Como dito antes, as funções podem retornar um valor. Podem receber parâmetros, assim como as procedures, porém usam o `return` para retornar algo. Sua sintaxe é:
+
+```
+CREATE FUNCTION nome([nome do parâmetro] [tipo do parâmetro])
+RETURNS [tipo do retorno] AS $$
+  begin
+  [Bloco de código]
+  return [valor];
+  end;
+$$ language plpgsql;
+```
+
+Diferente das procedures, utilizamos o `RETURNS` para ditar o tipo de retorno que a função terá. Além disso, dentro do bloco de código, utilizamos o return para retornar determinado valor. Veja um exemplo de procedure:
+
+```
+create or replace function transferir (
+	numero1 int,
+	numero2 int
+)
+RETURN int as $$
+begin
+	return numero1 + numero2;
+end;
+$$ language plpgsql;
+```
+
+Nesse exemplo, temos uma simples função de soma. Ela recebe dois números inteiros e o tipo de retorno também é um inteiro. Agora, pense que temos as tabelas de livro e autor. Onde o autor guarda o id de livro e, consequentemente, um autor pode ter vários livros. Pense no exemplo onde vamos retornar o nome do autor do livro que passamos seu id como parâmetro.
+
+```
+create or replace function retornarAutor(id int)
+returns table(nome_autor varchar(50)) as $$
+begin
+	return QUERY select nome as nome_autor from autor 
+	where id_autor = (select id_autor from livro where id_livro = id);
+end
+$$ language plpgsql;
+```
+
+Nesse caso, o tipo de retorno será uma **coluna de uma tabela**. Indicamos isso usando o table(nome_autor varchar(50)) que indica uma tabela com uma coluna com nome_autor com o tipo varchar(50). Essa função basicamente recebe o id do livro e procura o nome na tabela autor onde o id do autor é igual ao resultado da subconsulta.
+
+##### Functions vs Procedures
+
+Algumas diferenças mais específicas de functions e procedures:
+
+* Function **deve** retornar um valor, mas em stored o retorno é opcional;
+* As procedures podem ter apenas **parâmetros de entrada**. As procedures podem ter parâmetros de **entrada e saída**;
+* Functions **podem** ser chamadas de dentro de procedures, já as procedures **não podem** ser chamados a partir de functions;
+* Procedures **não podem** ser utilizadas em uma **instrução select**, enquanto as functions sim;
+* Procedures não podem ser chamadas e utilizadas nas instruções de SQL em qualquer lugar do **where/having/select**, enquanto a function pode;
+* As procedures sempre vai poder ser reutilizada sem compilar novamente, pois ela fica na memória. A função sempre será executada e recompilada para ser utilizada novamente.  
+* Functions que retornam tabelas podem ser tratadas como um outro conjunto de dados, ou seja, podemos usá-las em JOINS;
+* Podemos usar o retorno das funções como se fossem entidades. 
+* Nas procedures podemos fazer tratamento de exceção, nas funções não. 
+* Dentro de uma procedure podemos dar um **commit**. Esse commit é um gerenciamento de transações. Ou seja, quando temos uma procedure, ele executa todo o código de uma vez quando chega no commit. Uma função executa um passo de cada vez. 
 
 <div align="center" id='maven'/> 
 
