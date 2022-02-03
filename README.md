@@ -1406,7 +1406,7 @@ O comando mais básico é `select * from [tabela];` que irá retornar todos os d
 * [Funções de Agregação (Max, Min, Sum, Avg, Count)](#funcoes-agregacao)
 * [Having](#having)
 * [Subconsultas](#subconsultas)
-* [Join](#join) 🚧
+* [Join](#join)
 * [Union, Intersect e Except](#union-intersect-except) 🚧
 
 <div id="distinct">
@@ -1737,7 +1737,7 @@ Além disso, também temos:
 #### 💻 Join
 </div>
 
-Um join(junção) é usado para consultar dadps de uma ou mais tabelas baseado em valores em comum entre as tabelas relacionadas.  Quando for usar o join sempre terá que ser usado com uma **condição de junção**. Uma condição de junção é quando uma linha está ligada a um registro de outra tabela. É a informação é usada para juntar essas tabelas. As colunas mais comuns são a de **chave primária (primary key)** da **primeira** tabela e **chave estrangeira (foreign key)** na **segunda** tabela.
+Um join(junção) é usado para consultar dados de uma ou mais tabelas baseado em valores em comum entre as tabelas relacionadas.  Quando for usar o join sempre terá que ser usado com uma **condição de junção**. Uma condição de junção é quando uma linha está ligada a um registro de outra tabela. É a informação é usada para juntar essas tabelas. As colunas mais comuns são a de **chave primária (primary key)** da **primeira** tabela e **chave estrangeira (foreign key)** na **segunda** tabela.
 
 Quando o join não tem uma condição de junção ele sempre gerará um **produto cartesiano**, que se baseia em uma combinação de todos os elementos de uma tabela com os elementos de outra tabela. Um produto cartesiano é formado quando: uma condição de junção estiver omitida, quando a condição de junção estiver inválida ou quando todas as linhas na primeiras tabelas estão unidas a todas as linhas da segunda tabela. O PostgreSQL suporta inner join, left join, right join, full outer join, cross join, natural join, e um tipo especial de join chamado self-join.
 
@@ -1794,6 +1794,153 @@ Sendo assim, em nossa tabela retornaria o seguinte:
 </div>
 
 Percebe-se que o Autor4 não foi retornado, isso é porque ele não tem nenhum livro que está relacionado.
+
+##### LEFT JOIN
+
+O `LEFT JOIN` tem como resultado **todos** os registros que estão na tabela A, mesmo que não estejam relacionados com a tabela B. Porém, só só serão retornados os registros da tabela B que tenham relação com a tabela A, o resto será **Null**.
+
+<div align="center">
+	
+![image](https://user-images.githubusercontent.com/87392633/152351872-1420a4cd-550e-419f-bc38-415078062f5f.png)
+</div>
+
+Sua sintaxe é:
+
+```
+SELECT t1.coluna, t2.coluna
+FROM  tabela1 t1
+LEFT JOIN tabela2 t2
+ON t1.id_tabela1 = t2.id_tabela1;
+```
+
+Sendo assim, em nossa tabela retornaria o seguinte:
+
+<div align="center">
+	
+![image](https://user-images.githubusercontent.com/87392633/152352298-bd031bae-1af4-4da3-9257-deee7d08e9ab.png)
+</div>
+
+Nesse caso, todos os autores estão sendo retornados. Como o autor4 não tem nenhum livro relacionado, não foi retornado e por isso ficou um valor null no lugar.
+
+##### RIGHT JOIN
+
+o `RIGHT JOIN` é o contrário do LEFT JOIN. Ou seja, o RIGHT JOIN tem como resultado todos os registros que estão na tabela B (mesmo que não estejam na tabela A) e retorna apenas os registros da tabela A que tem algo em comum com a tabela B, o resto será **null**.
+
+<div align="center">
+	
+![image](https://user-images.githubusercontent.com/87392633/152353423-b8f66f6c-63e4-4978-b12f-861fc753a25d.png)
+</div>
+
+Sua sintaxe é:
+
+```
+SELECT t1.coluna, t2.coluna
+FROM  tabela1 t1
+RIGHT JOIN tabela2 t2
+ON t1.id_tabela1 = t2.id_tabela1;
+```
+
+Sendo assim, em nossa tabela retornaria o seguinte:
+
+<div align="center">
+
+![image](https://user-images.githubusercontent.com/87392633/152353724-cbf6ed11-fbeb-45ee-b0bd-f12b27f5c97d.png)
+</div>
+
+Nesse caso, retorna todos os livros. Como o autor4 não está relacionado com nenhum livro, ele também não entrará na lista.
+
+##### LEFT OUTER JOIN
+
+o `LEFT OUTER JOIN` retorna como resultado todos os registros que estão na tabela A e que não estejam relacionados com a tabela B. Ele é representado pela **diferença dos conjuntos**, representada pelo símbolo (**-**).
+
+<div align="center">
+
+![image](https://user-images.githubusercontent.com/87392633/152360802-3f617ceb-b478-4793-9e3a-bdb942452eb5.png)
+</div>
+
+Sua sintaxe é:
+
+```
+SELECT t1.coluna, t2.coluna
+FROM  tabela1 t1
+LEFT JOIN tabela2 t2
+ON t1.id_tabela1 = t2.id_tabela1
+WHERE t2.id_tabela1 IS NULL;
+```
+
+Sendo assim, em nossa tabela retornaria o seguinte:
+
+<div align="center">
+	
+![image](https://user-images.githubusercontent.com/87392633/152361818-89b15b66-ae27-416a-9938-34382708ce94.png)
+</div>
+
+Nesse caso, o único registro da nossa tabela de autores que não está relacionado com nenhum livro é o Autor4, por isso ele foi retornado.
+
+##### RIGHT OUTER JOIN
+
+o `RIGHT OUTER JOIN` é o contrário do LEFT OUTER JOIN. Ou seja, retorna como resultado todos os registros que estão na tabela B e que não estejam na tabela A. Ele também é representado pela **diferença dos conjuntos**, representada pelo símbolo (**-**), porém com a ordem invertida.
+
+<div align="center">
+	
+![image](https://user-images.githubusercontent.com/87392633/152363043-c1d90b61-28e5-4dd2-9759-183ea49e2710.png)
+</div>
+
+Sua sintaxe é:
+
+```
+SELECT t1.coluna, t2.coluna
+FROM  tabela1 t1
+RIGHT JOIN tabela2 t2
+ON t1.id_tabela1 = t2.id_tabela1
+WHERE t1.id_tabela1 IS NULL;
+```
+
+Nesse caso, ele não retornaria nenhum registro. Isso acontece pois todos os nossos registros da tabela de livro estão relacionados com algum autor.
+
+##### FULL OUTER JOIN
+
+o `FULL OUTER JOIN` retorna todos os registros que estão na tabela A e todos os registros da tabela B, independente de suas relações.
+
+<div align="center">
+	
+![image](https://user-images.githubusercontent.com/87392633/152364011-8663cf7b-9b85-4822-95c4-0dc1df8c9ac7.png)
+</div>
+
+Sua sintaxe é:
+
+```
+SELECT t1.coluna, t2.coluna
+FROM  tabela1 t1
+FULL OUTER  JOIN tabela2 t2
+ON t1.id_tabela1 = t2.id_tabela1;
+```
+
+Sendo assim, em nossa tabela retornaria o seguinte:
+
+<div align="center">
+	
+![image](https://user-images.githubusercontent.com/87392633/152364423-91a5cb97-c755-4b3c-88f2-6246e4a085b0.png)
+</div>
+
+Nesse caso, retornam todos os registros da nossa tabela, juntando os autores com seus respectivos livros.
+
+Também existe um tipo de OUTER JOIN que retorna apenas os registros da tabela A e da tabela B que não possuem conexão entre elas. Para isso, basta usar um where para verificar onde as chaves são nulas.
+
+```
+SELECT t1.coluna, t2.coluna
+FROM  tabela1 t1
+FULL OUTER  JOIN tabela2 t2
+ON t1.id_tabela1 = t2.id_tabela1
+WHERE t1.id_tabela1 IS NULL OR t2.id_tabela1 IS NULL;
+```
+
+Sua representação gráfica fica assim:
+
+<div align="center">
+	
+![image](https://user-images.githubusercontent.com/87392633/152381892-a14adb5e-3c1e-47ee-b7df-26c5c6fffd79.png)
+</div>
 
 <div id="sequences">
 	
@@ -2061,5 +2208,5 @@ Algumas diferenças mais específicas de functions e procedures:
 * Banco de dados: [1](https://www.w3schools.com/sql/sql_constraints.asp)
 * Tipos de dados (Banco de dados): [1](https://www.devmedia.com.br/tipos-de-dados-no-postgresql-e-sql-server/23362)
 * Constrains (Banco de dados): [1](http://www.bosontreinamentos.com.br/postgresql-banco-dados/constraints-no-postgresql-restricoes/), [2](http://www.bosontreinamentos.com.br/bancos-de-dados/restricoes-de-chave-estrangeira-on-delete-cascade-e-outras/#:~:text=ON%20DELETE%20CASCADE%20%E2%80%93%20Uma%20opera%C3%A7%C3%A3o,outra%20tabela%20%C3%A9%20automaticamente%20exclu%C3%ADdo.)
-* Select: [1](https://www.postgresqltutorial.com/postgresql-select/), [2](https://www.devmedia.com.br/sql-funcoes-de-agregacao/38463), [3](https://qastack.com.br/programming/905379/what-is-the-difference-between-join-and-union), [4](https://imasters.com.br/back-end/como-fazer-subconsultas-um-passo-passo#:~:text=Tipos%20de%20subconsultas&text=Subconsultas%20de%20v%C3%A1rias%20colunas%3A%20retornam,podemos%20aninhar%20at%C3%A9%20255%20subconsultas).)
+* Select: [1](https://www.postgresqltutorial.com/postgresql-select/), [2](https://www.devmedia.com.br/sql-funcoes-de-agregacao/38463), [3](https://qastack.com.br/programming/905379/what-is-the-difference-between-join-and-union), [4](https://imasters.com.br/back-end/como-fazer-subconsultas-um-passo-passo#:~:text=Tipos%20de%20subconsultas&text=Subconsultas%20de%20v%C3%A1rias%20colunas%3A%20retornam,podemos%20aninhar%20at%C3%A9%20255%20subconsultas), [5](https://www.devmedia.com.br/sql-join-entenda-como-funciona-o-retorno-dos-dados/31006)
 * GitHub: [1](https://www.youtube.com/watch?v=UBAX-13g8OM)
