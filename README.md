@@ -1111,7 +1111,7 @@ Lembre-se, agregação ou composição não é um estado fixo para as mesmas coi
 * [Tipos de dados](#tipos-de-dados-banco)
 * [Comandos DDL e DML](#ddl-dml)
 * [Constraints](#constraints)
-* [Comandos DQL (select)](#select) 🚧
+* [Comandos DQL (select)](#select)
 * [Sequences](#sequences)
 * [Comandos PL/SQL (Stored Procedures - Procedures e funcions)](#procedures-functions)
 
@@ -1407,7 +1407,7 @@ O comando mais básico é `select * from [tabela];` que irá retornar todos os d
 * [Having](#having)
 * [Subconsultas](#subconsultas)
 * [Join](#join)
-* [Union, Intersect e Except](#union-intersect-except) 🚧
+* [Union, Intersect e Except](#union-intersect-except)
 
 <div id="distinct">
 	
@@ -1942,6 +1942,79 @@ Sua representação gráfica fica assim:
 ![image](https://user-images.githubusercontent.com/87392633/152381892-a14adb5e-3c1e-47ee-b7df-26c5c6fffd79.png)
 </div>
 
+<div id="union-intersect-except">
+	
+#### 💻 Union, Intersect e Except
+
+Os operadores Union, Intersect e Except também são usados para combinar dados de uma ou mais tabelas. A diferença está na forma como os dados são combinados. Esses operadores combinam os resultados de dois ou mais SELECT em um único resultado, diferente do join que é feito em um select só.
+	
+Também há diferenças de retorno, onde as junções combinam dados em novas **colunas**, já esses operadores combinam dados em novas **linhas**. Ou seja, no caso do **join**, se duas tabelas forem unidas, os dados da primeira tabela serão mostrados em um conjunto de colunas ao lado da coluna da segunda tabela na mesma linha.
+	
+<div align="center">
+	
+<img height="190em" src="https://user-images.githubusercontent.com/87392633/152386219-99ecfdff-8f66-4533-a883-af5e95063ba9.png"/>
+</div>	
+	
+Já no caso dos operadores Union, Intersect e Except, os dados da primeira tabela estarão em um **conjunto de linhas** e os dados da segunda tabela em outro conjunto. As linhas estão no mesmo resultado.
+
+<div align="center">
+	
+<img height="190em" src="https://user-images.githubusercontent.com/87392633/152386696-b70f6b82-f204-4cbf-b972-e013b121c649.png"/>
+</div>	
+
+Levando isso em conta, vamos ver um pouco mais sobre cada um deles:
+
+##### UNION
+
+O operador `UNION` combina os resultados dos dois selects em um único resultado. Ele remove todas as linhas duplicadas na combinação dos resultados. Para deixar as linhas duplicadas, use o `UNION ALL`. Para usá-lo precisa-se seguir as seguintes regras: o número e a ordem das colunas na lista de seleção de ambas as consultas devem ser iguais e os tipos de dados devem ser compatíveis. Sua sintaxe é:
+	
+```
+SELECT coluna1
+FROM tabela1
+UNION
+SELECT coluna2
+FROM tabela2
+```
+
+No exemplo dos livros, o retorno seria o seguinte:
+	
+<div align="center">
+	
+![image](https://user-images.githubusercontent.com/87392633/152395903-896b1be8-f050-4425-ba74-5f1e57c16231.png)
+</div>
+	
+Para ordenar os resultados, use o `ORDER BY` no final da consulta, que irá funcionar para os dois select.
+	
+##### INTERSECT
+
+O operador `INTERSECT` combina apenas a intersecção dos dois selects, funcionando como o inner join. Ele também deve seguir as mesmas regras que o UNION das colunas. Sua sintaxe é:
+
+```
+SELECT coluna1
+FROM tabela1
+INTERSECT
+SELECT coluna2
+FROM tabela2
+```
+
+Como o exemplo dos livros não cabe muito bem nesse cenário, de uma olhadinha melhor nesse [exemplo](https://www.postgresqltutorial.com/postgresql-intersect/).
+
+##### EXCEPT
+
+O operador `EXCEPT` retorna as linhas distintas da primeira tabela que não estão relacionadas com a segunda tabela. Ou seja, ele é equivalente ao **LEFT OUTER JOIN**. Também segue as mesmas regras das colunas que o UNION e o INTERSECT. Sua sintaxe é:
+	
+```
+SELECT coluna1
+FROM tabela1
+EXCEPT
+SELECT coluna2
+FROM tabela2
+```
+
+Como o exemplo dos livros também não cabe muito bem nesse cenário, de uma olhadinha melhor nesse [exemplo](https://www.postgresqltutorial.com/postgresql-except/).
+
+</div>
+
 <div id="sequences">
 	
 #### 💻 Sequences
@@ -2208,5 +2281,5 @@ Algumas diferenças mais específicas de functions e procedures:
 * Banco de dados: [1](https://www.w3schools.com/sql/sql_constraints.asp)
 * Tipos de dados (Banco de dados): [1](https://www.devmedia.com.br/tipos-de-dados-no-postgresql-e-sql-server/23362)
 * Constrains (Banco de dados): [1](http://www.bosontreinamentos.com.br/postgresql-banco-dados/constraints-no-postgresql-restricoes/), [2](http://www.bosontreinamentos.com.br/bancos-de-dados/restricoes-de-chave-estrangeira-on-delete-cascade-e-outras/#:~:text=ON%20DELETE%20CASCADE%20%E2%80%93%20Uma%20opera%C3%A7%C3%A3o,outra%20tabela%20%C3%A9%20automaticamente%20exclu%C3%ADdo.)
-* Select: [1](https://www.postgresqltutorial.com/postgresql-select/), [2](https://www.devmedia.com.br/sql-funcoes-de-agregacao/38463), [3](https://qastack.com.br/programming/905379/what-is-the-difference-between-join-and-union), [4](https://imasters.com.br/back-end/como-fazer-subconsultas-um-passo-passo#:~:text=Tipos%20de%20subconsultas&text=Subconsultas%20de%20v%C3%A1rias%20colunas%3A%20retornam,podemos%20aninhar%20at%C3%A9%20255%20subconsultas), [5](https://www.devmedia.com.br/sql-join-entenda-como-funciona-o-retorno-dos-dados/31006)
+* Select: [1](https://www.postgresqltutorial.com/postgresql-select/), [2](https://www.devmedia.com.br/sql-funcoes-de-agregacao/38463), [3](https://qastack.com.br/programming/905379/what-is-the-difference-between-join-and-union), [4](https://imasters.com.br/back-end/como-fazer-subconsultas-um-passo-passo#:~:text=Tipos%20de%20subconsultas&text=Subconsultas%20de%20v%C3%A1rias%20colunas%3A%20retornam,podemos%20aninhar%20at%C3%A9%20255%20subconsultas), [5](https://www.devmedia.com.br/sql-join-entenda-como-funciona-o-retorno-dos-dados/31006), [6](https://www.essentialsql.com/what-is-the-difference-between-a-join-and-a-union/)
 * GitHub: [1](https://www.youtube.com/watch?v=UBAX-13g8OM)
