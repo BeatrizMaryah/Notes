@@ -2212,6 +2212,49 @@ Algumas diferenças mais específicas de functions e procedures:
 * [Criação de projeto e estrutura padrão](#criacao-estrutura) 🚧
 * [POM (Dependências, Escopos, Repositórios, Plugins e Profiles)](#pom) 🚧
 
+O processo de criação de um projeto Java EE (que dispõe de um conjunto de APIs) em geral envolve a criação de um diretório principal com vários subdiretórios, a configuração de diversos arquivos XML, a obtenção (via cópia ou download) de bibliotecas para o projeto e, posteriormente, a execução dos testes unitários, a criação dos pacotes de publicação, a geração de documentação javadoc, entre outras etapas. 
+
+O **Maven** é uma ferramenta de automação e **gerenciamento** de projetos de software para Java, ele ajuda na construção (build), compilação, documentação e teste de um projeto através do **POM**. O Maven serve para administrar **dependências**, por exemplo, quando temos muitas APIs sendo usadas no nosso projeto. Ele ajuda na publicação de **artefatos** e permite que sejam adicionados plugins a si, para estender suas funcionalidades nativas. 
+
+Além disso, ele possibilita a criação automática de projetos através de arquétipos. Os arquétipos são “esqueletos” que podem ser usados como base para projetos. Com o uso de arquétipos, o Maven pode ser instruído a criar toda a estrutura necessária para se começar a desenvolver projetos dos mais diversos tipos, agilizando e muito o início do desenvolvimento. 
+
+<div id="download-maven">
+	
+#### 💻 Instalação
+
+Para fazer a instalação do Maven, é necessário seguir alguns passos. Primeiro entre no [link](https://maven.apache.org/download.cgi) para o download e clique na seguinte opção:
+
+<div align="center">
+	
+<img height="150em" src="https://user-images.githubusercontent.com/87392633/155733194-bb223b06-34c4-49af-9aa0-f769c40cb7b0.png"/>.
+</div>	
+
+Após isso, descompacte essa pasta em `C:\Arquivos de Programas\Apache\apache-maven-3.8.4`. Confira se criou a pasta bin e adicione esse caminho na variável de ambiente do Windows chamada "Path". Para adicionar na variável de ambiente, pesquise por `Editar as variáveis de ambiente do sistema`, clique no botão `Variáveis de Ambiente` e encontre a variável **Path**. Se não tiver uma, basta criar uma em `novo`, se tiver apenas clique no botão de `editar`, adicione o caminho da pasta em uma linha e clique em `ok`.
+	
+Feito isso, verifique se o maven foi instalado corretamente dando o comando `mvn --version` no cmd. Com isso, o Maven está insttalado corretamente em sua máquina e pronto para ser usado.
+	
+</div>
+
+<div id="criacao-estrutura">
+	
+#### 💻 Criação de projeto e estrutura padrão
+	
+Para criar um novo projeto Maven, você pode ir diretamente no eclipse e ir em `File > New > Project`. Pesquise Maven e selecione a opção `Maven Project`. A tela a seguir, te da a opção de criar um projeto com um arquétipo (archetype), como explicado anteriormente. Mas não vamos fazer isso aqui, por isso de apenas `Next`. 
+
+A próxima tela trará algumas opções pra preencher. As opções importantes que você deverá preencher são as seguintes:
+	
+* **Group Id**: indica o identificador único da organização ou grupo que criou o projeto, sendo geralmente baseado no nome de domínio qualificado da empresa;
+* **Artifact Id**:  indica um nome único do artefato primário a ser gerado pelo projeto, ou seja, é o nome que você dará ao projeto.
+
+Preenchendo essas informações, pode clicar em `Finish`. Projeto criado, a estrutura padrão sempre será a seguinte:
+
+<div align="center">
+	
+<img height="170em" src="https://user-images.githubusercontent.com/87392633/155737360-5077ee87-15b6-4a15-ac6e-93d1b1e5bf5c.png"/>.
+</div>	
+
+</div>
+
 <div align="center" id='hibernate'/> 
 
 ## Hibernate 🚧
