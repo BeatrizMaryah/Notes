@@ -7,7 +7,7 @@ Esse é um repositório que irei colocar e organizar todas as anotações que fi
 * [Programação Orientada a Objetos](#poo)
 * [Estruturas de dados](#estruturas-de-dados) 🚧
 * [Java Avançado](#java-avancado) 🚧
-* [Banco de Dados (PostgreSQL)](#banco-de-dados) 🚧
+* [Banco de Dados (PostgreSQL)](#banco-de-dados)
 * [Maven](#maven) 🚧
 * [Hibernate](#hibernate) 🚧
 * [Spring](#spring) 🚧
@@ -1103,11 +1103,11 @@ Lembre-se, agregação ou composição não é um estado fixo para as mesmas coi
 
 <div align="center" id='banco-de-dados'/> 
 
-## Banco de Dados 🚧
+## Banco de Dados (PostgreSQL)
 </div>
 
 #### 🔎 Mini sumário
-* [Instalação PostgreSQL e Dbeaver](#download-postgresql-dbeaver) 🚧
+* [Instalação PostgreSQL e Dbeaver](#download-postgresql-dbeaver)
 * [Tipos de dados](#tipos-de-dados-banco)
 * [Comandos DDL e DML](#ddl-dml)
 * [Constraints](#constraints)
@@ -1138,6 +1138,18 @@ Os dados do nosso banco são organizados em **Tabelas**. Elas são organizadas c
 <div align="center">
 	
 <img height="170em" src="https://user-images.githubusercontent.com/87392633/150702875-ed3e52cd-8313-45f1-b6a3-a5c00d8e3b27.png"/>
+</div>
+
+<div id="download-postgresql-dbeaver">
+	
+#### 💻 Instalação
+
+Nesse momento, iremos utilizar o banco de dados PostgreSQL junto com o DBeaver, que é um SGBD (Sistema Gerenciador de Banco de Dados). A instalação dos dois softwares é bem simples e pode ser feito os seguintes links: [PostgreSQL](https://www.postgresql.org/download/) e [DBeaver](https://dbeaver.io/download/).
+
+O gerenciamento do DBeaver pode ser um pouco complicado para quem nunca usou, inclusive foi bem confuso no começo para mim, visto que comecei com o MySQL. Isso acontece pois para criar um banco, você primeiro precisa criar uma conexão de um tipo específico de banco de dados. Para isso, vá em `New Database Conection` no seguinte simbolo: <img height="30em" src="https://user-images.githubusercontent.com/87392633/155730700-9ce9391f-6f7d-4f5a-9f9d-e6390bbb36c0.png"/>.
+
+Depois disso, selecione o banco desejado (PostgreSQL - o elefante!) e clique em next. Depois disso, você irá escolher um nome para o banco e colocar a senha que você colocou nas configurações na hora da instalação. Após isso, já está criado uma nova conexão! A partir daí você pode criar mais bases de dados e tabelas, vai da sua escolha!
+
 </div>
 
 <div id="tipos-de-dados-banco">
