@@ -2,9 +2,12 @@
 
 Esse é um repositório que irei colocar e organizar todas as anotações que fiz do que aprendi até agora. Essas anotações são muito importantes para mim então por favor não use como seu em outros lugares! Se você achar qualquer erro de conceito ou até de digitação (desculpe, sou só uma estudante XD), entre em contato comigo para corrigir!
 
+As anotações também estão organizadas na Wiki desse repositório!
+
 ### 🔎 Sumário 
 * [Java Básico](#java-basico)
 * [Programação Orientada a Objetos](#poo)
+* [Testes em Java com Mockito](#testes-java)
 * [Estruturas de dados](#estruturas-de-dados) 🚧
 * [Java Avançado](#java-avancado) 🚧
 * [Banco de Dados (PostgreSQL)](#banco-de-dados)
@@ -651,7 +654,7 @@ Para **sair** do modo debug, você pode rodar o programa normalmente e clicar no
 
 <div align="center" id='poo'/> 
 
-## Programação Orientada a Objetos 🚧
+## Programação Orientada a Objetos
 </div>
 
 Como a maioria das atividades que fazemos no dia a dia, programar também possui modos diferentes de se fazer. Esses modos são chamados de **paradigmas de programação** e antigamente havia apenas o paradigma estruturado. No paradigma estruturado, um programa é composto por **três** tipos básicos de estruturas: as **sequências**, que são os comandos a serem executados, as **condições** (if, else, switch) e as **repetições** (for, while, do-while). 
@@ -1078,6 +1081,11 @@ Para um relacionamento de composição, usamos o termo **possui**.
 
 Lembre-se, agregação ou composição não é um estado fixo para as mesmas coisas sempre. Depende da semântica do seu sistema. Ou seja, você que irá definir com a construção do seu sistema quais serão suas relações.
 
+</div>
+
+<div align="center" id='testes-java'/> 
+
+## Testes em Java com Mockito 🚧
 </div>
 
 <div align="center" id='estruturas-de-dados'/> 
@@ -2208,8 +2216,8 @@ Algumas diferenças mais específicas de functions e procedures:
 </div>
 
 #### 🔎 Mini sumário
-* [Download](#download-maven) 🚧
-* [Criação de projeto e estrutura padrão](#criacao-estrutura) 🚧
+* [Download](#download-maven)
+* [Criação de projeto e estrutura padrão](#criacao-estrutura)
 * [POM (Dependências, Escopos, Repositórios, Plugins e Profiles)](#pom) 🚧
 
 O processo de criação de um projeto Java EE (que dispõe de um conjunto de APIs) em geral envolve a criação de um diretório principal com vários subdiretórios, a configuração de diversos arquivos XML, a obtenção (via cópia ou download) de bibliotecas para o projeto e, posteriormente, a execução dos testes unitários, a criação dos pacotes de publicação, a geração de documentação javadoc, entre outras etapas. 
@@ -2231,7 +2239,7 @@ Para fazer a instalação do Maven, é necessário seguir alguns passos. Primeir
 
 Após isso, descompacte essa pasta em `C:\Arquivos de Programas\Apache\apache-maven-3.8.4`. Confira se criou a pasta bin e adicione esse caminho na variável de ambiente do Windows chamada "Path". Para adicionar na variável de ambiente, pesquise por `Editar as variáveis de ambiente do sistema`, clique no botão `Variáveis de Ambiente` e encontre a variável **Path**. Se não tiver uma, basta criar uma em `novo`, se tiver apenas clique no botão de `editar`, adicione o caminho da pasta em uma linha e clique em `ok`.
 	
-Feito isso, verifique se o maven foi instalado corretamente dando o comando `mvn --version` no cmd. Com isso, o Maven está insttalado corretamente em sua máquina e pronto para ser usado.
+Feito isso, verifique se o maven foi instalado corretamente dando o comando `mvn --version` no cmd. Com isso, o Maven está instalado corretamente em sua máquina e pronto para ser usado.
 	
 </div>
 
@@ -2252,7 +2260,39 @@ Preenchendo essas informações, pode clicar em `Finish`. Projeto criado, a estr
 	
 <img height="170em" src="https://user-images.githubusercontent.com/87392633/155737360-5077ee87-15b6-4a15-ac6e-93d1b1e5bf5c.png"/>.
 </div>	
+	
+A pasta `src` é onde todo código-fonte deve ser mantido. Dentro de src, as pastas `main` e `test` também são criadas. A pasta `main/java` irá conter o código-fonte e a pasta `main/resources` irá conter todos os arquivos que iremos usar no projeto. A pasta `test/java` irá conter todas as classes de teste em nosso projeto. 
+	
+Dentro destes, será criada a estrutura de pastas determinada pelo package, informado na criação do arquétipo, precedidas por um diretório pai chamado java. Sempre que é necessário compilar, construir ou gerar informações sobre o projeto o diretório `target` é criado pelo próprio Maven. 
 
+</div>
+
+<div id="pom">
+	
+#### 💻 POM (Dependências, Escopos, Repositórios, Plugins e Profiles
+	
+O **Project Object Model (POM ou pom.xml)** contém os metadados do projeto e é responsável por gerenciar as **dependências** e configurar os plug-ins que nos ajudam a automatizar as tarefas. Este arquivo, presente no diretório-raiz do projeto, contém todas as configurações que o Maven necessita para interagir corretamente com o projeto. Ele pode ser simples, somente possuindo as coordenadas do projeto, ou extremamente complexo, relacionando dependências, repositórios, repositórios de plugins, entre outros. 
+
+Ou seja, é um dos arquivos mais importantes em um projeto Maven, pois ele que descreve uma série de configurações que o projeto terá e quais repositórios e dependências seu projeto irá precisar.
+	
+No cabeçalho de um POM temos algumas tags básicas que definem qual versão do modelo de POM utilizado:
+	
+* **GroupId**:  indica o identificador único da organização ou grupo que criou o projeto, sendo geralmente baseado no nome de domínio qualificado da empresa que será usado como o prefixo da estrutura de pacotes do projeto;
+* **ArtifactId**: indica um nome único do artefato primário a ser gerado pelo projeto, ou seja, é o nome que você dará ao projeto;
+* **Version**: define a versão do projeto que irá complementar o nome do artefato;
+* **Packaging**: define qual tipo de empacotamento o projeto terá após o processo de build;
+* **Name**: define o nome do projeto.
+	
+Por exemplo:
+
+```
+<modelVersion>4.0.0</modelVersion>
+<groupId>br.com.notes</groupId>
+<artifactId>exemplo</artifactId>
+<version>1.0-SNAPSHOT</version>
+<packaging>war</packaging>
+<name>exemplo</name>
+```
 </div>
 
 <div align="center" id='hibernate'/> 
@@ -2337,4 +2377,5 @@ Preenchendo essas informações, pode clicar em `Finish`. Projeto criado, a estr
 * Tipos de dados (Banco de dados): [1](https://www.devmedia.com.br/tipos-de-dados-no-postgresql-e-sql-server/23362)
 * Constrains (Banco de dados): [1](http://www.bosontreinamentos.com.br/postgresql-banco-dados/constraints-no-postgresql-restricoes/), [2](http://www.bosontreinamentos.com.br/bancos-de-dados/restricoes-de-chave-estrangeira-on-delete-cascade-e-outras/#:~:text=ON%20DELETE%20CASCADE%20%E2%80%93%20Uma%20opera%C3%A7%C3%A3o,outra%20tabela%20%C3%A9%20automaticamente%20exclu%C3%ADdo.)
 * Select: [1](https://www.postgresqltutorial.com/postgresql-select/), [2](https://www.devmedia.com.br/sql-funcoes-de-agregacao/38463), [3](https://qastack.com.br/programming/905379/what-is-the-difference-between-join-and-union), [4](https://imasters.com.br/back-end/como-fazer-subconsultas-um-passo-passo#:~:text=Tipos%20de%20subconsultas&text=Subconsultas%20de%20v%C3%A1rias%20colunas%3A%20retornam,podemos%20aninhar%20at%C3%A9%20255%20subconsultas), [5](https://www.devmedia.com.br/sql-join-entenda-como-funciona-o-retorno-dos-dados/31006), [6](https://www.essentialsql.com/what-is-the-difference-between-a-join-and-a-union/)
+* Maven: [1](https://www.semeru.com.br/blog/entendendo-o-pom-do-maven/#:~:text=O%20POM%20%C3%A9%20um%20dos,do%20modelo%20de%20POM%20utilizado.)
 * GitHub: [1](https://www.youtube.com/watch?v=UBAX-13g8OM)
