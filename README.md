@@ -11,7 +11,7 @@ As anotações também estão organizadas na Wiki desse repositório!
 * [Estruturas de dados](#estruturas-de-dados) 🚧
 * [Java Avançado](#java-avancado) 🚧
 * [Banco de Dados (PostgreSQL)](#banco-de-dados)
-* [Maven](#maven) 🚧
+* [Maven](#maven)
 * [Hibernate](#hibernate) 🚧
 * [Spring](#spring) 🚧
 * [GitHub](#github) 🚧
@@ -2212,13 +2212,13 @@ Algumas diferenças mais específicas de functions e procedures:
 
 <div align="center" id='maven'/> 
 
-## Maven 🚧
+## Maven
 </div>
 
 #### 🔎 Mini sumário
 * [Download](#download-maven)
 * [Criação de projeto e estrutura padrão](#criacao-estrutura)
-* [POM (Dependências, Escopos, Repositórios, Plugins e Profiles)](#pom) 🚧
+* [POM (Dependências, Escopos, Repositórios, Plugins e Profiles)](#pom)
 
 O processo de criação de um projeto Java EE (que dispõe de um conjunto de APIs) em geral envolve a criação de um diretório principal com vários subdiretórios, a configuração de diversos arquivos XML, a obtenção (via cópia ou download) de bibliotecas para o projeto e, posteriormente, a execução dos testes unitários, a criação dos pacotes de publicação, a geração de documentação javadoc, entre outras etapas. 
 
@@ -2269,7 +2269,7 @@ Dentro destes, será criada a estrutura de pastas determinada pelo package, info
 
 <div id="pom">
 	
-#### 💻 POM (Dependências, Escopos, Repositórios, Plugins e Profiles
+#### 💻 POM (Dependências, Repositórios, Plugins e Profiles)
 	
 O **Project Object Model (POM ou pom.xml)** contém os metadados do projeto e é responsável por gerenciar as **dependências** e configurar os plug-ins que nos ajudam a automatizar as tarefas. Este arquivo, presente no diretório-raiz do projeto, contém todas as configurações que o Maven necessita para interagir corretamente com o projeto. Ele pode ser simples, somente possuindo as coordenadas do projeto, ou extremamente complexo, relacionando dependências, repositórios, repositórios de plugins, entre outros. 
 
@@ -2293,6 +2293,68 @@ Por exemplo:
 <packaging>war</packaging>
 <name>exemplo</name>
 ```
+
+#### Dependências
+	
+A tag dependencies define quais serão as **dependências** utilizadas no projeto. Dependências são arquivos jars (bibliotecas) de terceiros (Ex: JUnit, Spring, etc). O Maven é responsável por gerenciar essas bibliotecas e suas versões. Sem o Maven, a cada versão nova do jar, você teria que ir no site baixar a nova versão e implementar no seu projeto configurando novamente. Com o Maven você pode apenas informar de onde vem esse jar e sua versão, que o próprio Maven faz o trabalho de baixar a nova versão e atualizar o seu sistema. Você precisa informar o `groupId`, o `artifactId` e a `Version` desse jar. Com esta lista, a ferramenta as analisa e tenta localizá-las para disponibilizar para o projeto. 
+
+```
+<dependencies>
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.11</version>
+        <scope>test</scope>
+    </dependency>
+</dependencies>
+```
+
+As dependências podem ser categorizadas em **6 escopos** diferentes, que são informados na tag `<scope>`:
+
+* **Compile**: escopo padrão (se nenhum é informado). Estão disponíveis no classpath do projeto. Um dos mais usados, as dependências estão disponíveis quando o código normal é executado (e não o teste); 
+* **Test**: as dependências estão disponíveis apenas no momento da execução dos testes. Um dos mais usados; 
+* **Runtime**: não é necessária na compilação. É incluída no Classpath apenas quando executada;
+* **Provided**: fornecida pelo ambiente de execução onde o projeto será compilado e executado; 
+* **System**: similar ao provided, a diferença é que o caminho do artefato deve ser especificado na declaração da depêndencia (através da tag systemPath); 
+* **Import**: utilizado especificamente no gerenciamento de dependências em projetos com muitos módulos. 
+
+Os escopos são importantes para gerenciar em que momento as dependências irão estar disponíveis, gerenciando **velocidade** e **desempenho** do seu programa. 
+
+#### Repositórios
+	
+São os diretórios onde são armazenadas as dependências, ou seja, de onde essas dependências são baixadas. Existem dois tipos de repositórios: 
+
+* **Local**: é um diretório na máquina onde o Maven está sendo executado. O primeiro lugar onde a ferramenta procura é na pasta `C:\Users\Usuario\.m2\repository` toda vez que precisa localizar uma dependência. Caso não a encontre, irá verificar o repositório público [oficial](https://repo.maven.apache.org/maven2/);
+* **Remoto**: é um site onde podemos baixar as dependências Maven. Pode ser um repositório fornecido pelo Maven ou uma configuração de repositório customizada dentro de uma organização.
+	
+As empresas customizam seu próprio Maven pois há muitas bibliotecas que a própria empresa faz e que quer reutilizar em outros projetos. Além disso, se não fizesse um repositório próprio, os códigos fontes ficariam públicos. 
+
+#### Plugins
+
+Plugins são a característica central de Maven que permitem a **reutilização** da lógica de construção comum em vários projetos. Eles fazem isso executando uma **"ação"** no contexto da descrição de um projeto pelo POM. Eles são valores que são acessíveis em qualquer lugar dentro de um POM usando a notação `${X}`, onde `X` é a propriedade.
+	
+O Maven nos fornece alguns Plugins para executar cada uma das tarefas: Compilar o projeto, executar os testes, empacotar o código, etc. Os plugins já devem estar mapeados dentro de `<plugins>`, essa tag fica abaixo de `<build>`.
+
+* **Compile**: Serve para compilar seu projeto. É o `maven-compiler-plugin`;
+* **Test**: Executa os testes unitários. É o `maven-surefire-plugin`;
+* **Install**: Ele compila, executa os testes e instala o fonte do seu programa. É o `maven-install-plugin`;
+* **Clean**: Limpa os arquivos da pasta target. É o `maven-clean-plugin`.
+
+#### Profiles
+
+São usados no maven para criar configurações de construção personalizadas. Por exemplo, queremos executar o install sem executar os testes: 
+
+```
+<profiles>
+    <profile>
+	    <id>skip-tests</id>
+	    <properties>
+		    <maven.test.skip>true</maven.test.skip>
+	    </properties>
+    </profile>
+</profiles>
+```
+
 </div>
 
 <div align="center" id='hibernate'/> 
@@ -2377,5 +2439,5 @@ Por exemplo:
 * Tipos de dados (Banco de dados): [1](https://www.devmedia.com.br/tipos-de-dados-no-postgresql-e-sql-server/23362)
 * Constrains (Banco de dados): [1](http://www.bosontreinamentos.com.br/postgresql-banco-dados/constraints-no-postgresql-restricoes/), [2](http://www.bosontreinamentos.com.br/bancos-de-dados/restricoes-de-chave-estrangeira-on-delete-cascade-e-outras/#:~:text=ON%20DELETE%20CASCADE%20%E2%80%93%20Uma%20opera%C3%A7%C3%A3o,outra%20tabela%20%C3%A9%20automaticamente%20exclu%C3%ADdo.)
 * Select: [1](https://www.postgresqltutorial.com/postgresql-select/), [2](https://www.devmedia.com.br/sql-funcoes-de-agregacao/38463), [3](https://qastack.com.br/programming/905379/what-is-the-difference-between-join-and-union), [4](https://imasters.com.br/back-end/como-fazer-subconsultas-um-passo-passo#:~:text=Tipos%20de%20subconsultas&text=Subconsultas%20de%20v%C3%A1rias%20colunas%3A%20retornam,podemos%20aninhar%20at%C3%A9%20255%20subconsultas), [5](https://www.devmedia.com.br/sql-join-entenda-como-funciona-o-retorno-dos-dados/31006), [6](https://www.essentialsql.com/what-is-the-difference-between-a-join-and-a-union/)
-* Maven: [1](https://www.semeru.com.br/blog/entendendo-o-pom-do-maven/#:~:text=O%20POM%20%C3%A9%20um%20dos,do%20modelo%20de%20POM%20utilizado.)
+* Maven: [1](https://www.semeru.com.br/blog/entendendo-o-pom-do-maven/#:~:text=O%20POM%20%C3%A9%20um%20dos,do%20modelo%20de%20POM%20utilizado.), [2](https://www.devmedia.com.br/introducao-ao-maven/25128)
 * GitHub: [1](https://www.youtube.com/watch?v=UBAX-13g8OM)
