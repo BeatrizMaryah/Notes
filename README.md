@@ -2363,7 +2363,7 @@ São usados no maven para criar configurações de construção personalizadas. 
 </div>
 
 #### 🔎 Mini sumário
-* [JPA, Hibernate e JDBC](#jpa-hibernate-jdbc) 🚧
+* [Framework, JPA, Hibernate e JDBC](#jpa-hibernate-jdbc) 🚧
 * [Usando o hibernate](#usando-hibernate) 🚧
 * [Anotações do hibernate](#anotacoes-hibernate) 🚧
 * [Repositories](#repositores-hibernate) 🚧
@@ -2372,6 +2372,22 @@ São usados no maven para criar configurações de construção personalizadas. 
 * [CustomRepository](#custom-repository) 🚧
 * [QueryDSL](#querydsl) 🚧
 * [Validations](#validations) 🚧
+	
+<div id="jpa-hibernate-jdbc">
+	
+#### 💻 Framework, JPA, Hibernate e JDBC
+	
+**Hibernate** é o framework para persistência de dados mais utilizado em projetos Java. Sendo uma das primeiras opções a implementar o conceito de mapeamento objeto-relacional (ORM), em pouco tempo se tornou referência entre os desenvolvedores, tendo influenciado, inclusive, a criação da especificação JPA.
+	
+Mas o que é um **framework**? É simples, provavelmente você já veio na sua mente a pergunta "Será que não existe uma forma mais fácil de fazer isso no meu projeto?" enquanto estava escrevendo muitas linhas para determinado comportamento, ou até repetindo código. Para isso, os frameworks são criados. Nada mais é do que uma ferramenta que vai te ajudar a ter como único objetivo focar em desenvolver o projeto, não em detalhes de configurações. O uso de frameworks trouxe a prática de evitar que tenhamos que fazer tarefas repetitivas, automatizando parte do trabalho.
+
+Já o **ORM (Object Relational Mapper)** é uma técnica de mapeamento objeto relacional que permite fazer uma relação dos objetos com os dados que os mesmos representam. Ou seja, ele é uma ponte entre os dados no nosso banco de dados relacional e nossos objetos criados com esses dados no java. É ele quem vai permitir o armazenamento dos objetos no banco de dados.
+
+Agora a **JPA** (Java Persistence API) é a especificação do Java que dita como os frameworks ORM devem ser implementados. Ela foi criada com o intuito de padronizar essas soluções. O Jpa em si é uma implementação do java que define as regras de como um framework e como ele deve funcionar, ele é apenas uma definição e não uma implementação. É uma API que descreve uma interface comum para os outros frameworks implementarem.
+	
+O **Hibernate** em si é um framework para o mapeamento objeto-relacional escrito na linguagem Java. O seu objetivo é diminuir a complexidade entre os programas Java, baseado no modelo orientado a objeto, que precisam trabalhar com um banco de dados do modelo relacional, mediante o uso de arquivos (**XML**) ou **anotações** Java. Em geral, ele facilita o desenvolvimento de consultas e atualizações dos dados.
+	
+</div>
 
 <div align="center" id='spring'/> 
 
@@ -2440,4 +2456,5 @@ São usados no maven para criar configurações de construção personalizadas. 
 * Constrains (Banco de dados): [1](http://www.bosontreinamentos.com.br/postgresql-banco-dados/constraints-no-postgresql-restricoes/), [2](http://www.bosontreinamentos.com.br/bancos-de-dados/restricoes-de-chave-estrangeira-on-delete-cascade-e-outras/#:~:text=ON%20DELETE%20CASCADE%20%E2%80%93%20Uma%20opera%C3%A7%C3%A3o,outra%20tabela%20%C3%A9%20automaticamente%20exclu%C3%ADdo.)
 * Select: [1](https://www.postgresqltutorial.com/postgresql-select/), [2](https://www.devmedia.com.br/sql-funcoes-de-agregacao/38463), [3](https://qastack.com.br/programming/905379/what-is-the-difference-between-join-and-union), [4](https://imasters.com.br/back-end/como-fazer-subconsultas-um-passo-passo#:~:text=Tipos%20de%20subconsultas&text=Subconsultas%20de%20v%C3%A1rias%20colunas%3A%20retornam,podemos%20aninhar%20at%C3%A9%20255%20subconsultas), [5](https://www.devmedia.com.br/sql-join-entenda-como-funciona-o-retorno-dos-dados/31006), [6](https://www.essentialsql.com/what-is-the-difference-between-a-join-and-a-union/)
 * Maven: [1](https://www.semeru.com.br/blog/entendendo-o-pom-do-maven/#:~:text=O%20POM%20%C3%A9%20um%20dos,do%20modelo%20de%20POM%20utilizado.), [2](https://www.devmedia.com.br/introducao-ao-maven/25128)
+* Hibernate: [1](https://www.alura.com.br/artigos/framework-o-que-e-pra-que-serve-essa-ferramenta?gclid=EAIaIQobChMI8PKT8smn9wIVReVcCh21OQsuEAAYASAAEgJVk_D_BwE), [2](https://www.devmedia.com.br/orm-object-relational-mapper/19056)
 * GitHub: [1](https://www.youtube.com/watch?v=UBAX-13g8OM)
