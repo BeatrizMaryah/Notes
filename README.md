@@ -2429,16 +2429,20 @@ Apesar da implementação em si ser feita pelo hibernate, as anotações são to
 As principais são:
 
 ##### @Entity 
-	Usado para declarar qualquer classe como uma entidade para um banco de dados. Ao declarar uma entidade no código, uma tabela será criada referênciando a mesma. Não tem argumentos no seu construtor;
+
+Usado para declarar qualquer classe como uma entidade para um banco de dados. Ao declarar uma entidade no código, uma tabela será criada referênciando a mesma. Não tem argumentos no seu construtor;
 	
 ##### @Table
-	Usado para alterar os detalhes da tabela, quando você precisa que as informações sejam diferentes da tabela padrão formada pela anotação `@Entity`. A anotação fornece quatro atributos, permitindo que você substitua o nome da tabela, seu catálogo e seu esquema e imponha restrições exclusivas em colunas na tabela;
+
+Usado para alterar os detalhes da tabela, quando você precisa que as informações sejam diferentes da tabela padrão formada pela anotação `@Entity`. A anotação fornece quatro atributos, permitindo que você substitua o nome da tabela, seu catálogo e seu esquema e imponha restrições exclusivas em colunas na tabela;
 
 ##### @Id
-	Considerando que cada entidade terá uma chave primária, é usado para declarar uma dentro de nossa classe. Pode ser um único campo ou uma combinação de vários campos, dependendo da estrutura da tabela. Por padrão, a anotação determinará automaticamente a estratégia de geração de chave primária mais apropriada a ser usada, mas você pode substituir isso aplicando a anotação `@GeneratedValue`;
+
+Considerando que cada entidade terá uma chave primária, é usado para declarar uma dentro de nossa classe. Pode ser um único campo ou uma combinação de vários campos, dependendo da estrutura da tabela. Por padrão, a anotação determinará automaticamente a estratégia de geração de chave primária mais apropriada a ser usada, mas você pode substituir isso aplicando a anotação `@GeneratedValue`;
 
 ##### @GeneratedValue
-	Se definirmos apenas a anotação `@Id` deixamos a responsabilidade de definir esse valor único para a aplicação, mas se definirmos o `@GeneratedValue` deixamos essa responsabilidade com o **provedor de persistência**. Falando em provedor de persistência, estamos falando do framework escolhido para que a aplicação possa se comunicar com o banco de dados, ou seja, o **hibernate**. Considerando isso, com essa anotação o Hibernate gera automaticamente os valores com referência à sequência interna e não precisamos definir os valores manualmente. Essa anotação leva dois parâmetros, sendo eles:
+
+Se definirmos apenas a anotação `@Id` deixamos a responsabilidade de definir esse valor único para a aplicação, mas se definirmos o `@GeneratedValue` deixamos essa responsabilidade com o **provedor de persistência**. Falando em provedor de persistência, estamos falando do framework escolhido para que a aplicação possa se comunicar com o banco de dados, ou seja, o **hibernate**. Considerando isso, com essa anotação o Hibernate gera automaticamente os valores com referência à sequência interna e não precisamos definir os valores manualmente. Essa anotação leva dois parâmetros, sendo eles:
 
 A primeira annotation é a **Strategy**: É a estratégia de geração da chave primária. A JPA suporta quatro estratégias, definidas na enum GenerationType. São elas:
 	
@@ -2450,6 +2454,33 @@ A primeira annotation é a **Strategy**: É a estratégia de geração da chave 
 A segunda annotation é o **generator**. Ele é usado caso optemos por trabalhar com a estratégia de geração da chave primária conhecida como SEQUENCE. Nele, especificamos um nome para a sequence, e esse mesmo nome será mapeado à sequence do banco de dados através da anotação `@SequenceGenerator`.
 
 ##### @Column
+
+A anotação `@Column` é usada para realizar o mapeamento do campo da entidade com uma coluna do banco de dados. Para atributos básicos segundo a especificação JPA a anotação `@Column` pode ser omitida. Nesse caso, a regra de nomeação é que o nome da coluna do banco de dados tenha o mesmo nome da propriedade da classe. Além disso, podem ser usados atributos para configurar o mapeamento da nossa coluna em outros casos, como:
+
+* **name:** atributo que permite que o nome da coluna seja especificado. Isso possibilita que o nome da coluna no banco de dados seja diferente do nome do atributo da entidade;
+* **length:** atributo que permite definir o tamanho da coluna, usado para mapear um limite para um valor String;
+* **nullable:** atributo que define se a coluna irá aceitar valores nulos ou não;
+* **unique:** atributo que marca a coluna com uma unique contraint, ou seja, faz com que a coluna só aceite valores únicos.
+
+Por exemplo, se eu quiser definir um campo **nome** que seja NOT NULL (não aceite valores nulos), que tenha como limite 30 caracteres e que só aceite valores únicos:
+
+```
+@Column(nullable = false, length = 30, unique = true)
+private String nome;
+```
+
+A partir do momento em que as annotations são definidas é possível instanciar um objeto a partir de um `SessionFactory` e salvar as informações do objeto na tabela correspondente do banco de dados. 
+
+```
+Pessoa pessoa = new Pessoa();
+pessoa.setNome("João");
+
+SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+Session session = sessionFactory.openSession();
+session.save(pessoa);
+```
+
+Nesse exemplo criamos uma instância do objeto **pessoa** e setamos o nome como "João". Após isso **criamos uma sessão no banco**, **abrimos ela** e **salvamos** essa pessoa. Porém este método é muito **manual** e não é mais utilizado. Agora usamos os **Repositories**. 
 
 </div>
 
@@ -2520,5 +2551,5 @@ A segunda annotation é o **generator**. Ele é usado caso optemos por trabalhar
 * Constrains (Banco de dados): [1](http://www.bosontreinamentos.com.br/postgresql-banco-dados/constraints-no-postgresql-restricoes/), [2](http://www.bosontreinamentos.com.br/bancos-de-dados/restricoes-de-chave-estrangeira-on-delete-cascade-e-outras/#:~:text=ON%20DELETE%20CASCADE%20%E2%80%93%20Uma%20opera%C3%A7%C3%A3o,outra%20tabela%20%C3%A9%20automaticamente%20exclu%C3%ADdo.)
 * Select: [1](https://www.postgresqltutorial.com/postgresql-select/), [2](https://www.devmedia.com.br/sql-funcoes-de-agregacao/38463), [3](https://qastack.com.br/programming/905379/what-is-the-difference-between-join-and-union), [4](https://imasters.com.br/back-end/como-fazer-subconsultas-um-passo-passo#:~:text=Tipos%20de%20subconsultas&text=Subconsultas%20de%20v%C3%A1rias%20colunas%3A%20retornam,podemos%20aninhar%20at%C3%A9%20255%20subconsultas), [5](https://www.devmedia.com.br/sql-join-entenda-como-funciona-o-retorno-dos-dados/31006), [6](https://www.essentialsql.com/what-is-the-difference-between-a-join-and-a-union/)
 * Maven: [1](https://www.semeru.com.br/blog/entendendo-o-pom-do-maven/#:~:text=O%20POM%20%C3%A9%20um%20dos,do%20modelo%20de%20POM%20utilizado.), [2](https://www.devmedia.com.br/introducao-ao-maven/25128)
-* Hibernate: [1](https://www.alura.com.br/artigos/framework-o-que-e-pra-que-serve-essa-ferramenta?gclid=EAIaIQobChMI8PKT8smn9wIVReVcCh21OQsuEAAYASAAEgJVk_D_BwE), [2](https://www.devmedia.com.br/orm-object-relational-mapper/19056), [3](https://www.devmedia.com.br/jpa-como-usar-a-anotacao-generatedvalue/38592), [4](https://www.geeksforgeeks.org/hibernate-annotations/), [5](https://www.tutorialspoint.com/hibernate/hibernate_annotations.htm#:~:text=Hibernate%20annotations%20are%20the%20newest,Object%20and%20Relational%20Table%20mapping.)
+* Hibernate: [1](https://www.alura.com.br/artigos/framework-o-que-e-pra-que-serve-essa-ferramenta?gclid=EAIaIQobChMI8PKT8smn9wIVReVcCh21OQsuEAAYASAAEgJVk_D_BwE), [2](https://www.devmedia.com.br/orm-object-relational-mapper/19056), [3](https://www.devmedia.com.br/jpa-como-usar-a-anotacao-generatedvalue/38592), [4](https://www.geeksforgeeks.org/hibernate-annotations/), [5](https://www.tutorialspoint.com/hibernate/hibernate_annotations.htm#:~:text=Hibernate%20annotations%20are%20the%20newest,Object%20and%20Relational%20Table%20mapping.), [6](https://gasparbarancelli.com/post/hibernate-anotacao-column?lang=pt)
 * GitHub: [1](https://www.youtube.com/watch?v=UBAX-13g8OM)
