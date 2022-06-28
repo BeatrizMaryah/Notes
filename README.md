@@ -2365,7 +2365,7 @@ São usados no maven para criar configurações de construção personalizadas. 
 #### 🔎 Mini sumário
 * [Framework, JPA, Hibernate e JDBC](#jpa-hibernate-jdbc)
 * [Usando o hibernate](#usando-hibernate)
-* [Anotações do hibernate](#anotacoes-hibernate) 🚧
+* [Anotações do hibernate](#anotacoes-hibernate)
 * [Repositories](#repositores-hibernate) 🚧
 * [Querys customizadas](#querys-customizadas) 🚧
 * [Mapeamentos de associação](#mapeamento-associacao) 🚧
@@ -2481,6 +2481,18 @@ session.save(pessoa);
 ```
 
 Nesse exemplo criamos uma instância do objeto **pessoa** e setamos o nome como "João". Após isso **criamos uma sessão no banco**, **abrimos ela** e **salvamos** essa pessoa. Porém este método é muito **manual** e não é mais utilizado. Agora usamos os **Repositories**. 
+
+</div>
+
+<div id="repositores-hibernate">
+	
+#### 💻 Repositories
+
+Um **repository** ou **repositório** é responsável por disponibilizar os métodos com ligação com os banco de dados. Ele é a primeira ponte de contato da nossa aplicação com o banco e, com essa ponte, ele isola o código normal do código que acessa o banco. 
+
+O Banco de dados é fortemente ligado ao domínio da aplicação, ou seja, as **classes base** do nosso programa, as **entidades**. Isso acontece pois ele é responsável por fazer a manutenção dessas classes por meio das entidades, por isso quando criamos um repository definimos claramente o “tipo” dele, que é relacionado com a entidade respectiva. Ou seja, pense que eu tenho uma classe **usuário**. Definindo essa classe como uma entidade, eu defino ela como um domínio que terá sua própria tabela no banco de dados. Para fazer a comunicação com essa tabela específica, criamos um repository do tipo da nossa classe usuário.
+
+Dentro dos repositories não colocamos regras de negócios, apenas fazemos as consultas e outros métodos. Considerando isso, qualquer método que se relacionará com o banco ficará dentro do repositório. 
 
 </div>
 
