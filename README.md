@@ -2494,6 +2494,28 @@ O Banco de dados é fortemente ligado ao domínio da aplicação, ou seja, as **
 
 Dentro dos repositories não colocamos regras de negócios, apenas fazemos as consultas e outros métodos. Considerando isso, qualquer método que se relacionará com o banco ficará dentro do repositório. 
 
+Para criar nosso repositório, criamos uma **interface** com o nome da nossa entidade + Repository. Essa interface extenderá de **JpaRepository** e terá como tipo nossa entidade e um Integer ou Long(referente ao id dessa entidade) e terá uma anotação de `@Repository`. Ela já vem com os métodos de um CRUD automaticamente, mas é possível criar métodos personalizados com as **querys**.
+
+```
+@Repository
+public interface PessoaRepository extends JpaRepository<Pessoa, Long> {}
+```
+
+Agora, podemos usar esse repositório e seus métodos usando a injeção de dependência com o @Inject:
+
+```
+@Inject
+public PessoaRepository repository;
+```
+
+Para usar os métodos desse repositorio, apenas usamos essa variável que instanciamos com `.método()`. Clicando cntrl + espaço após o ponto podemos ver todos os métodos desse repositório, inclusive os métodos padrões. 
+
+```
+repository.save(pessoa); //Salva o registro no banco de dados
+repository.findById(id); //Acha o registro pelo ID
+repository.findAll(); //Acha todos os registros de determinada entidade
+```
+
 </div>
 
 <div align="center" id='spring'/> 
