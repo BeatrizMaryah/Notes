@@ -2383,7 +2383,7 @@ Mas o que é um **framework**? É simples, provavelmente você já veio na sua m
 
 Já o **ORM (Object Relational Mapper)** é uma técnica de mapeamento objeto relacional que permite fazer uma relação dos objetos com os dados que os mesmos representam. Ou seja, ele é uma ponte entre os dados no nosso banco de dados relacional e nossos objetos criados com esses dados no java. É ele quem vai permitir o armazenamento dos objetos no banco de dados.
 
-Agora a **JPA** (Java Persistence API) é a especificação do Java que dita como os frameworks ORM devem ser implementados. Ela foi criada com o intuito de padronizar essas soluções. O Jpa em si é uma implementação do java que define as regras de como um framework e como ele deve funcionar, ele é apenas uma definição e não uma implementação. É uma API que descreve uma interface comum para os outros frameworks implementarem.
+Agora a **JPA** (Java Persistence API) é a especificação do Java que dita como os frameworks ORM devem ser implementados. Ela foi criada com o intuito de padronizar essas soluções. O Jpa em si é uma implementação do java que define as regras de um framework e como ele deve funcionar, ele é apenas uma definição e não uma implementação. É uma API que descreve uma interface comum para os outros frameworks implementarem.
 	
 O **Hibernate** em si é um framework para o mapeamento objeto-relacional escrito na linguagem Java. O seu objetivo é diminuir a complexidade entre os programas Java, baseado no modelo orientado a objeto, que precisam trabalhar com um banco de dados do modelo relacional, mediante o uso de arquivos (**XML**) ou **anotações** Java. Em geral, ele facilita o desenvolvimento de consultas e atualizações dos dados.
 	
