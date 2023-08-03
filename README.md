@@ -1092,6 +1092,7 @@ Lembre-se, agregação ou composição não é um estado fixo para as mesmas coi
 * [JUnit e estrutura básica de um teste](#junit)
 
 <div id='conceitos-testes-unitarios'/>
+	
 #### 📚 Conceitos
 </div>
 
@@ -1122,6 +1123,7 @@ Além disso, é necessário se atentar ao que o método faz, quais validações,
 Para fazer um teste unitário, deve ser usados apenas dados o suficiênte para o necessário. Imagine que eu tenho um método que conta os usuários de uma lista, eu não preciso passar uma lista de 80 usuários para verificar se meu método retornou 80. Eu posso apenas passar uma lista com um usuário e verificar se ele retornou 1.
 
 <div id='junit'/>
+	
 #### 💻 JUnit e estrutura básica de um teste
 </div>
 
@@ -1133,7 +1135,7 @@ JUnit é um framework que facilita o desenvolvimento e execução de testes unit
 * **@After**: método que deve ser executado depois de cada teste, normalmente utilizar para limpeza e pós validação;
 * **@AfterClass**: mesmo que o anterior, mas executa apenas uma vez para a classe inteira.
 
-```
+```java
 public class AlunoTest {
 
 	@Before
@@ -1157,7 +1159,7 @@ Como vimos anteriormente, a lógica do teste é verificar se um método já exis
 
 Imagine que temos o método de calcular a média de um aluno. Ele irá receber 3 notas e irá dividir elas por 3.
 
-```
+```java
 public class Aluno {
 
 	public float calcularMedia(float nota1, float nota2, float nota3) {
@@ -1166,7 +1168,21 @@ public class Aluno {
 }
 ```
 
-🚧
+Para testar, vamos chamar ele em um método de teste dentro de uma classe de teste, passando os valores de sua preferência para verificar o valor calculado. **Os métodos de teste sempre serão void e não vão ter parâmetros**.
+
+```java
+public class AlunoTest {
+
+	@Test
+	public void calcularMedia_alunoDeveTirarOitoEMeio() {
+		Aluno aluno = new Aluno();
+
+		Fload valorMedia = aluno.calcularMedia(7.6, 9, 8.9);
+	}
+}
+```
+
+Nesse teste, criamos uma instância da classe Aluno para testar os seus métodos e chamamos o método de calcular média passando os parâmetros e esperando um valor. Passamos os valores 7.6, 9 e 8.9. De acordo com o cálculo, ele deverá retornar 8.5. Para verificarmos que esse método está funcionando corretamente, vamos usar os asserts para verificar o resultado esperado.
 
 ##### Asserts
 
@@ -1176,7 +1192,46 @@ Usamos as asserções para verificar se um valor ou um objeto tem determinadas c
 * **assertEquals/assertNotEquals**: compara se os dois objetos informados são iguais ou não utilizando o **equals**;
 * **assertSame/assertNotSame**: compara se os dois objetos informados são o mesmo objeto (**==**).
 
-🚧
+Dessa forma, podemos utilizar o assertEquals para verificar se nosso resultado é igual ao esperado (8.5);
+
+```java
+public class AlunoTest {
+
+	@Test
+	public void calcularMedia_alunoDeveTirarOitoEMeio() {
+		Aluno aluno = new Aluno();
+
+		Fload valorMedia = aluno.calcularMedia(7.6, 9, 8.9);
+
+		assertEquals(8.5, valorMedia);
+	}
+}
+```
+
+Essa é a estrutura básica de um teste unitário. As classes normalmente irão ser criadas com o sufixo **Test**, como AlunoTest e sempre estarão na raiz test do maven. A forma como o método é escrito, vai depender da sua escolha ou da escolha da sua equipe. Normalmente eu coloco o nome do método e o cenário, separados por underline (_), como `calcularMedia_alunoDeveTirarOitoEMeio()`.
+
+Além disso, é possível perceber um padrão na estrutura dos testes. Ele sempre estará dividido em três blocos. No primeiro, vamos preparar o terreno para o teste ser executado, instanciar as variáveis, entre outros. No segundo bloco, vamos chamar o método para executar o processo a ser testado, terá somente uma linha. Por último, no último bloco, vamos verificar os resultados que esperamos utilizando os asserts, entre outros.
+
+Esses blocos são nomeados `ARRANGE`, `ACT` e `ASSERT`, respectivamente. Podemos dividir eles com comentários, porém é uma alteração 100% opcional e para organização.
+
+```java
+public class AlunoTest {
+
+	@Test
+	public void calcularMedia_alunoDeveTirarOitoEMeio() {
+		//Arrange
+		Aluno aluno = new Aluno();
+
+		//Act
+		Fload valorMedia = aluno.calcularMedia(7.6, 9, 8.9);
+
+		//Assert
+		assertEquals(8.5, valorMedia);
+	}
+}
+```
+
+Em um teste pequeno como esse, pode parecer inútil e que irá só aumentar o tamanho do nosso código. Porém, para testes mais complexos e compridos, ele ajuda bastante na hora de organizar onde cada coisa está.
 
 <div align="center" id='estruturas-de-dados'/> 
 
