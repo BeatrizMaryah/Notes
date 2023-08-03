@@ -9,7 +9,6 @@ As anotações também estão organizadas na Wiki desse repositório!
 * [Programação Orientada a Objetos](#poo)
 * [Testes em Java com Mockito](#testes-java)
 * [Estruturas de dados](#estruturas-de-dados) 🚧
-* [Java Avançado](#java-avancado) 🚧
 * [Banco de Dados (PostgreSQL)](#banco-de-dados)
 * [Maven](#maven)
 * [Hibernate](#hibernate) 🚧
@@ -1088,6 +1087,97 @@ Lembre-se, agregação ou composição não é um estado fixo para as mesmas coi
 ## Testes em Java com Mockito 🚧
 </div>
 
+#### 🔎 Mini sumário
+* [Conceitos](#conceitos-testes-unitarios)
+* [JUnit e estrutura básica de um teste](#junit)
+
+<div id='conceitos-testes-unitarios'/>
+#### 📚 Conceitos
+</div>
+
+Antes de entendermos como fazer testes unitários na prática, é necessário entender o que eles são e porque são feitos. Esse é um assunto que não costuma ser tratado nos cursos e/ou faculdade, porém é muito importante na empresa, visto que toda implementação que você fizer, irá ser necessário criar ou alterar algum teste. Claro, isso dependendo da área e empresa que você for.
+
+##### O que é
+
+Um teste unitário é um tipo de **teste automatizado**. Testes automatizados se fundamentam no uso de ferramentas para controlar a execução de testes de software. Ou seja, você está deixando de testar aquele método manualmente e deixando um software cuidar desse papel para você.
+
+O teste unitário em si, consiste em verificar o comportamento das menores unidades em sua aplicação. Ou seja, eles têm como alvo pequenas unidades de código, como **métodos** de classes. Quando um código está acoplado a recursos externos (como banco de dados, web services, etc), o teste deixa de ser unitário e passa a ser de **integração**. 
+
+##### Porque fazer
+
+Perguntar para que servem testes unitários ou qualquer outro teste automatizado é uma ótima pergunta, afinal existem diversas formas que aparentemente são mais rápidas de testar se minha função está fazendo o que deveria. Eu poderia simplesmente executar o código para verificar se está funcionando. Então, por que motivo eu vou escrever outro código para testar o meu código? O Que garante que o segundo código funciona? Quem testa o teste?
+
+Testes unitários, assim como qualquer teste automatizados não servem principalmente para verificar se uma função específica está funcionando, mas sim para garantir que sua aplicação continue funcionando após alguma alteração em sua base de código. 
+
+Além disso, com testes automatizados consegue-se entender melhor os problemas, já que o desenvolvedor, pela prática, valida sua hipótese considerando diferentes cenários. O código com testes automatizados é construído com mais cuidado, o que sugere menos bugs e, consequentemente, menos gastos com manutenção.
+
+##### Como fazer
+
+Criar testes unitários é o mesmo que desenvolver qualquer código, mas há uma diferença. Você não recebe uma problemática e precisa resolvê-la, você precisa olhar para um método que já existe, entender o comportamento dele e como ele funciona, analisar os cenários e aí sim testar. 
+
+Desde o genérico método de somar dois números, até o método mais complicado, você sempre terá que olhar para o que o método deveria fazer. No caso do método de somar dois números, é bem claro, ele apenas deveria somar dois números. Nesse caso, se eu mandar um número quatro e um número três, o meu método deverá retornar 7. Isso se estende para os mais complexos casos, tendo cada teste, diversos cenários.
+
+Além disso, é necessário se atentar ao que o método faz, quais validações, para que seja possível testar todos os cenários. As vezes os métodos não terão retorno e o único jeito de testá-los será observando o fluxo que ele executa, se entrou em um if ou não, por exemplo.
+
+Para fazer um teste unitário, deve ser usados apenas dados o suficiênte para o necessário. Imagine que eu tenho um método que conta os usuários de uma lista, eu não preciso passar uma lista de 80 usuários para verificar se meu método retornou 80. Eu posso apenas passar uma lista com um usuário e verificar se ele retornou 1.
+
+<div id='junit'/>
+#### 💻 JUnit e estrutura básica de um teste
+</div>
+
+JUnit é um framework que facilita o desenvolvimento e execução de testes unitários em código Java. Ele provê ferramentas como anotações para identificar os testes, anotações para preparar os cenários de testes e métodos para verificar saídas. 
+
+* **@Test**: indica que o método contém um teste a ser executado, possui parâmetros como uma classe de exceção que é esperada;
+* **@Before**: método que deve ser executado antes de cada teste para preparar qualquer condição;
+* **@BeforeClass**: mesmo que o anterior, mas executa apenas uma vez para a classe inteira;
+* **@After**: método que deve ser executado depois de cada teste, normalmente utilizar para limpeza e pós validação;
+* **@AfterClass**: mesmo que o anterior, mas executa apenas uma vez para a classe inteira.
+
+```
+public class AlunoTest {
+
+	@Before
+	public void setUp() {
+		//Código para ser executado antes de cada método de teste. Podemos usar para inicializar variáveis por exemplo.
+	}
+
+	@After
+	public void tearDown() {
+		//Código para ser executado depois de cada método de teste. Vai ser muito útil com a utilização do mockito, explicada depois.
+	}
+
+	@Test
+	public void calcularMedia_alunoDeveTirarDez {
+		//Implementação do teste
+	}
+}
+```
+
+Como vimos anteriormente, a lógica do teste é verificar se um método já existente está funcionando. Dessa forma, em todos os nossos testes vamos precisar chamar o teste original, passando os valores necessários e verificar se os valores retornados foram os corretos.
+
+Imagine que temos o método de calcular a média de um aluno. Ele irá receber 3 notas e irá dividir elas por 3.
+
+```
+public class Aluno {
+
+	public float calcularMedia(float nota1, float nota2, float nota3) {
+		return (nota1 + nota2 + nota3)/3;
+	}
+}
+```
+
+🚧
+
+##### Asserts
+
+Usamos as asserções para verificar se um valor ou um objeto tem determinadas características que desejamos testar. Podemos verificar a igualdade, a diferença ou até o resultado de um erro. Elas são um meio mais legível de executar uma verificação de valores (ao invés de ter que fazer vários ifs e else’s. O JUnit tem seus próprios métodos de Asserts
+
+* **assertTrue/assertFalse**: verifica se o valor é verdadeiro ou falso;
+* **assertEquals/assertNotEquals**: compara se os dois objetos informados são iguais ou não utilizando o **equals**;
+* **assertSame/assertNotSame**: compara se os dois objetos informados são o mesmo objeto (**==**).
+
+🚧
+
 <div align="center" id='estruturas-de-dados'/> 
 
 ## Estruturas de Dados 🚧
@@ -1099,16 +1189,7 @@ Lembre-se, agregação ou composição não é um estado fixo para as mesmas coi
 * [Pilhas](#pilhas) 🚧
 * [Árvores](#arvores) 🚧
 * [Hash](#hash) 🚧
-
-<div align="center" id='java-avancado'/> 
-
-## Java Avançado 🚧
-</div>
-
-#### 🔎 Mini sumário
-* [Threads](#threads) 🚧
-* [Anotations](#anotations) 🚧
-
+  
 <div align="center" id='banco-de-dados'/> 
 
 ## Banco de Dados (PostgreSQL)
