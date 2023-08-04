@@ -104,7 +104,7 @@ Após isso, de o **nome** ao seu pacote e clique em `Finish`. Depois de criar um
 
 Iremos abordar mais assuntos da classe após a programação orientada a objetos, por enquanto, iremos colocar todo o código no **método main** da nossa classe. O método main é o ponto de partida do seu programa, ou seja, se você tiver mais classes, quem irá ser responsável por iniciar e gerenciar o programa é o **main**. O main é composto pelos seguintes elementos:
 
-```
+```java
 public static void main(String[] args) {
 	System.out.print("Exemplo de código"); //Irá imprimir na tela: Exemplo de código	
 }
@@ -141,7 +141,7 @@ Além dos tipos primitivos, existem os **tipos por referência**, que são class
 
 Para declararmos uma variável em java, precisamos informar o **tipo de dados** que ela poderá receber e seu **nome**. Por exemplo:
 
-```
+```java
 int numero;
 String nome = "Maria";
 float numeroReal = 9.2;
@@ -161,13 +161,13 @@ Como dito anteriormente, as variáveis **finais** são declaradas quando precisa
 
 No Java, não existe uma função padrão para ler uma entrada de dados diretamente pelo teclado. A partir do Java 1.5, foi disponibilizada a classe **Scanner** que tem exatamente esse papel. É importante destacar que a saída de dados do Scanner é totalmente em console, em linhas de texto. Para utilizarmos a classe Scanner, precisamos primeiramente importá-la com o seguinte comando:
 
-```
+```java
 import java.util.Scanner;
 ```
 
 É importante destacar que esse import ficará acima da declaração da classe que você está fazendo! Após isso, precisamos criar e instânciar nosso Scanner para ser utilizado, como uma variável.
 
-```
+```java
 Scanner sc = new Scanner (System.in);
 ```
 
@@ -175,7 +175,7 @@ Nesse caso, o nome que dei ao Scanner é **leitor** e é o que utilizarei nos ex
 
 Usamos o scanner para chamar um método para ler o teclado e atribuir esse valor a uma variável. Normamente utilizamos o scanner abaixo de um `System.out.print()` que pede ao usuario alguma informação, por exemplo um `"Informe seu Nome:"` ou `"Qual é seu nome?"`.
 
-```
+```java
 System.out.print("Qual é o seu nome?");
 String nome = sc.nextLine();
 ```
@@ -186,7 +186,7 @@ No exemplo acima, o programa perguntará qual o nome da pessoa, a pessoa irá di
 
 Os métodos do Scanner variam de acordo com o **tipo** de dado que eu quero ler e atribuir a uma variável.
 
-```
+```java
 float numFloat = sc.nextFloat();
 int numInt = sc.nextInt();
 byte numByte = sc.nextByte();
@@ -205,7 +205,7 @@ O Scanner também tem outros métodos importantes, como o método `close()` que 
 
 O **JOptionPane** é uma classe do pacote visual **Swing** e é a forma mais simples de ter uma programação mais visual no Java. Ele nos proporciona uma série de métodos estáticos que ao serem invocados criam caixas de diálogos simples e objetivas. Para usá-lo, devemos primeiramente importar o seu pacote com o seguinte comando:
 
-```
+```java
 import javax.swing.JOptionPane;
 ```
 Existem alguns comandos que invocam caixinhas específicas, agora vamos falar um pouco sobre cada uma delas.
@@ -221,7 +221,7 @@ Essa caixinha serve para fazer uma requisição de algum dado ao usuário de for
 
 Para chamar essa caixinha, chamamos o comando e a mensagem que queremos que aparece colocamos entre os parênteses. Essa mensagem podemos passar como uma String direto ou como uma variável String. Além disso, como no Scanner, podemos usar essa caixinha para atribuir um valor a uma variável.
 
-```
+```java
 String nome = JOptionPane.showInputDialog("Qual o seu nome?");
 ```
 
@@ -236,7 +236,7 @@ Essa é uma caixa de confirmação com as opções, que  consiste de uma caixa c
 
 Esse método sempre retorna uma constante referente a opção que o usuário clicou. Caso ele clique em `YES`, retornará **0**, caso ele clique em `NO` retornará **1** e caso ele clique em `CANCEL` retornará **2**. Também é possível **armazenar** esse valor retornado em uma variável para poder alterar o **fluxo** do programa dependendo da opção que o usuário escreveu, seja com ifs ou o próprio switch case.
 
-```
+```java
 int opcao = JOptionPane.showConfirmDialog(null, "O seu nome é " + nome + "?");
 ```
 
@@ -253,13 +253,13 @@ A caixa de diálogo de mensagem é uma caixa que serve apenas para emitir uma **
 
 Como a caixa de Confirm, essa caixa padrão também tem os dois argumentos, sendo o que iremos usar o `null` e a mensagem em si. Esse método não usamos para atribuir valores, ele é mais como um `System.out.print()`.
 
-```
+```java
 JOptionPane.showMessageDialog(null, "Seu nome é " + nome);
 ```
 
 Aqui está um pequeno exemplo da utilização de todos as caixas comentadas acima:
 
-```
+```java
   String nome = null;
   int resposta;
   nome = JOptionPane.showInputDialog("Qual é o seu nome?"); //Pergunta o nome
@@ -276,7 +276,7 @@ Aqui está um pequeno exemplo da utilização de todos as caixas comentadas acim
 
 Também é possível fazer uma caixa de diálogo com **opções** personalizadas, onde você precisará criar um vetor de String com as opções e usá-las no comando:
 
-```
+```java
 String[] opcoes = { "Opção 1", "Opção 2", "Opção 3" };
 
 		int opcao = JOptionPane.showOptionDialog(null, "Mensagem Central", "Sub",
@@ -294,7 +294,7 @@ Essa caixa é totalmente **customizável** e retorna constantes igual a caixa de
 
 Além disso, como dito anteriormente, algumas caixas são customizáveis. Nós podemos mudar o que vem escrito em cima dela e até mudar o ícone para um ícone de erro entre outros. Para customizar uma caixinha, vamos adicionar mais alguns argumentos aos métodos. Vou usar de exemplo uma caixa de mensagem.
 
-```
+```java
 JOptionPane.showMessageDialog(null, "Mensagem central", "Sub Mensagem", JOptionPane.[tipo do ícone])
 ```
 
@@ -349,14 +349,14 @@ Estruturas de Controle de decisão são instruções em linguagem Java que permi
 
 A declaração if específica que uma instrução ou bloco de instruções seja executado e se, somente se, uma expressão lógica for verdadeira.
 
-```
+```java
 if(condição)
   instrução
 ```
 
 Ou
 
-```
+```java
 If(condição){
   bloco de instruções;
   ...
@@ -364,7 +364,7 @@ If(condição){
 ```
 Também temos o chamado IF ternário. Onde caso ela seja verdadeira, o código 1, declarado após o ponto de interrogação `?` será executado; do contrário, o programa irá executar o código 2, declarado após os dois pontos `:`.
 
-```
+```java
 (expressão booleana) ? código 1 : código 2;
 ```
 
@@ -372,7 +372,7 @@ Também temos o chamado IF ternário. Onde caso ela seja verdadeira, o código 1
 
 A declaração Else vem acompanhada da declaração If. Este cascateamento de estruturas permite ter decisões lógicas muito mais complexas. Pode ter várias estruturas else-if depois de uma declaração if. A estrutura else é opcional e pode ser omitida Essa declaração possui a seguinte forma:
 
-```
+```java
 if(condição){
   intrução 1;
 } else {
@@ -390,7 +390,7 @@ Nesse exemplo, se a condição for verdadeira, ele entra no if executa a instru�
 
 O Switch Case é uma estrutura de controle apenas para comparar se uma variável é igual a determinados valores. Ele serve para que não precisemos fazer uma cadeia gigante de ifs para determinar o que executar dependendo do valor da variável. Ele é muito mais legível e permite que uma variável tenha múltiplas possibilidades de execução.
 
-```
+```java
 switch(variavel){
   case valor1:
      intrucao1;
@@ -427,7 +427,7 @@ Estruturas de repetição permitem executar **mais de uma vez** um mesmo trecho 
 
 O while é a estrutura de repetição mais simples. Ele repete a execução de um bloco desentenças **enquanto** uma condição permanecer verdadeira. Na primeira vez que a condição se tornar **falsa**, o while não repetirá a execução do bloco.
 
-```
+```java
 while(expressao){
   instrução;
   ...
@@ -439,7 +439,7 @@ Normalmente usamos o while quando não sabemos quantas vezes o bloco de código 
 
 É semelhante ao while, porém a condição é verificada após executar o bloco de instruções correspondente. Isso faz com que o bloco de código seja executado no mínimo uma vez.
 
-```
+```java
 do {
   instrução;
   ...
@@ -457,7 +457,7 @@ A diferenças entre a estrutura while e do while é sutil e depende do programad
 
 O for é uma estrutura de repetição contadora. Utilizamos ele quando sabemos previamente quantas vezes o bloco de código terá que ser executado. A contagem do for é feita através de uma variável própria que comumente chamamos de `i`.
 
-```
+```java
 for ([expressão 1]; [condição]; [expressão 2]){
    instrução
 }
@@ -465,7 +465,7 @@ for ([expressão 1]; [condição]; [expressão 2]){
 
 Primeiro temos que definir um valor pra essa variável, este é o papel da expressão 1. Depois, iremos definir uma condição que irá dizer até onde esse for irá contar. Então, temos que sinalizar como sera a incrementação, ou seja, se ele irá contar de um em um ou se irá contar em ordem regressiva por exemplo. Esse é o papel da expressão 2. Exemplo:
 
-```
+```java
 for (int i = 0; i < 5; i++){
     System.out.println(i);
 }
@@ -482,7 +482,7 @@ Vetores são estruturas de dados que armazenam uma quantidade fixa de dados de u
 
 O número de posições de um vetor corresponde ao tamanho que ele tem, ou seja, um vetor de tamanho 10 pode armazenar 10 elementos. No Java o vetor é **zero-based**, isto é, as posições do vetor iniciam a numeração a partir do valor 0. Portanto, um vetor de tamanho 10 teria índices iniciados em 0 prosseguindo até o 9.
 
-```
+```java
 int vetor[] = new int[tamanho];
 ```
 
@@ -490,12 +490,12 @@ Para declararmos um vetor, é semelhante a uma variável normal, com seu tipo e 
 
 Para atribuirmos valores aos vetores após serem instânciados, utilizamos o `[]` com o índice do espaço que queremos guardar e o `=` com um valor.
 
-```
+```java
 vetor[3] = 10;
 ```
 No exemplo, um vetor na posição 3, irá guardar o valor 10.
 
-```
+```java
 String nome[] = {"Maria", "José", "Ronaldo"};
 ```
 Podemos ter vetores de vários tipos, e também podemos inicializar o vetor e atribuir valores a eles ao mesmo tempo com as chaves `{}`. No exemplo acima, temos um vetor de String que guardam os valores Maria, José e Ronaldo. Dessa forma não é necessário indicar o tamanho do vetor e também fazer a alocação de espaço através do operador new.
@@ -505,7 +505,8 @@ Existem alguns métodos na classe `Math` do java que podem ser utilizados com os
 ##### For each
 
 O For Each é um for criado para percorrer os elementos de um vetor sem utilizar um contador estruturado. Ele é mais legível e simples de entender. Ele aloca um membro do vetor no parâmetro por vez e executa a instrução, até o último elemento.
-```
+
+```java
 for (parâmetro: nomeDoVetor) {
    instrução;
 }
@@ -518,7 +519,7 @@ for (parâmetro: nomeDoVetor) {
 
 No java, temos como criar um vetor de vetores. Chamamos isso de vetores multidimensionais ou **matrizes**. Segue a mesma linha de raciocínio que as matrizes na matemática, onde temos linhas e colunas. Levam a mesma regra dos vetores de começar em 0 e sua diferença é o uso de dois `[][]`.
 
-```
+```java
 int matriz[][] = new int[2][4];
 ```
 
@@ -531,7 +532,7 @@ No exemplo acima, criamos um vetor com **2 linhas** e **4 colunas**. Sendo assim
 
 Podemos ver como funcionam as posições na matriz. Por exemplo, na posição `m[0][2]` temos um elemento na primeira linha e na terceira coluna. Além disso, também podemos inicializar e atribuir valores ao mesmo tempo, como nos vetores.
 
-```
+```java
 int matriz[][] = { {1, 2, 3}, {4, 5, 6}, {7, 8, 9} };
 ```
 Nessa sintaxe, as `{}` separam as linhas, ou seja, com três `{}` teremos três linhas. Os valores separados pela `,` são os valores que estarão alocados nessa linha e na coluna que ele está na ordem. Sendo assim nossa matriz ficará mais ou menos assim:
@@ -543,7 +544,7 @@ Nessa sintaxe, as `{}` separam as linhas, ou seja, com três `{}` teremos três 
 
 Trazendo isso para as nossas posições nos `[]`, temos esse cenário:
 
-```
+```java
 // 1ª linha:
  m[0][0] = 1;
  m[0][1] = 2;
@@ -562,7 +563,7 @@ Trazendo isso para as nossas posições nos `[]`, temos esse cenário:
 
 Quando trabalhamos com matrizes, precisamos utilizar **dois for**. Isso acontece pois precisamos percorrer pelas linhas e pelas colunas, usando respectivamente o `i` e o `j`. Além disso, as condições do for ficam um pouco diferentes. O primeiro for usa apenas o `m.lenght`, que irá retornar o número de linhas da matriz. O segundo for usaremos o `m[i].lenght` que irá retornar o número de colunas da i-ésima linha. Por exemplo:
 
-```
+```java
 	for (int i = 0; i < matriz.length; i++) {
 		System.out.printf("linha " + (i+1) + ": "); //Mostra em que linha está
 		    
@@ -588,7 +589,7 @@ Essas sub-rotinas ficam separadas do método main e são divididas em dois tipos
 
 Para declarar uma rotina, você precisa obrigatoriamente colocar a palavra resevada static, informar o tipo de retorno (no caso dos procedimentos será void), o nome da sub-rotina e por fim, seus parâmetros entre parenteses se necessários.
 
-```
+```java
 public static [tipo de retorno] [nome da subrotina]([parâmetros]){
     instrução;
     ...
@@ -596,7 +597,7 @@ public static [tipo de retorno] [nome da subrotina]([parâmetros]){
 ```
 Os parâmetros de uma sub-rotina são variáveis com informações que ela precisa pra funcionar. Eles nem sempre são necessários e devem ser informados entre os `()` com seu tipo e nome. Esses parâmetros basicamente indicam que quando essa sub-rotina for chamada, teremos que passar alguma informação para ele e os parâmetros que irão guardar essas informações. Por exemplo:
 
-```
+```java
 public static int somaDoisNumeros(int numero1, int numero2) {
     int soma = numero1 + numero2;
     return soma;
@@ -605,7 +606,7 @@ public static int somaDoisNumeros(int numero1, int numero2) {
 
 Nesse exemplo, temos uma **função** que irá receber dois números, somá-los e retornar esse resultado. Para chamar essa sub-rotina, usamos o nome dela e informamos os valores que irão ir para os parâmetros. Como o exemplo acima é uma função que retornará um valor, podemos usar essa sub-rotina como atribuição de valor de outra variável, como no exemplo a seguir:
 
-```
+```java
 int resultado = somaDoisNumeros(3, 4);
 ```
 
@@ -684,7 +685,7 @@ Uma classe descreve uma **ideia**, ela apresenta as características que uma ent
 
 Eles descrevem as **características** da classe e todas as informações de que ela precisa. No exemplo anterior, teríamos uma classe caneta com os atributos cor, tamanho da ponta, marca e se sua tinta está vazia. Essas informações serão **variáveis** criadas especificamente para esta classe e toda caneta deverá preencher com um valor. Eles seguem a mesma regra das variáveis, porém, não **instânciamos** ela nem atribuímos um **valor** a ela na classe. O código do nosso exemplo ficaria assim:
 
-```
+```java
 String cor;
 float tamanhoPonta;
 String marca;
@@ -697,7 +698,7 @@ Os métodos são as **"ações"** que uma classe pode realizar. Eles sempre ser�
 
 No exemplo da caneta, meu método seria o de **escrever**. Imagine que nossa classe teria um método que receberia uma mensagem para escrever, mas primeiro verificaria se a tinta estiver cheia e caso esteja, iremos retornar a mensagem. Se ela não estiver cheia, não retornará nada. Isso ficaria mais ou menos assim:
 
-```
+```java
 public String escreverMensagem(String mensagem) {	
 
 	if(this.isTintaCheia == true) {
@@ -720,13 +721,13 @@ Um objeto é criado a partir de uma classe e será sempre uma **especificação*
 
 Esse objeto pode ser criado em qualquer método, mas a fim de exemplo, iremos criar no método **main** para rodarmos o nosso programa como exemplo. Lembra de como criavámos os vetores? Com o comando `new` para **instânciá-los** em memória? Com o objeto faremos o mesmo. Porém, o tipo da nossa variável que estará nosso objeto será a própria classe.
 
-```
+```java
 Caneta caneta = new Caneta();
 ```
 
 O tipo **Caneta (classe)** definirá que nossa variável de **caneta (objeto)**, poderá preencher e guardar todas as informações que definimos na nossa classe. Para atribuirmos alguns valores para essa caneta, iremos usar o `.` e o **atributo** desejado para buscar o valor dele e usá-lo com o `=` para atribuir uma informação. Com isso teremos algo assim:
 
-```
+```java
 caneta.cor = "Roxo";
 caneta.tamanhoPonta = 2f; //O f é para indicar que é um float
 caneta.marca = "Bic";
@@ -735,7 +736,7 @@ caneta.isTintaCheia = true;
 
 Para mostrar isso na tela, podemos simplesmente chamar o `objeto.atributo` para retornar seu valor. Para nosso objeto realizar nosso método, ele também usará o `.` e o método. Veja a seguir:
 
-```
+```java
 System.out.println(caneta.cor); //Retorna a cor da caneta (nesse caso, retornará roxo)
 System.out.println(caneta.escreverMensagem("Olá mundo!")); //Retorna a mensagem passada no argumento caso a tinta da caneta esteja cheia (nesse caso está, então retornará)
 ```
@@ -774,7 +775,7 @@ Os métodos GET e SET são técnicas padronizadas para gerenciamento sobre o ace
 
 Serve para **retornar** o valor do atributo. Ele basicamente **"pega"** o valor guardado e retorna para a gente. Para construirmos um get, precisamos da seguinte sintaxe:
 
-```
+```java
 public [tipo de retorno] get[Atributo] (){
 	return [atributo];
 }
@@ -782,7 +783,7 @@ public [tipo de retorno] get[Atributo] (){
 
 O tipo de retorno deve ser o **mesmo** que o atributo! Depois disso, podemos chamar esse atributo em qualquer lugar com segurança. Por exemplo:
 
-```
+```java
 System.out.print("A cor da caneta é " + caneta.getCor());
 ```
 
@@ -790,20 +791,20 @@ System.out.print("A cor da caneta é " + caneta.getCor());
 
 Serve para **atribuir um valor** a um atributo de forma protegida. Esse método **não** terá um retorno, pois o atributo será somente modificado. Porém ele deve receber algum **parâmetro** para que possa ocorrer a devida alteração. Esse parâmetro será nosso valor que queremos atribuir, por isso, deve ser do mesmo tipo do atributo. Ele seguirá a seguinte sintaxe:
 
-```
+```java
 public void set[atributo] ([tipo do Atributo] [parâmetro]){
 	this.[atributo] = [parâmetro]
 }
 ```
 O parâmetro normalmente tem o mesmo nome que o atributo, por convenção. Por isso, usamos o `this.[atributo]` para o indicar que o atributo daquela classe receberá o valor passado e não ao contrário. É uma forma de deixar o código mais organizado, evitando erros de compilação. É como se passassemos o valor ao método e o método colocasse nosso valor em nossa variável, fazendo assim, com que a própria classe seja responsável pelas atribuições. Para chamarmos ele, segue o mesmo exemplo do get com o `objeto.método`, porém, agora temos que passar o **valor** como argumento:
 
-```
+```java
 caneta.setCor("Roxo");
 ```
 
 Levando esse conceito ao nosso código de caneta, os métodos de get e set do atributo **COR** ficariam mais ou menos assim. 
 
-```
+```java
 public String getCor(){
      return cor;
 }
@@ -823,7 +824,7 @@ Os construtores são os responsáveis por **criar** o objeto em memória, ou sej
 
 Com o construtor vazio, nós tinhamos que primeiro **criar** o objeto e depois **atribuir** todos os valores aos seus atributos respectivos na mão. Porém, isso é trabalhoso demais e por isso, podemos criar o objeto com seus atributos preenchidos automaticamente com o **construtor**. Podemos criar quantos construtores quisermos na nossa classe, desde que sua assinatura não esteja igual. A **assinatura** se estende desde o **tipo de retorno** (que os construtores não tem) até os **parâmetros** e sua **ordem**, ou seja, se eu tiver dois construtores com os mesmos parâmetros e na mesma ordem, o Java não deixará. A sintaxe de um construtor é a seguinte:
 
-```
+```java
 public [nome da classe] ([tipo do parametro] [nome do parâmetro]){
 	this.[atributo] = [nome do parâmetro];
 }
@@ -831,7 +832,7 @@ public [nome da classe] ([tipo do parametro] [nome do parâmetro]){
 
 O nome da classe terá que ser com a primeira letra **maíuscula**, considerando que estamos nos referênciando a classe em si. O tipo do parâmetro, o nome do parâmetro e o `this.[atributo] = [nome do parâmetro]` seguem a mesma regra do **get e set**, ele irá receber um valor e atribuir a variável. Por exemplo, se criassemos um construtor com todos os atributos de caneta, ficaria mais ou menos assim:
 
-```
+```java
 public Caneta(String cor, Float tamanhoPonta, String marca, boolean isTintaCheia){
 	this.cor = cor;
 	this.tamanhoPonta = tamanhoPonta;
@@ -842,13 +843,13 @@ public Caneta(String cor, Float tamanhoPonta, String marca, boolean isTintaCheia
 
 É importante destacar que quando criamos um ou mais construtores, obrigatoriamente temos que usar **um** deles. Se criamos dois construtores, um com dois parâmetros e um com quatro, obrigatoriamente só poderemos criar um objeto passando dois ou quatro valores. Por isso, se quisermos criar um objeto vazio novamente, teremos que criar um **construtor vazio** na nossa classe também, sem passar nenhum parâmetro, com o seguinte comando:
 
-```
+```java
 public Caneta(){}	 //Um construtor vazio
 ```
 
 Para chamar esse construtor em algum lugar, basta dar o mesmo comando que antes, mas passando os argumentos necessários ou desejados. Considerando o construtor de caneta que criamos poderíamos utilizar algo assim:
 
-```
+```java
 Caneta caneta = new Caneta("Roxo", 2f, "Bic", true);	//Preenchem respectivamente a cor, o tamanho da ponta, a marca e se a tinta está cheia.
 ```
 
@@ -887,7 +888,7 @@ Para passar para o código, vamos usar um exemplo mais **"real"**:
 
 Podemos ver que nesse exemplo, teremos uma superclasse Cliente e duas subclasses de Pessoa física e Pessoa jurídica. Na nossa classe de cliente, temos os atributos de País e Data de Cadastro.
 
-```
+```java
 public class Cliente {
    String pais;
    Date dataCadastro;
@@ -896,7 +897,7 @@ public class Cliente {
 
 Além disso, teremos nossa classe **Pessoa Física** com os atributos de Nome, Sobrenome e Cpf.
 
-```
+```java
 public class PessoaFisica exntends Cliente {
    String nome;
    String sobrenome;
@@ -906,7 +907,7 @@ public class PessoaFisica exntends Cliente {
 
 Por último, teremos nossa classe de **Pessoa Jurídica**, com os atributos de Razão Social, Nome Fantasia, Sigla e Cnpj.
 
-```
+```java
 public class PessoaJuridica extends Cliente {
    String razaoSocial;
    String nomeFantasia;
@@ -919,13 +920,13 @@ Percebe-se que nas duas subclasses utilizamos o `extends Cliente`. Esse é o com
 
 Tendo essa estrutura, podemos observar que nossa superclasse Cliente será uma **classe abstrata**, pois não poderá ser criado uma instância de cliente no nosso programa. Para isso, vamos utilizar a palavra `abstract` em nossa classe.
 
-```
+```java
 public abstract class Cliente { ...
 ```
 
 Além disso, temos uma coisa importante em relação aos construtores quando se trata de herança. Apesar de criarmos apenas objetos de Pessoa física e jurídica, quem tem controle sobre os atributos `pais` e `dataCadastro` ainda é a classe **Cliente**. Considerando isso, precisamos "mandar" os valores para a superclasse gerenciá-los. Para isso, usamos o comando `super(atributos);` dentro do construtor. Por exemplo, nossos construtores de PessoaFisica e PessoaJuridica ficariam assim, respectivamente:
 
-```
+```java
 public PessoaFisica(String pais, Date dataCadastro, String nome, String sobrenome, String cpf){
 	super(pais, dataCadastro);
 	this.nome = nome;
@@ -934,7 +935,7 @@ public PessoaFisica(String pais, Date dataCadastro, String nome, String sobrenom
 }
 ```
 
-```
+```java
 public PessoaJuridica(String pais, Date dataCadastro, String razaoSocial, String nomeFantasia, String sigla, String cnpj){
 	super(pais, dataCadastro);
 	this.razaoSocial = razaoSocial;
@@ -954,7 +955,7 @@ Polimorfismo significa **"muitas formas"** e descreve uma situação na qual um 
 
 Voltando para o exemplo das formas geométricas. Pense que temos uma superclasse `FormaGeometrica` e três subclasses `Triangulo`, `Retangulo` e `Trapezio`. Vamos considerar que a superclasse terá um método de **calcular área** que recebera dois números e retornará um float. Porém, como não é possível calcular a área de uma forma geométrica em si, pois ela é um conceito **abstrato**, o nosso método não tem como ter um corpo. Por isso, nossas classes filhas terão que obrigatoriamente dar um corpo para esse método. Para fazer isso, adicionamos o `abstract` no método.
 
-```
+```java
 public abstract float calcularArea(float num1, float num2) {}
 ```
 
@@ -967,13 +968,15 @@ Nesse cenário, temos um método na classe filha identico ao da superclasse, com
 Por exemplo, para calcular um retângulo e um triângulo precisamos de dois valores como argumento. Por isso, as classes filhas irão apenas sobreescrever um método que já existe.
 
 Na classe Triângulo:
-```
+
+```java
 public float calcularArea(float num1, float num2) {
 	return (num1 * num2)/2;
 ```
 
 Na classe Retângulo:
-```
+
+```java
 public float calcularArea(float num1, float num2) {
 	return num1 * num2;
 ```
@@ -984,7 +987,7 @@ Nesse cenário, temos um método na classe filha **parecida** com o método da s
 
 Por exemplo, para calcular um trapézio precisamos de três valores como argumento. Como o valor difere, será criado um novo método.
 
-```
+```java
 public float calcularArea(float baseMenor, float baseMaior, float altura){
 	return ((baseMenor + baseMaior) * altura)/2;
 ```
@@ -1006,7 +1009,8 @@ Uma interface é como se fosse um **contrato**, onde as classes que implementare
 </div>
 
 Após cria-la, é possível observar que sua declaração também é diferente da classe, sendo utilizada `interface` no lugar. Pense em um cenário onde temos que fazer uma calculadora. Toda calculadora tem as funções de somar, subtrair, dividir e multiplicar, por isso, faremos uma interface com esses métodos.
-```
+
+```java
 public interface Operacoes {
 	public double somar(double num1, double num2);
 	public double subtrair(double num1, double num2);
@@ -1014,9 +1018,10 @@ public interface Operacoes {
 	public double multiplicar(double num1, double num2);
 }
 ```
+
 Para usar esses métodos, devemos selar esse **"contrato"** da interface com alguma classe. Fazemos isso usando o `implements` ao lado da declaração da classe, como fazemos com herança. Após isso, devemos dar um corpo para todos os métodos que declaramos na interface.
 
-```
+```java
 public class Calculadora implements Operacoes{
 
 	public double somar(double num1, double num2){
@@ -1057,7 +1062,7 @@ Uma associação ocorre quando temos uma classe que possui atributos de um tipo 
 
 Para facilitar a identificação dessa relação, temos que fazer a pergunta **tem um(a)**. Um carro tem um pneu, por isso é uma associação. Sempre que não há posse em vigor, consideramos tal relacionamento apenas como uma Associação e simplesmente usamos o termo *tem-a*, ou às vezes o verbo que descreve o relacionamento. Por exemplo, um professor *tem-um* ou *ensina* um ou mais alunos. Não há posse entre o professor e o aluno, e cada um tem seu próprio ciclo de vida. Exemplo:
 
-```
+```java
 public class Aluno{
 	private String nome;
 	private Professor professor;
@@ -1232,6 +1237,85 @@ public class AlunoTest {
 ```
 
 Em um teste pequeno como esse, pode parecer inútil e que irá só aumentar o tamanho do nosso código. Porém, para testes mais complexos e compridos, ele ajuda bastante na hora de organizar onde cada coisa está.
+
+##### Exceções
+
+Eventualmente, nossos métodos irão lançar exceções. Por exemplo, vamos tratar nosso método para, caso a média seja **menor que zero** ou **maior que dez**, lançe uma exceção.
+
+```java
+public class Aluno {
+
+	public float calcularMedia(float nota1, float nota2, float nota3) {
+		float media = (nota1 + nota2 + nota3)/3;
+
+		if(media < 0 || media > 10) {
+			//Exceção aleatória de exemplo
+			throw new MediaException();
+		}
+
+		return media;
+}
+```
+
+Nesse caso, teríamos que testar os **dois** novos cenários. Onde a média resultará em um valor negativo e outro onde a média resultará em um valor maior que dez. Os dois cenários vão lançar uma exceção, mas como temos duas validações no if, com um ou, serão dois cenários novos.
+
+Para sinalizar que esperamos que seja lançada uma exceção, podemos fazer de duas formas. A primeira é passar diretamente na anotação @Test qual exceção esperamos que aquele teste receba:
+
+```java
+	@Test(expected = MediaException.class)
+	public void calcularMedia_mediaDeveSerNegativa() { ...
+```
+
+Além disso, também podemos receber a exceção e validá-la diretamente utilizando os asserts:
+
+```java
+	@Test(expected = MediaException.class)
+	public void calcularMedia_mediaDeveSerNegativa() {
+		//Arrange
+		Aluno aluno = new Aluno();
+
+		//Act
+		assertThrows(MediaException.class, () -> aluno.calcularMedia(-1.0, 0.0, -3.0));		
+	}
+```
+
+Você pode ter imaginado que seria uma boa ideia instânciar a classe Aluno como uma variável da nossa classe de teste, que poderia ser usada em todos os testes sem necessidade de instânciar novamente.
+
+Porém, nos testes unitários, é necessário que todos os testes tenham o seu cenário de testes próprio, com suas instâncias próprias, sem interferir nos outros testes. Ou seja, ele precisa estar com o "terreno" novo para que ele execute o teste de um método sem influência de testes antigos.
+
+Por exemplo, imagine que nossa classe Aluno tenha uma variável que guarde a quantidade de vezes que ele veio para a aula. Agora imagine um método que será responsável por calcular +1 para esse aluno, quando ele estiver presente.
+
+Pense que eu terei dois testes feitos para o cenário de o aluno estar ou não presente. Se ele está presente, irá somar +1 a variável da classe. Nesse caso, eu terei um teste que irá chamar o método, passando que o aluno está presente, e adicionará +1 na variável e por fim, irá verificar se agora o aluno possui 1 no número de presenças. No caso do teste que o aluno não está presente, vamos esperar que o número de presenças no final do teste seja 0.
+
+Considerando esses dois cenários, se executarmos o cenário em que o aluno não está presente primeiro, e depois o cenário que ele está presente, os dois testes passarão. Agora, se for executado primeiro o cenário em que o aluno está presente, ele irá adicionar +1 na variável e, na do teste onde o aluno não está presente, ele irá falhar. Isso porque, ele irá verificar se a quantidade de presenças será igual a 0, porém ela terá o valor 1 que foi definido no teste anterior. 
+
+Essa dependência e influência de um teste em outro não pode acontecer de jeito nenhum. Por isso, nós temos uma instância separada de cada coisa para cada teste. Por isso, instânciamos nossa classe todo método.
+
+Para podermos otimizar nosso código e impedir que tenha uma linha para instânciar a cada teste, podemos utilizar o @Before. Lembrando que, um método com essa anotação, irá ser executado antes de cada teste. Dessa forma, podemos criar apenas nossa variável da classe, sem instânciá-la e, dentro do método @Before, iremos instânciar essa variável.
+
+```java
+public class AlunoTest {
+
+	private Aluno aluno;
+
+	@Before
+	public void setUp() {
+		aluno = new Aluno();
+	}
+
+	@Test
+	public void calcularMedia_alunoDeveTirarDez {
+		//Act
+		Fload valorMedia = aluno.calcularMedia(10, 10, 10);
+
+		//Assert
+		assertEquals(10, valorMedia);
+	}
+}
+```
+
+Dessa forma, podemos deixar nosso método de teste mais limpo, sem a necessidade de instânciar a classe toda hora. Também podemos utilizar esse método para outras variáveis que poderíamos usar antes dos testes, como veremos mais tarde.
+
 
 <div align="center" id='estruturas-de-dados'/> 
 
